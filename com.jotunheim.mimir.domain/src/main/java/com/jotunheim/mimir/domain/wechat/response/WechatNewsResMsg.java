@@ -8,29 +8,29 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WechatNewsResMsg extends BaseMsg {
 
-	private Integer ArticleCount;
+    private Integer ArticleCount;
 
-	private List<Article> Articles;
+    private List<Article> Articles;
 
-	public WechatNewsResMsg() {
-		super();
-		MsgType = WX_MSG_TYPE_NEWS;
-	}
+    public WechatNewsResMsg() {
+        super();
+        MsgType = WX_MSG_TYPE_NEWS;
+    }
 
-	public Integer getArticleCount() {
-		return ArticleCount;
-	}
+    public Integer getArticleCount() {
+        return ArticleCount;
+    }
 
-	public void setArticleCount(Integer articleCount) {
-		ArticleCount = articleCount;
-	}
+    public void setArticleCount(Integer articleCount) {
+        ArticleCount = articleCount;
+    }
 
-	public List<Article> getArticles() {
-		return Articles;
-	}
+    public List<Article> getArticles() {
+        return Articles;
+    }
 
-	public void setArticles(List<Article> articles) {
-		Articles = articles;
-	}
+    public void setArticles(List<Article> articles) {
+        Articles = articles;
+    }
 
 }

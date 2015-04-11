@@ -2,94 +2,94 @@ package com.jotunheim.mimir.domain.wechat;
 
 public abstract class BaseMsg {
 
-	/**
-	 * 文本消息
-	 */
-	public static final String WX_MSG_TYPE_TEXT = "text";
+    /**
+     * 文本消息
+     */
+    public static final String WX_MSG_TYPE_TEXT = "text";
 
-	/**
-	 * 图片消息
-	 */
-	public static final String WX_MSG_TYPE_IMAGE = "image";
+    /**
+     * 图片消息
+     */
+    public static final String WX_MSG_TYPE_IMAGE = "image";
 
-	/**
-	 * 语音消息
-	 */
-	public static final String WX_MSG_TYPE_VOICE = "voice";
+    /**
+     * 语音消息
+     */
+    public static final String WX_MSG_TYPE_VOICE = "voice";
 
-	/**
-	 * 视频消息
-	 */
-	public static final String WX_MSG_TYPE_VIDEO = "video";
+    /**
+     * 视频消息
+     */
+    public static final String WX_MSG_TYPE_VIDEO = "video";
 
-	/**
-	 * 位置信息
-	 */
-	public static final String WX_MSG_TYPE_LOCATION = "location";
+    /**
+     * 位置信息
+     */
+    public static final String WX_MSG_TYPE_LOCATION = "location";
 
-	/**
-	 * 链接消息
-	 */
-	public static final String WX_MSG_TYPE_LINK = "link";
+    /**
+     * 链接消息
+     */
+    public static final String WX_MSG_TYPE_LINK = "link";
 
-	/**
-	 * 事件消息
-	 */
-	public static final String WX_MSG_TYPE_EVENT = "event";
+    /**
+     * 事件消息
+     */
+    public static final String WX_MSG_TYPE_EVENT = "event";
 
-	/**
-	 * 回复图文消息
-	 */
-	public static final String WX_MSG_TYPE_NEWS = "news";
+    /**
+     * 回复图文消息
+     */
+    public static final String WX_MSG_TYPE_NEWS = "news";
 
-	/**
-	 * 回复音乐消息
-	 */
-	public static final String WX_MSG_TYPE_MUSIC = "music";
-	
-	/**
-	 * 多客服消息
-	 */
-	public static final String WX_MSG_TYPE_TRANSFER="transfer_customer_service";
+    /**
+     * 回复音乐消息
+     */
+    public static final String WX_MSG_TYPE_MUSIC = "music";
 
-	protected String ToUserName;
+    /**
+     * 多客服消息
+     */
+    public static final String WX_MSG_TYPE_TRANSFER = "transfer_customer_service";
 
-	protected String FromUserName;
+    protected String ToUserName;
 
-	protected String CreateTime;
+    protected String FromUserName;
 
-	protected String MsgType;
+    protected String CreateTime;
 
-	public String getToUserName() {
-		return ToUserName;
-	}
+    protected String MsgType;
 
-	public void setToUserName(String toUserName) {
-		ToUserName = toUserName;
-	}
+    public String getToUserName() {
+        return ToUserName;
+    }
 
-	public String getFromUserName() {
-		return FromUserName;
-	}
+    public void setToUserName(String toUserName) {
+        ToUserName = toUserName;
+    }
 
-	public void setFromUserName(String fromUserName) {
-		FromUserName = fromUserName;
-	}
+    public String getFromUserName() {
+        return FromUserName;
+    }
 
-	public String getCreateTime() {
-		return CreateTime;
-	}
+    public void setFromUserName(String fromUserName) {
+        FromUserName = fromUserName;
+    }
 
-	public void setCreateTime(String createTime) {
-		CreateTime = createTime;
-	}
+    public String getCreateTime() {
+        return CreateTime;
+    }
 
-	public String getMsgType() {
-		return MsgType;
-	}
+    public void setCreateTime(String createTime) {
+        CreateTime = createTime;
+    }
 
-	public void setMsgType(String msgType) {
-		MsgType = msgType;
-	}
+    public String getMsgType() {
+        return MsgType;
+    }
+
+    public void setMsgType(String msgType) {
+        MsgType = msgType;
+    }
 
 }

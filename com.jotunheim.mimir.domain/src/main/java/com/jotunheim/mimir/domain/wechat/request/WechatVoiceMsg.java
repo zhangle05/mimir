@@ -11,48 +11,47 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WechatVoiceMsg extends BaseWechatMsg {
 
-	private String MediaId;
-	
-	private String Format;
+    private String MediaId;
 
-	/**
-	 * 识别结果
-	 */
-	private String Recognition;
-	
-	public WechatVoiceMsg() {
-		MsgType = WX_MSG_TYPE_VOICE;
-	}
+    private String Format;
 
-	public String getMediaId() {
-		return MediaId;
-	}
+    /**
+     * 识别结果
+     */
+    private String Recognition;
 
-	public void setMediaId(String mediaId) {
-		MediaId = mediaId;
-	}
+    public WechatVoiceMsg() {
+        MsgType = WX_MSG_TYPE_VOICE;
+    }
 
-	public String getFormat() {
-		return Format;
-	}
+    public String getMediaId() {
+        return MediaId;
+    }
 
-	public void setFormat(String format) {
-		Format = format;
-	}
+    public void setMediaId(String mediaId) {
+        MediaId = mediaId;
+    }
 
-	@Override
-	public String toString() {
-		return "WechatVoiceMsg [MediaId=" + MediaId + ", Format=" + Format
-				+ ", MsgType=" + MsgType + "]";
-	}
+    public String getFormat() {
+        return Format;
+    }
 
-	public String getRecognition() {
-		return Recognition;
-	}
+    public void setFormat(String format) {
+        Format = format;
+    }
 
-	public void setRecognition(String recognition) {
-		Recognition = recognition;
-	}
+    @Override
+    public String toString() {
+        return "WechatVoiceMsg [MediaId=" + MediaId + ", Format=" + Format
+                + ", MsgType=" + MsgType + "]";
+    }
 
-	
+    public String getRecognition() {
+        return Recognition;
+    }
+
+    public void setRecognition(String recognition) {
+        Recognition = recognition;
+    }
+
 }

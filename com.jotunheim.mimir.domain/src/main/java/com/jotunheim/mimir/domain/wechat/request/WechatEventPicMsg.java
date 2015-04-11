@@ -8,38 +8,35 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WechatEventPicMsg extends BaseEventMsg implements Serializable {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	
-	private String EventKey;
-	
-	private SendPicsInfo SendPicsInfo;
+    private static final long serialVersionUID = 1L;
 
-	public String getEventKey() {
-		return EventKey;
-	}
+    private String EventKey;
 
-	public void setEventKey(String eventKey) {
-		EventKey = eventKey;
-	}
+    private SendPicsInfo SendPicsInfo;
 
-	public SendPicsInfo getSendPicsInfo() {
-		return SendPicsInfo;
-	}
+    public String getEventKey() {
+        return EventKey;
+    }
 
-	public void setSendPicsInfo(SendPicsInfo sendPicsInfo) {
-		SendPicsInfo = sendPicsInfo;
-	}
+    public void setEventKey(String eventKey) {
+        EventKey = eventKey;
+    }
 
-	@Override
-	public String toString() {
-		return "WechatEventPicMsg [EventKey=" + EventKey + ", SendPicsInfo="
-				+ SendPicsInfo + "]";
-	}
-	
-	
+    public SendPicsInfo getSendPicsInfo() {
+        return SendPicsInfo;
+    }
+
+    public void setSendPicsInfo(SendPicsInfo sendPicsInfo) {
+        SendPicsInfo = sendPicsInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "WechatEventPicMsg [EventKey=" + EventKey + ", SendPicsInfo="
+                + SendPicsInfo + "]";
+    }
 
 }

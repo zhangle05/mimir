@@ -6,19 +6,19 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WechatVideoResMsg extends BaseMsg {
 
-	private Video Video;
+    private Video Video;
 
-	public WechatVideoResMsg() {
-		super();
-		MsgType = WX_MSG_TYPE_VIDEO;
-	}
+    public WechatVideoResMsg() {
+        super();
+        MsgType = WX_MSG_TYPE_VIDEO;
+    }
 
-	public Video getVideo() {
-		return Video;
-	}
+    public Video getVideo() {
+        return Video;
+    }
 
-	public void setVideo(Video video) {
-		Video = video;
-	}
+    public void setVideo(Video video) {
+        Video = video;
+    }
 
 }

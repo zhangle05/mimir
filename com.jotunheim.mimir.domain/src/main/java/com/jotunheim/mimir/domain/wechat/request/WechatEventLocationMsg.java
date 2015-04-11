@@ -5,39 +5,39 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WechatEventLocationMsg extends BaseEventMsg {
 
-	private Double Latitude;
-	
-	private Double Longitude;
-	
-	private Double Precision;
+    private Double Latitude;
 
-	public WechatEventLocationMsg() {
-		super();
-		Event = WX_MSG_TYPE_EVENT_LOCATION;
-	}
+    private Double Longitude;
 
-	public Double getLatitude() {
-		return Latitude;
-	}
+    private Double Precision;
 
-	public void setLatitude(Double latitude) {
-		Latitude = latitude;
-	}
+    public WechatEventLocationMsg() {
+        super();
+        Event = WX_MSG_TYPE_EVENT_LOCATION;
+    }
 
-	public Double getLongitude() {
-		return Longitude;
-	}
+    public Double getLatitude() {
+        return Latitude;
+    }
 
-	public void setLongitude(Double longitude) {
-		Longitude = longitude;
-	}
+    public void setLatitude(Double latitude) {
+        Latitude = latitude;
+    }
 
-	public Double getPrecision() {
-		return Precision;
-	}
+    public Double getLongitude() {
+        return Longitude;
+    }
 
-	public void setPrecision(Double precision) {
-		Precision = precision;
-	}
+    public void setLongitude(Double longitude) {
+        Longitude = longitude;
+    }
+
+    public Double getPrecision() {
+        return Precision;
+    }
+
+    public void setPrecision(Double precision) {
+        Precision = precision;
+    }
 
 }

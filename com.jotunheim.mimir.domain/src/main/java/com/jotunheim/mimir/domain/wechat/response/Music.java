@@ -5,63 +5,61 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("Music")
 public class Music {
 
-	private String Title;
+    private String Title;
 
-	private String Description;
-	// 音乐链接
-	private String MusicUrl;
-	// 高质量音乐链接
-	private String HQMusicUrl;
-	
-	private String ThumbMediaId;
+    private String Description;
+    // 音乐链接
+    private String MusicUrl;
+    // 高质量音乐链接
+    private String HQMusicUrl;
 
-	public String getTitle() {
-		return Title;
-	}
+    private String ThumbMediaId;
 
-	public void setTitle(String title) {
-		Title = title;
-	}
+    public String getTitle() {
+        return Title;
+    }
 
-	public String getDescription() {
-		return Description;
-	}
+    public void setTitle(String title) {
+        Title = title;
+    }
 
-	public void setDescription(String description) {
-		Description = description;
-	}
+    public String getDescription() {
+        return Description;
+    }
 
-	public String getMusicUrl() {
-		return MusicUrl;
-	}
+    public void setDescription(String description) {
+        Description = description;
+    }
 
-	public void setMusicUrl(String musicUrl) {
-		MusicUrl = musicUrl;
-	}
+    public String getMusicUrl() {
+        return MusicUrl;
+    }
 
-	public String getHQMusicUrl() {
-		return HQMusicUrl;
-	}
+    public void setMusicUrl(String musicUrl) {
+        MusicUrl = musicUrl;
+    }
 
-	public void setHQMusicUrl(String hQMusicUrl) {
-		HQMusicUrl = hQMusicUrl;
-	}
+    public String getHQMusicUrl() {
+        return HQMusicUrl;
+    }
 
-	public String getThumbMediaId() {
-		return ThumbMediaId;
-	}
+    public void setHQMusicUrl(String hQMusicUrl) {
+        HQMusicUrl = hQMusicUrl;
+    }
 
-	public void setThumbMediaId(String thumbMediaId) {
-		ThumbMediaId = thumbMediaId;
-	}
+    public String getThumbMediaId() {
+        return ThumbMediaId;
+    }
 
-	@Override
-	public String toString() {
-		return "Music [Title=" + Title + ", Description=" + Description
-				+ ", MusicUrl=" + MusicUrl + ", HQMusicUrl=" + HQMusicUrl
-				+ ", ThumbMediaId=" + ThumbMediaId + "]";
-	}
+    public void setThumbMediaId(String thumbMediaId) {
+        ThumbMediaId = thumbMediaId;
+    }
 
-	
+    @Override
+    public String toString() {
+        return "Music [Title=" + Title + ", Description=" + Description
+                + ", MusicUrl=" + MusicUrl + ", HQMusicUrl=" + HQMusicUrl
+                + ", ThumbMediaId=" + ThumbMediaId + "]";
+    }
 
 }

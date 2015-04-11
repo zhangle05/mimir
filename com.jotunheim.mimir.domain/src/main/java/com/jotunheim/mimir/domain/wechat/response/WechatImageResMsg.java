@@ -6,19 +6,19 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WechatImageResMsg extends BaseMsg {
 
-	private Image Image;
+    private Image Image;
 
-	public WechatImageResMsg() {
-		super();
-		MsgType = WX_MSG_TYPE_IMAGE;
-	}
+    public WechatImageResMsg() {
+        super();
+        MsgType = WX_MSG_TYPE_IMAGE;
+    }
 
-	public Image getImage() {
-		return Image;
-	}
+    public Image getImage() {
+        return Image;
+    }
 
-	public void setImage(Image image) {
-		this.Image = image;
-	}
+    public void setImage(Image image) {
+        this.Image = image;
+    }
 
 }

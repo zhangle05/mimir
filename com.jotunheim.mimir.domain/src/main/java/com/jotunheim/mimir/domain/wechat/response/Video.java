@@ -5,34 +5,34 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("Video")
 public class Video {
 
-	public String MediaId;
-	
-	public String Title;
-	
-	public String Description;
+    public String MediaId;
 
-	public String getMediaId() {
-		return MediaId;
-	}
+    public String Title;
 
-	public void setMediaId(String mediaId) {
-		MediaId = mediaId;
-	}
+    public String Description;
 
-	public String getTitle() {
-		return Title;
-	}
+    public String getMediaId() {
+        return MediaId;
+    }
 
-	public void setTitle(String title) {
-		Title = title;
-	}
+    public void setMediaId(String mediaId) {
+        MediaId = mediaId;
+    }
 
-	public String getDescription() {
-		return Description;
-	}
+    public String getTitle() {
+        return Title;
+    }
 
-	public void setDescription(String description) {
-		Description = description;
-	}
+    public void setTitle(String title) {
+        Title = title;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
 
 }

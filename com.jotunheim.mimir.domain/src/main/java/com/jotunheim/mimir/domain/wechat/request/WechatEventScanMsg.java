@@ -5,37 +5,37 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WechatEventScanMsg extends BaseEventMsg {
 
-	private String EventKey;
+    private String EventKey;
 
-	private String Ticket;
+    private String Ticket;
 
-	public WechatEventScanMsg() {
-		super();
-		Event = WX_MSG_TYPE_EVENT_SCAN;
-	}
+    public WechatEventScanMsg() {
+        super();
+        Event = WX_MSG_TYPE_EVENT_SCAN;
+    }
 
-	public String getEventKey() {
-		return EventKey;
-	}
+    public String getEventKey() {
+        return EventKey;
+    }
 
-	public void setEventKey(String eventKey) {
-		EventKey = eventKey;
-	}
+    public void setEventKey(String eventKey) {
+        EventKey = eventKey;
+    }
 
-	public String getTicket() {
-		return Ticket;
-	}
+    public String getTicket() {
+        return Ticket;
+    }
 
-	public void setTicket(String ticket) {
-		Ticket = ticket;
-	}
+    public void setTicket(String ticket) {
+        Ticket = ticket;
+    }
 
-	@Override
-	public String toString() {
-		return "WechatEventScanMsg [EventKey=" + EventKey + ", Ticket="
-				+ Ticket + ", Event=" + Event + ", ToUserName=" + ToUserName
-				+ ", FromUserName=" + FromUserName + ", CreateTime="
-				+ CreateTime + ", MsgType=" + MsgType + "]";
-	}
+    @Override
+    public String toString() {
+        return "WechatEventScanMsg [EventKey=" + EventKey + ", Ticket="
+                + Ticket + ", Event=" + Event + ", ToUserName=" + ToUserName
+                + ", FromUserName=" + FromUserName + ", CreateTime="
+                + CreateTime + ", MsgType=" + MsgType + "]";
+    }
 
 }

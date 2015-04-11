@@ -5,28 +5,28 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
 public class WechatVideoMsg extends BaseWechatMsg {
 
-	String MediaId;
-	
-	String ThumbMediaId;
+    String MediaId;
 
-	public WechatVideoMsg() {
-		MsgType = WX_MSG_TYPE_VIDEO;
-	}
+    String ThumbMediaId;
 
-	public String getMediaId() {
-		return MediaId;
-	}
+    public WechatVideoMsg() {
+        MsgType = WX_MSG_TYPE_VIDEO;
+    }
 
-	public void setMediaId(String mediaId) {
-		MediaId = mediaId;
-	}
+    public String getMediaId() {
+        return MediaId;
+    }
 
-	public String getThumbMediaId() {
-		return ThumbMediaId;
-	}
+    public void setMediaId(String mediaId) {
+        MediaId = mediaId;
+    }
 
-	public void setThumbMediaId(String thumbMediaId) {
-		ThumbMediaId = thumbMediaId;
-	}
+    public String getThumbMediaId() {
+        return ThumbMediaId;
+    }
+
+    public void setThumbMediaId(String thumbMediaId) {
+        ThumbMediaId = thumbMediaId;
+    }
 
 }
