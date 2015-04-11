@@ -1,5 +1,5 @@
-com/jotunheim/mimir/common/utils/TimeUtils.class
+com/jotunheim/mimir/common/utils/StringUtils.class
 com/jotunheim/mimir/common/utils/CipherHelper.class
+com/jotunheim/mimir/common/utils/TimeUtils.class
 com/jotunheim/mimir/common/utils/EncoderHandler.class
 com/jotunheim/mimir/common/utils/URLHelper.class
-com/jotunheim/mimir/common/utils/StringUtils.class

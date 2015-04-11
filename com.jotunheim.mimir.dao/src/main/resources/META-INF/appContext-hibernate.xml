@@ -44,7 +44,9 @@
         <property name="mappingResources">
             <list>
                 <!-- 以下用来列出所有的PO 映射文件 -->
-                <value>/META-INF/DB-HBM/tmp.hbm.xml</value>
+                <value>/META-INF/DB-HBM/Location.hbm.xml</value>
+                <value>/META-INF/DB-HBM/User.hbm.xml</value>
+                <value>/META-INF/DB-HBM/UserRole.hbm.xml</value>
             </list>
         </property>
         <!-- 定义Hibernate 的SessionFactory 属性 -->
@@ -72,31 +74,7 @@
     <!-- data source for writing, finish -->
 
     <!-- DAOs -->
-    <bean id="assignmentDao" class="com.jotunheim.mimir.dao.impl.AssignmentDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="exerciseDao" class="com.jotunheim.mimir.dao.impl.ExerciseDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="exerciseQuestion" class="com.jotunheim.mimir.dao.impl.ExerciseQuestionDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
     <bean id="locationDao" class="com.jotunheim.mimir.dao.impl.LocationDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="parentDao" class="com.jotunheim.mimir.dao.impl.ParentDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="schoolClassDao" class="com.jotunheim.mimir.dao.impl.SchoolClassDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="schoolDao" class="com.jotunheim.mimir.dao.impl.SchoolDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="subjectDao" class="com.jotunheim.mimir.dao.impl.SubjectDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="teachingDao" class="com.jotunheim.mimir.dao.impl.TeachingDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <bean id="userDao" class="com.jotunheim.mimir.dao.impl.UserDaoImpl">

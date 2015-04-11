@@ -12,12 +12,4 @@
         <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     </context:component-scan>
 
-    <bean id="questionService"
-        class="com.jotunheim.mimir.web.service.QuestionService">
-        <!-- read property from POM -->
-        <property name="serviceType">
-            <value>${question.service}</value>
-        </property>
-    </bean>
-
 </beans>

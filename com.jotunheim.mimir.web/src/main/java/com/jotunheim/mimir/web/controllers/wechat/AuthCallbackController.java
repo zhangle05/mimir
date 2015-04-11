@@ -20,7 +20,7 @@ import com.jotunheim.mimir.domain.User;
  * @author zhangle
  *
  */
-@RequestMapping("/wechat")
+@RequestMapping("/wxauth")
 @Controller
 public class AuthCallbackController {
     private static Log LOG = LogFactory

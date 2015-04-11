@@ -28,6 +28,6 @@ public class HomeController {
     @RequestMapping("/home")
     public String goHome() {
         LOG.debug("Go home.");
-        return "homePage";
+        return "index";
     }
 }

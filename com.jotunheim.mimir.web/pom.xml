@@ -182,8 +182,8 @@
                 </resources>
             </build>
             <properties>
-                <!-- 题目详情数据服务配置 -->
-                <question.service>online</question.service>
+                <!-- 服务属性配置 -->
+                <service.type>online</service.type>
             </properties>
         </profile>
         <profile>
@@ -199,8 +199,8 @@
                 </resources>
             </build>
             <properties>
-                <!-- 题目详情数据服务配置 -->
-                <question.service>mock</question.service>
+                <!-- 服务属性配置 -->
+                <service.type>mock</service.type>
             </properties>
         </profile>
     </profiles>

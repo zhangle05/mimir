@@ -26,6 +26,6 @@ public class CustomNamingStrategy extends ImprovedNamingStrategy {
     @Override
     public String columnName(String columnName) {
         // upper case for column names
-        return (sPrefix.toUpperCase().trim() + "_" + tableName.toUpperCase() + "_" + columnName.toUpperCase());
+        return (tableName.toUpperCase() + "_" + columnName.toUpperCase());
     }
 }
