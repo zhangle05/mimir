@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblSaleOrderInfo" 
+    table="TBL_SALE_ORDER_INFO"
+>
+
+    <id
+        name="orderId"
+        type="java.lang.String"
+        column="ORDER_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="applyDt"
+        type="java.lang.String"
+        column="APPLY_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="applyDept"
+        type="java.lang.String"
+        column="APPLY_DEPT"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="applyOprId"
+        type="java.lang.String"
+        column="APPLY_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="applyUsage"
+        type="java.lang.String"
+        column="APPLY_USAGE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="applyType"
+        type="java.lang.String"
+        column="APPLY_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="customerShortCd"
+        type="java.lang.String"
+        column="CUSTOMER_SHORT_CD"
+        length="8"
+    />
+    <property
+        name="customerNm"
+        type="java.lang.String"
+        column="CUSTOMER_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="customerDept"
+        type="java.lang.String"
+        column="CUSTOMER_DEPT"
+        length="40"
+    />
+    <property
+        name="contactor"
+        type="java.lang.String"
+        column="CONTACTOR"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="mobilePhone"
+        type="java.lang.String"
+        column="MOBILE_PHONE"
+        length="40"
+    />
+    <property
+        name="fixPhone"
+        type="java.lang.String"
+        column="FIX_PHONE"
+        length="40"
+    />
+    <property
+        name="area"
+        type="java.lang.String"
+        column="AREA"
+        length="2"
+    />
+    <property
+        name="customerAd"
+        type="java.lang.String"
+        column="CUSTOMER_AD"
+        length="100"
+    />
+    <property
+        name="cardIssueMode"
+        type="java.lang.String"
+        column="CARD_ISSUE_MODE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="issueCardModeDesc"
+        type="java.lang.String"
+        column="ISSUE_CARD_MODE_DESC"
+        length="512"
+    />
+    <property
+        name="shouldRcvAmt"
+        type="long"
+        column="SHOULD_RCV_AMT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="actualRcvAmt"
+        type="long"
+        column="ACTUAL_RCV_AMT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="debtAmt"
+        type="long"
+        column="DEBT_AMT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="orderPaySt"
+        type="java.lang.String"
+        column="ORDER_PAY_ST"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="isInvoiced"
+        type="java.lang.String"
+        column="IS_INVOICED"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="relativeId"
+        type="java.lang.String"
+        column="RELATIVE_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblCardStore" 
+    table="TBL_CARD_STORE"
+>
+
+    <composite-id name="comp_id" class="db.po.TblCardStorePK">
+        <key-property 
+            name="batchId" 
+            column="BATCH_ID" 
+            type="java.lang.String"
+            length="20"
+        />
+        <key-property 
+            name="childBatchId" 
+            column="CHILD_BATCH_ID" 
+            type="java.lang.String"
+            length="4"
+        />
+    </composite-id>    
+
+    <property
+        name="storageType"
+        type="java.lang.String"
+        column="STORAGE_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="storageDt"
+        type="java.lang.String"
+        column="STORAGE_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="storageQty"
+        type="java.math.BigDecimal"
+        column="STORAGE_QTY"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="manageOprId"
+        type="java.lang.String"
+        column="MANAGE_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="relativeId"
+        type="java.lang.String"
+        column="RELATIVE_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="note"
+        type="java.lang.String"
+        column="NOTE"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

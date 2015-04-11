@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblExpTran" 
+    table="TBL_EXP_TRANS"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="expId"
+        type="java.lang.String"
+        column="EXP_ID"
+        length="16"
+    />
+    <property
+        name="sndDept"
+        type="java.lang.String"
+        column="SND_DEPT"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="sndDeptOpinion"
+        type="java.lang.String"
+        column="SND_DEPT_OPINION"
+        length="512"
+    />
+    <property
+        name="transTms"
+        type="java.lang.String"
+        column="TRANS_TMS"
+        not-null="true"
+        length="14"
+    />
+    <property
+        name="retDept"
+        type="java.lang.String"
+        column="RET_DEPT"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="retDeptOpinion"
+        type="java.lang.String"
+        column="RET_DEPT_OPINION"
+        length="512"
+    />
+    <property
+        name="retDeptRslvSt"
+        type="java.lang.String"
+        column="RET_DEPT_RSLV_ST"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="retTms"
+        type="java.lang.String"
+        column="RET_TMS"
+        not-null="true"
+        length="14"
+    />
+    <property
+        name="transSt"
+        type="java.lang.String"
+        column="TRANS_ST"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="resCheck"
+        type="java.lang.String"
+        column="RES_CHECK"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="resCheckOpinion"
+        type="java.lang.String"
+        column="RES_CHECK_OPINION"
+        length="512"
+    />
+    <property
+        name="isFinished"
+        type="java.lang.String"
+        column="IS_FINISHED"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Timestamp"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Timestamp"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

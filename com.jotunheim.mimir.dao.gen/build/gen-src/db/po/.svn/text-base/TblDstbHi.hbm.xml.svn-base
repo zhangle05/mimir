@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblDstbHi" 
+    table="TBL_DSTB_HIS"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="dstbId"
+        type="java.lang.String"
+        column="DSTB_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="proSerDt"
+        type="java.lang.String"
+        column="PRO_SER_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="proSerTs"
+        type="java.lang.String"
+        column="PRO_SER_TS"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="infClDt"
+        type="java.lang.String"
+        column="INF_CL_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="infClTs"
+        type="java.lang.String"
+        column="INF_CL_TS"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="infClMisc"
+        type="java.lang.String"
+        column="INF_CL_MISC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="actSerDt"
+        type="java.lang.String"
+        column="ACT_SER_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="actSerTs"
+        type="java.lang.String"
+        column="ACT_SER_TS"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="actThing"
+        type="java.lang.String"
+        column="ACT_THING"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="actSerMisc"
+        type="java.lang.String"
+        column="ACT_SER_MISC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="exprRetDt"
+        type="java.lang.String"
+        column="EXPR_RET_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="exprRetMisc"
+        type="java.lang.String"
+        column="EXPR_RET_MISC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="notCompMisc"
+        type="java.lang.String"
+        column="NOT_COMP_MISC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="dstbAtt"
+        type="java.lang.String"
+        column="DSTB_ATT"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

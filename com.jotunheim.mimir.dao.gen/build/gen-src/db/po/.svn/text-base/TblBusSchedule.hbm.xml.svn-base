@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblBusSchedule" 
+    table="TBL_BUS_SCHEDULE"
+>
+
+    <composite-id name="comp_id" class="db.po.TblBusSchedulePK">
+        <key-property 
+            name="memberNo" 
+            column="MEMBER_NO" 
+            type="java.lang.String"
+            length="6"
+        />
+        <key-property 
+            name="planStartDt" 
+            column="PLAN_START_DT" 
+            type="java.lang.String"
+            length="8"
+        />
+    </composite-id>    
+
+    <property
+        name="planEndDt"
+        type="java.lang.String"
+        column="PLAN_END_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="monAmDesc"
+        type="java.lang.String"
+        column="MON_AM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="monPmDesc"
+        type="java.lang.String"
+        column="MON_PM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="tuesAmDesc"
+        type="java.lang.String"
+        column="TUES_AM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="tuesPmDesc"
+        type="java.lang.String"
+        column="TUES_PM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="wedAmDesc"
+        type="java.lang.String"
+        column="WED_AM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="wedPmDesc"
+        type="java.lang.String"
+        column="WED_PM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="thursAmDesc"
+        type="java.lang.String"
+        column="THURS_AM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="thursPmDesc"
+        type="java.lang.String"
+        column="THURS_PM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="friAmDesc"
+        type="java.lang.String"
+        column="FRI_AM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="friPmDesc"
+        type="java.lang.String"
+        column="FRI_PM_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

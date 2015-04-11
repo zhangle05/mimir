@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblDstb" 
+    table="TBL_DSTB"
+>
+
+    <id
+        name="dstbId"
+        type="java.lang.String"
+        column="DSTB_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="relaId"
+        type="java.lang.String"
+        column="RELA_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="exprId"
+        type="java.lang.String"
+        column="EXPR_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="dstbResc"
+        type="java.lang.String"
+        column="DSTB_RESC"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="dstbRes"
+        type="java.lang.String"
+        column="DSTB_RES"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="dstbSi"
+        type="java.lang.String"
+        column="DSTB_SI"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="contactor"
+        type="java.lang.String"
+        column="CONTACTOR"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="contactAd"
+        type="java.lang.String"
+        column="CONTACT_AD"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="contactTel"
+        type="java.lang.String"
+        column="CONTACT_TEL"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="takeCardTs"
+        type="java.lang.String"
+        column="TAKE_CARD_TS"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="takeCardDt"
+        type="java.lang.String"
+        column="TAKE_CARD_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="supThing"
+        type="java.lang.String"
+        column="SUP_THING"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

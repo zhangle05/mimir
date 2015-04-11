@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dsmis/!svn/ver/4641/GenHbmTool/config/database
+END
+mckoi.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/mckoi.xml
+END
+postgresql.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/postgresql.xml
+END
+mysql.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/mysql.xml
+END
+oracle.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dsmis/!svn/ver/4641/GenHbmTool/config/database/oracle.xml
+END
+sybase.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/sybase.xml
+END
+db2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/db2.xml
+END
+firstsql.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/firstsql.xml
+END
+mckoi.conf
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/mckoi.conf
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/readme.txt
+END
+hsqldb.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/hsqldb.xml
+END
+mssql.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dsmis/!svn/ver/2397/GenHbmTool/config/database/mssql.xml
+END

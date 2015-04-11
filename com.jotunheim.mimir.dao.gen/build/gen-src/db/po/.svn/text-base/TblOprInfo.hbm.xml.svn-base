@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblOprInfo" 
+    table="TBL_OPR_INFO"
+>
+
+    <id
+        name="oprId"
+        type="java.lang.String"
+        column="OPR_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="oprNm"
+        type="java.lang.String"
+        column="OPR_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="oprSex"
+        type="java.lang.String"
+        column="OPR_SEX"
+        length="1"
+    />
+    <property
+        name="oprDept"
+        type="java.lang.String"
+        column="OPR_DEPT"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="oprPwd"
+        type="java.lang.String"
+        column="OPR_PWD"
+        not-null="true"
+        length="50"
+    />
+    <property
+        name="pwdErrQty"
+        type="int"
+        column="PWD_ERR_QTY"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="startDt"
+        type="java.lang.String"
+        column="START_DT"
+        length="8"
+    />
+    <property
+        name="endDt"
+        type="java.lang.String"
+        column="END_DT"
+        length="8"
+    />
+    <property
+        name="oprEmail"
+        type="java.lang.String"
+        column="OPR_EMAIL"
+        length="100"
+    />
+    <property
+        name="fixPhone"
+        type="java.lang.String"
+        column="FIX_PHONE"
+        length="40"
+    />
+    <property
+        name="mobilePhone"
+        type="java.lang.String"
+        column="MOBILE_PHONE"
+        length="40"
+    />
+    <property
+        name="area"
+        type="java.lang.String"
+        column="AREA"
+        length="2"
+    />
+    <property
+        name="lastLogonTms"
+        type="java.lang.String"
+        column="LAST_LOGON_TMS"
+        length="14"
+    />
+    <property
+        name="note"
+        type="java.lang.String"
+        column="NOTE"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Timestamp"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Timestamp"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

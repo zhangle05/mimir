@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblVisitLog" 
+    table="TBL_VISIT_LOG"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="visitCustMerId"
+        type="java.lang.String"
+        column="VISIT_CUST_MER_ID"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="buyCardIntentIn"
+        type="java.lang.String"
+        column="BUY_CARD_INTENT_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="remdDt"
+        type="java.lang.String"
+        column="REMD_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="intentType"
+        type="java.lang.String"
+        column="INTENT_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="custIntent"
+        type="java.lang.String"
+        column="CUST_INTENT"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="visitType"
+        type="java.lang.String"
+        column="VISIT_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="visitor"
+        type="java.lang.String"
+        column="VISITOR"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="visitDt"
+        type="java.lang.String"
+        column="VISIT_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="visitContent"
+        type="java.lang.String"
+        column="VISIT_CONTENT"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

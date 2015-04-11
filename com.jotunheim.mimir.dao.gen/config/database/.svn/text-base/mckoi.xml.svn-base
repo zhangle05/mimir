@@ -1,0 +1,57 @@
+   <!-- =================================================================== -->
+   <!-- ant properties/targets for mckoi                                    -->
+   <!-- note: this is not a proper xml file (there is no root element)      -->
+   <!--       it is intended to be imported from a *real* xml file          -->
+   <!-- =================================================================== -->
+
+   <property name="mckoi.conf"                     value="${basedir}/config/database/mckoi.conf"/>
+
+   <property name="database.script.file"           value="${src.dir}/sql/${name}-mckoi.sql"/>
+   <property name="database.driver.file"           value="${mkjdbc.jar}"/>
+   <property name="database.driver.classpath"      value="${database.driver.file};${mckoidb.jar}"/>
+   <property name="database.driver"                value="com.mckoi.JDBCDriver"/>
+   <property name="database.url"                   value="jdbc:mckoi:local://${mckoi.conf}"/>
+   <property name="database.userid"                value="allah"/>
+   <property name="database.password"              value="akhbahr"/>
+   <property name="database.schema"                value="spantax"/>
+   <property name="database.catalog"               value=""/>
+
+   <property name="jboss.datasource.mapping"       value="???"/>
+
+   <!-- =================================================================== -->
+   <!-- Creates a local McKoi database                                      -->
+   <!-- IMPORTANT: execute this target prior to create-tables               -->
+   <!-- =================================================================== -->
+   <target name="create-database" description="Creates a McKoi local database">
+      <java 
+         jar="${mckoidb.jar}" 
+         fork="yes"
+         failonerror="true"
+      >
+         <jvmarg value="-Duser.dir=${build.dir}/mckoi"/>
+         <arg value="-conf"/>
+         <arg value="${mckoi.conf}"/>
+         <arg value="-create"/>
+         <arg value="${database.userid}"/>
+         <arg value="${database.password}"/>
+      </java>
+   </target>
+ 
+   <!-- =================================================================== -->
+   <!-- Brings up the mckoi query tool                                      -->
+   <!-- =================================================================== -->
+   <target name="mckoi-gui" description="Brings up the mckoi query tool">
+      <java 
+         classname="com.mckoi.tools.JDBCQueryTool" 
+         fork="yes" 
+         classpath="${database.driver.classpath}"
+         failonerror="true"
+      >
+         <arg value="-url"/>
+         <arg value="${database.url}"/>
+         <arg value="-u"/>
+         <arg value="${database.userid}"/>
+         <arg value="-p"/>
+         <arg value="${database.password}"/>
+      </java>
+   </target>

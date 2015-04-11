@@ -1,0 +1,24 @@
+   <!-- =================================================================== -->
+   <!-- ant properties/targets for postgresql                               -->
+   <!-- note: this is not a proper xml file (there is no root element)      -->
+   <!--       it is intended to be imported from a *real* xml file          -->
+   <!-- =================================================================== -->
+
+   <property name="database.script.file"           value="${src.dir}/sql/${name}-postgresql.sql"/>
+
+   <!-- 
+   This driver is slightly hacked by Aslak to provide correct database metadata.
+   It's OK to use when running Middlegen, but you should probably use a stable
+   driver when deploying your application
+   -->
+   <property name="database.driver.file"           value="${lib.dir}/postgresql.jar"/>
+   <property name="database.driver.classpath"      value="${database.driver.file}"/>
+   <property name="database.driver"                value="org.postgresql.Driver"/>
+   <property name="database.url"                   value="jdbc:postgresql://localhost/airline"/>
+
+   <property name="database.userid"                value="aslak"/>
+   <property name="database.password"              value="password"/>
+   <property name="database.schema"                value="aslak"/>
+   <property name="database.catalog"               value=""/>
+
+   <property name="jboss.datasource.mapping"       value="PostgreSQL"/>

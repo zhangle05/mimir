@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblAnnouncementInfo" 
+    table="TBL_ANNOUNCEMENT_INFO"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="title"
+        type="java.lang.String"
+        column="TITLE"
+        not-null="true"
+        length="128"
+    />
+    <property
+        name="content"
+        type="java.lang.String"
+        column="CONTENT"
+        length="2048"
+    />
+    <property
+        name="recOprId"
+        type="java.lang.String"
+        column="REC_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="recDt"
+        type="java.lang.String"
+        column="REC_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="pubOprId"
+        type="java.lang.String"
+        column="PUB_OPR_ID"
+        length="6"
+    />
+    <property
+        name="pubDt"
+        type="java.lang.String"
+        column="PUB_DT"
+        length="8"
+    />
+    <property
+        name="pubIn"
+        type="java.lang.String"
+        column="PUB_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="recCrtOprId"
+        type="java.lang.String"
+        column="REC_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="recCrtTms"
+        type="java.sql.Timestamp"
+        column="REC_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="recUpdOprId"
+        type="java.lang.String"
+        column="REC_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="recUpdTms"
+        type="java.sql.Timestamp"
+        column="REC_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

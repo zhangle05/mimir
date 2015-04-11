@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql
+END
+airline-mckoi.sql
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-mckoi.sql
+END
+airline-postgresql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-postgresql.sql
+END
+airline-mysql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-mysql.sql
+END
+airline-oracle.sql
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-oracle.sql
+END
+airline-sybase.sql
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-sybase.sql
+END
+airline-db2.sql
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-db2.sql
+END
+airline-firstsql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-firstsql.sql
+END
+airline-hsqldb.sql
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-hsqldb.sql
+END
+airline-mssql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dsmis/!svn/ver/2397/GenHbmTool/src/sql/airline-mssql.sql
+END

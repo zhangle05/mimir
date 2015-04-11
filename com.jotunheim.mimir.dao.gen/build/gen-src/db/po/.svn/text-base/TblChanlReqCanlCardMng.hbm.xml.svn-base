@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblChanlReqCanlCardMng" 
+    table="TBL_CHANL_REQ_CANL_CARD_MNG"
+>
+
+    <id
+        name="chanlReqCanlCardSq"
+        type="binary"
+        column="CHANL_REQ_CANL_CARD_SQ"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="reqCanlIn"
+        type="java.lang.String"
+        column="REQ_CANL_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="reqCanlCardSt"
+        type="java.lang.String"
+        column="REQ_CANL_CARD_ST"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="relativeId"
+        type="java.lang.String"
+        column="RELATIVE_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="chanlCd"
+        type="java.lang.String"
+        column="CHANL_CD"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="agentNm"
+        type="java.lang.String"
+        column="AGENT_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="manageOprId"
+        type="java.lang.String"
+        column="MANAGE_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="transDt"
+        type="java.lang.String"
+        column="TRANS_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="reqAmt"
+        type="long"
+        column="REQ_AMT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="note"
+        type="java.lang.String"
+        column="NOTE"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

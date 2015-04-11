@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblMisBill" 
+    table="TBL_MIS_BILL"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="misId"
+        type="java.lang.String"
+        column="MIS_ID"
+        not-null="true"
+        length="16"
+    />
+    <property
+        name="inspBillId"
+        type="java.lang.String"
+        column="INSP_BILL_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="inspMode"
+        type="java.lang.String"
+        column="INSP_MODE"
+        length="1"
+    />
+    <property
+        name="inspRes"
+        type="java.lang.String"
+        column="INSP_RES"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="actualInspDt"
+        type="java.lang.String"
+        column="ACTUAL_INSP_DT"
+        length="8"
+    />
+    <property
+        name="misQty"
+        type="java.lang.Integer"
+        column="MIS_QTY"
+        length="2"
+    />
+    <property
+        name="isNullity"
+        type="java.lang.String"
+        column="IS_NULLITY"
+        length="1"
+    />
+    <property
+        name="expType"
+        type="java.lang.String"
+        column="EXP_TYPE"
+        length="2"
+    />
+    <property
+        name="expDesc"
+        type="java.lang.String"
+        column="EXP_DESC"
+        length="512"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

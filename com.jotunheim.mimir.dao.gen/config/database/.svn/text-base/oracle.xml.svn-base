@@ -1,0 +1,23 @@
+   <!-- =================================================================== -->
+   <!-- ant properties/targets for oracle 8/9                               -->
+   <!-- note: this is not a proper xml file (there is no root element)      -->
+   <!--       it is intended to be imported from a *real* xml file          -->
+   <!-- =================================================================== -->
+
+   <!-- please set your Oracle-SID according to your needs -->
+
+   <property environment="env"/>
+
+   <property name="database.script.file"           value="${src.dir}/sql/${name}-oracle.sql"/>
+   <property name="database.driver.file"           value="${lib.dir}/classes12.jar"/>
+   <property name="database.driver.classpath"      value="${database.driver.file}"/>
+   <property name="database.driver"                value="oracle.jdbc.driver.OracleDriver"/>
+   <property name="database.url"                   value="jdbc:oracle:thin:@130.252.10.7:1521:orcl"/>
+   <property name="database.userid"                value="dev"/>
+   <property name="database.password"              value="admin"/>
+   <property name="database.schema"                value="dev"/>
+   <property name="database.catalog"               value=""/>
+
+   <!--property name="jboss.datasource.mapping"       value="Oracle7"/-->
+   <property name="jboss.datasource.mapping"       value="Oracle9"/>
+   <!--property name="jboss.datasource.mapping"       value="Oracle9i"/-->

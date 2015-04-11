@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblConsulInfo" 
+    table="TBL_CONSUL_INFO"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="telDt"
+        type="java.lang.String"
+        column="TEL_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="telTs"
+        type="java.lang.String"
+        column="TEL_TS"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="consulNm"
+        type="java.lang.String"
+        column="CONSUL_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="contactTel"
+        type="java.lang.String"
+        column="CONTACT_TEL"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="cardNo"
+        type="java.lang.String"
+        column="CARD_NO"
+        not-null="true"
+        length="19"
+    />
+    <property
+        name="knowWay"
+        type="java.lang.String"
+        column="KNOW_WAY"
+        length="512"
+    />
+    <property
+        name="consulPersonType"
+        type="java.lang.String"
+        column="CONSUL_PERSON_TYPE"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="consulContentType"
+        type="java.lang.String"
+        column="CONSUL_CONTENT_TYPE"
+        length="10"
+    />
+    <property
+        name="consulDesc"
+        type="java.lang.String"
+        column="CONSUL_DESC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="repDt"
+        type="java.lang.String"
+        column="REP_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="repResIn"
+        type="java.lang.String"
+        column="REP_RES_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="repContent"
+        type="java.lang.String"
+        column="REP_CONTENT"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Timestamp"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

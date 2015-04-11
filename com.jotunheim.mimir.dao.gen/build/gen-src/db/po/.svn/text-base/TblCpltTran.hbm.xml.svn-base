@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblCpltTran" 
+    table="TBL_CPLT_TRANS"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="expCpltId"
+        type="java.lang.String"
+        column="EXP_CPLT_ID"
+        length="16"
+    />
+    <property
+        name="outDept"
+        type="java.lang.String"
+        column="OUT_DEPT"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="kfAtt"
+        type="java.lang.String"
+        column="KF_ATT"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="transTs"
+        type="java.lang.String"
+        column="TRANS_TS"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="returnDept"
+        type="java.lang.String"
+        column="RETURN_DEPT"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="returnAtt"
+        type="java.lang.String"
+        column="RETURN_ATT"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="returnTs"
+        type="java.lang.String"
+        column="RETURN_TS"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="transRetuSi"
+        type="java.lang.String"
+        column="TRANS_RETU_SI"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="resCheck"
+        type="java.lang.String"
+        column="RES_CHECK"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="resCheckAtt"
+        type="java.lang.String"
+        column="RES_CHECK_ATT"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="cpltSi"
+        type="java.lang.String"
+        column="CPLT_SI"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

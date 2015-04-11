@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib
+END
+commons-collections-2.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/commons-collections-2.1.jar
+END
+velocity-1.4-dev.jar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/velocity-1.4-dev.jar
+END
+xjavadoc-1.0.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/xjavadoc-1.0.2.jar
+END
+commons-logging.jar
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/commons-logging.jar
+END
+hsqldb-1.7.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/hsqldb-1.7.1.jar
+END
+classes12.jar
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/classes12.jar
+END
+xdoclet-1.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/xdoclet-1.2.jar
+END
+log4j-1.2.7.jar
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/log4j-1.2.7.jar
+END
+xdoclet-hibernate-module-1.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/xdoclet-hibernate-module-1.2.jar
+END
+xdoclet-xdoclet-module-1.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/dsmis/!svn/ver/2397/GenHbmTool/lib/xdoclet-xdoclet-module-1.2.jar
+END

@@ -1,0 +1,17 @@
+   <!-- =================================================================== -->
+   <!-- ant properties/targets for mysql                                    -->
+   <!-- note: this is not a proper xml file (there is no root element)      -->
+   <!--       it is intended to be imported from a *real* xml file          -->
+   <!-- =================================================================== -->
+
+   <property name="database.script.file"           value="${src.dir}/sql/${name}-mysql.sql"/>
+   <property name="database.driver.file"           value="${lib.dir}/jconn2.jar"/>
+   <property name="database.driver.classpath"      value="${database.driver.file}"/>
+   <property name="database.driver"                value="com.sybase.jdbc2.jdbc.SybDriver"/>
+   <property name="database.url"                   value="jdbc:sybase:Tds:localhost:7100/airline"/>
+   <property name="database.userid"                value="sa"/>
+   <property name="database.password"              value=""/>
+   <property name="database.schema"                value=""/>
+   <property name="database.catalog"               value=""/>
+
+   <property name="jboss.datasource.mapping"       value="Sybase"/>

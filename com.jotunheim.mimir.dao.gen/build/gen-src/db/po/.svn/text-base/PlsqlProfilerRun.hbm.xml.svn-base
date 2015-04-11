@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.PlsqlProfilerRun" 
+    table="PLSQL_PROFILER_RUNS"
+>
+
+    <id
+        name="runid"
+        type="java.math.BigDecimal"
+        column="RUNID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="relatedRun"
+        type="java.math.BigDecimal"
+        column="RELATED_RUN"
+        length="22"
+    />
+    <property
+        name="runOwner"
+        type="java.lang.String"
+        column="RUN_OWNER"
+        length="32"
+    />
+    <property
+        name="runDate"
+        type="java.sql.Date"
+        column="RUN_DATE"
+        length="7"
+    />
+    <property
+        name="runComment"
+        type="java.lang.String"
+        column="RUN_COMMENT"
+        length="2047"
+    />
+    <property
+        name="runTotalTime"
+        type="java.math.BigDecimal"
+        column="RUN_TOTAL_TIME"
+        length="22"
+    />
+    <property
+        name="runSystemInfo"
+        type="java.lang.String"
+        column="RUN_SYSTEM_INFO"
+        length="2047"
+    />
+    <property
+        name="runComment1"
+        type="java.lang.String"
+        column="RUN_COMMENT1"
+        length="2047"
+    />
+    <property
+        name="spare1"
+        type="java.lang.String"
+        column="SPARE1"
+        length="256"
+    />
+
+    <!-- Associations -->
+  
+    <!-- bi-directional one-to-many association to PlsqlProfilerUnit -->
+    <set
+        name="plsqlProfilerUnits"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="RUNID" />
+        </key>
+        <one-to-many 
+            class="db.po.PlsqlProfilerUnit"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>

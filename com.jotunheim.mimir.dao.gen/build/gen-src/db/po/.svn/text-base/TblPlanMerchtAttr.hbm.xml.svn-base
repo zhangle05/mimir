@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblPlanMerchtAttr" 
+    table="TBL_PLAN_MERCHT_ATTR"
+>
+
+    <id
+        name="planMerId"
+        type="java.lang.String"
+        column="PLAN_MER_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="merchtShortCd"
+        type="java.lang.String"
+        column="MERCHT_SHORT_CD"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="merchtName"
+        type="java.lang.String"
+        column="MERCHT_NAME"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="intentType"
+        type="java.lang.String"
+        column="INTENT_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="merchtType"
+        type="java.lang.String"
+        column="MERCHT_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="tradeType"
+        type="java.lang.String"
+        column="TRADE_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="scale"
+        type="long"
+        column="SCALE"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="linkNum"
+        type="long"
+        column="LINK_NUM"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="contactAd"
+        type="java.lang.String"
+        column="CONTACT_AD"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="contactTel"
+        type="java.lang.String"
+        column="CONTACT_TEL"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="orgPosPutInInfo"
+        type="java.lang.String"
+        column="ORG_POS_PUT_IN_INFO"
+        not-null="true"
+        length="100"
+    />
+    <property
+        name="otherCardDesc"
+        type="java.lang.String"
+        column="OTHER_CARD_DESC"
+        not-null="true"
+        length="100"
+    />
+    <property
+        name="regDt"
+        type="java.lang.String"
+        column="REG_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Timestamp"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Timestamp"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

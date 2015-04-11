@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblBigCustAttr" 
+    table="TBL_BIG_CUST_ATTR"
+>
+
+    <id
+        name="bigCustBrhId"
+        type="java.lang.String"
+        column="BIG_CUST_BRH_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="bigCustBrhIn"
+        type="java.lang.String"
+        column="BIG_CUST_BRH_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="upBigCustBrhId"
+        type="java.lang.String"
+        column="UP_BIG_CUST_BRH_ID"
+        not-null="true"
+        length="15"
+    />
+    <property
+        name="buyCardIntentIn"
+        type="java.lang.String"
+        column="BUY_CARD_INTENT_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="remdDt"
+        type="java.lang.String"
+        column="REMD_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="corpShortCd"
+        type="java.lang.String"
+        column="CORP_SHORT_CD"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="corpNm"
+        type="java.lang.String"
+        column="CORP_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="custNm"
+        type="java.lang.String"
+        column="CUST_NM"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="contactAd"
+        type="java.lang.String"
+        column="CONTACT_AD"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="contactTel"
+        type="java.lang.String"
+        column="CONTACT_TEL"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="note"
+        type="java.lang.String"
+        column="NOTE"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

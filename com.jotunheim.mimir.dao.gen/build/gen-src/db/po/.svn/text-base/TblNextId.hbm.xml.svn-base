@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblNextId" 
+    table="TBL_NEXT_ID"
+>
+
+    <composite-id name="comp_id" class="db.po.TblNextIdPK">
+        <key-property 
+            name="idCd" 
+            column="ID_CD" 
+            type="java.lang.String"
+            length="2"
+        />
+        <key-property 
+            name="subKeyCd" 
+            column="SUB_KEY_CD" 
+            type="java.lang.String"
+            length="20"
+        />
+    </composite-id>    
+
+    <property
+        name="idDesc"
+        type="java.lang.String"
+        column="ID_DESC"
+        length="50"
+    />
+    <property
+        name="idLenQt"
+        type="int"
+        column="ID_LEN_QT"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="minId"
+        type="java.lang.String"
+        column="MIN_ID"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="maxId"
+        type="java.lang.String"
+        column="MAX_ID"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="nextId"
+        type="java.lang.String"
+        column="NEXT_ID"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Timestamp"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Timestamp"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

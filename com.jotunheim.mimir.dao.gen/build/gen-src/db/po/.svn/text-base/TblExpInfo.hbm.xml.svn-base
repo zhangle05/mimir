@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblExpInfo" 
+    table="TBL_EXP_INFO"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="relativeId"
+        type="java.lang.String"
+        column="RELATIVE_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="expType"
+        type="java.lang.String"
+        column="EXP_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="checkDesc"
+        type="java.lang.String"
+        column="CHECK_DESC"
+        length="512"
+    />
+    <property
+        name="rslvLev"
+        type="java.lang.String"
+        column="RSLV_LEV"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="rslvOpinion"
+        type="java.lang.String"
+        column="RSLV_OPINION"
+        length="512"
+    />
+    <property
+        name="rslvRes"
+        type="java.lang.String"
+        column="RSLV_RES"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="rslvOprId"
+        type="java.lang.String"
+        column="RSLV_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="repDt"
+        type="java.lang.String"
+        column="REP_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="repContent"
+        type="java.lang.String"
+        column="REP_CONTENT"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Timestamp"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Timestamp"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

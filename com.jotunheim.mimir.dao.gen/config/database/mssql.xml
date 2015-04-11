@@ -1,0 +1,17 @@
+   <!-- =================================================================== -->
+   <!-- ant properties/targets for MS SQL Server                            -->
+   <!-- note: this is not a proper xml file (there is no root element)      -->
+   <!--       it is intended to be imported from a *real* xml file          -->
+   <!-- =================================================================== -->
+
+   <property name="database.script.file"           value=""/>
+   <property name="database.driver.file"           value="${lib.dir}/Sprinta2000.jar"/>
+   <property name="database.driver"                value="com.inet.tds.TdsDriver"/>
+   <property name="database.url"                   value="jdbc:inetdae7:localhost?database=airline"/>
+   <property name="database.userid"                value="sa"/>
+   <property name="database.password"              value="sa"/>
+   <property name="database.schema"                value=""/>
+   <property name="database.catalog"               value=""/>
+
+   <property name="jboss.datasource.mapping"       value="MS SQLSERVER"/>
+   <!--property name="jboss.datasource.mapping"       value="MS SQLSERVER2000"/-->

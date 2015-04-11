@@ -1,0 +1,39 @@
+#macro(getVersion $v) 
+	 #if($v==1)
+	 	web
+	 #else
+	 	wechat
+	 #end
+#end
+
+
+#macro(getResVersion)201409231010148#end
+
+#macro(getRootPath)#end
+
+
+#macro(getBackgroundColor $code)
+	#if($code=="1")
+		#1F90F8
+	#elseif($code=="2")
+		#81C146
+	#elseif($code=="3")
+		#F7912C
+	#else
+		#F2F2F2
+	#end
+#end
+
+
+#macro(getBaidu)
+<style type="text/css">
+    a[href^='http://tongji.baidu.com']{
+		display:none;
+	}
+</style>
+<!-- 百度统计-->
+<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1b9d92d42ae504720a551426ca4281c9' type='text/javascript'%3E%3C/script%3E"));
+</script>
+#end

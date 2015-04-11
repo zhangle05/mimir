@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblDaysMerchtPosInfo" 
+    table="TBL_DAYS_MERCHT_POS_INFO"
+>
+
+    <composite-id name="comp_id" class="db.po.TblDaysMerchtPosInfoPK">
+        <key-property 
+            name="daysMerchtId" 
+            column="DAYS_MERCHT_ID" 
+            type="java.lang.String"
+            length="8"
+        />
+        <key-property 
+            name="posVindSq" 
+            column="POS_VIND_SQ" 
+            type="java.lang.Long"
+            length="16"
+        />
+    </composite-id>    
+
+    <property
+        name="posId"
+        type="java.lang.String"
+        column="POS_ID"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="posTermPlace"
+        type="java.lang.String"
+        column="POS_TERM_PLACE"
+        not-null="true"
+        length="100"
+    />
+    <property
+        name="posTermSt"
+        type="java.lang.String"
+        column="POS_TERM_ST"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="posPutMode"
+        type="java.lang.String"
+        column="POS_PUT_MODE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="otherPosPutMode"
+        type="java.lang.String"
+        column="OTHER_POS_PUT_MODE"
+        length="100"
+    />
+    <property
+        name="otherCardType"
+        type="java.lang.String"
+        column="OTHER_CARD_TYPE"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

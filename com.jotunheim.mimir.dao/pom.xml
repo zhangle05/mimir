@@ -1,0 +1,183 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jotunheim.mimir</groupId>
+        <artifactId>mimir</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>com.jotunheim.mimir.dao</artifactId>
+    <name>com.jotunheim.mimir.dao</name>
+    <description>dao access for the mimir-app</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jotunheim.mimir</groupId>
+            <artifactId>com.jotunheim.mimir.domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jotunheim.mimir</groupId>
+            <artifactId>com.jotunheim.mimir.common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>3.6.9.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>3.6.9.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>cglib</groupId>
+                    <artifactId>cglib</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>dom4j</groupId>
+                    <artifactId>dom4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.2.0.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.xml.bind</groupId>
+                    <artifactId>jaxb-impl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.18</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <!-- 正式环境配置 -->
+            <id>release</id>
+            <properties>
+                <!-- 数据库配置 -->
+                <db.properties>classpath*:META-INF/releasedb.properties</db.properties>
+                <!-- 缓存服务器配置 -->
+                <memecache.server.address>localhost:11211</memecache.server.address>
+                <!-- 数据默认缓存时间 -->
+                <memecache.default.expire>7200</memecache.default.expire>
+                <!-- 用户未登录能搜索的次数 -->
+                <serverside.search.count>20</serverside.search.count>
+            </properties>
+
+            <build>
+                <finalName>com.jotunheim.mimir.dao</finalName>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <excludes>
+                            <exclude>testdb.properties</exclude>
+                        </excludes>
+                    </resource>
+                </resources>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+                        <configuration>
+                            <!-- 将项目的类文件打成jar放到lib目录中。 打成jar的好处是：只修改class时，可以只更新jar。 -->
+                            <archiveClasses>true</archiveClasses>
+                            <webResources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>jiazhangtong.properties</include>
+                                    </includes>
+                                    <targetPath>WEB-INF/classes</targetPath>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- 测试服务器Tomcat环境配置 -->
+            <id>test</id>
+            <build>
+                <finalName>test</finalName>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <excludes>
+                            <exclude>testdb.properties</exclude>
+                        </excludes>
+                    </resource>
+                </resources>
+            </build>
+            <properties>
+                <!-- 数据库配置 -->
+                <db.properties>classpath*:META-INF/testdb.properties</db.properties>
+                <!-- 登录跳转地址 -->
+                <serverside.login.url>/user/?returnurl=%s</serverside.login.url>
+                <serverside.admin.login.url>/admin/login?returnurl=%s</serverside.admin.login.url>
+
+                <!-- 缓存服务器配置 -->
+                <memecache.server.address>localhost:11211</memecache.server.address>
+                <!-- 数据默认缓存时间 -->
+                <memecache.default.expire>7200</memecache.default.expire>
+                <serverside.log.path>/data/web/logs/test</serverside.log.path>
+                <serverside.log.level>info</serverside.log.level>
+                <serverside.config.properties>development.properties</serverside.config.properties>
+                <serverside.cookie.prefix>test_</serverside.cookie.prefix>
+            </properties>
+        </profile>
+    </profiles>
+</project>

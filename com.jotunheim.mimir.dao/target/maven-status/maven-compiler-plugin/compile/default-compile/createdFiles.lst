@@ -1,0 +1,9 @@
+com/jotunheim/mimir/dao/miscellaneous/CustomMysqlDialect.class
+com/jotunheim/mimir/dao/UserRoleDao.class
+com/jotunheim/mimir/dao/impl/BaseDaoImpl.class
+com/jotunheim/mimir/dao/miscellaneous/CustomNamingStrategy.class
+com/jotunheim/mimir/dao/impl/UserRoleDaoImpl.class
+com/jotunheim/mimir/dao/impl/UserDaoImpl.class
+com/jotunheim/mimir/dao/LocationDao.class
+com/jotunheim/mimir/dao/UserDao.class
+com/jotunheim/mimir/dao/impl/LocationDaoImpl.class

@@ -1,0 +1,329 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dsmis/!svn/ver/4644/GenHbmTool/build/gen-src/db/po
+END
+TblCustAttr.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblCustAttr.hbm.xml
+END
+TblOprInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblOprInfo.hbm.xml
+END
+TblGiftRlv.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblGiftRlv.hbm.xml
+END
+TblTxnDtl.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblTxnDtl.hbm.xml
+END
+TblCpltInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblCpltInfo.hbm.xml
+END
+TblSysParamDef.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblSysParamDef.hbm.xml
+END
+TblExpCplt.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblExpCplt.hbm.xml
+END
+TblDaysMerchtInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblDaysMerchtInfo.hbm.xml
+END
+TblConsulInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblConsulInfo.hbm.xml
+END
+TblChanlAttr.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblChanlAttr.hbm.xml
+END
+PlsqlProfilerRun.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/PlsqlProfilerRun.hbm.xml
+END
+TblExpTran.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblExpTran.hbm.xml
+END
+PlsqlProfilerData.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/PlsqlProfilerData.hbm.xml
+END
+TblCardStore.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblCardStore.hbm.xml
+END
+TblCpltTran.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblCpltTran.hbm.xml
+END
+TblPlanMerchtAttr.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblPlanMerchtAttr.hbm.xml
+END
+TblNextId.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblNextId.hbm.xml
+END
+TblBusRptInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblBusRptInfo.hbm.xml
+END
+TblBlankCardCharge.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblBlankCardCharge.hbm.xml
+END
+TblMissionInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblMissionInfo.hbm.xml
+END
+TblDaysMerchtAttr.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblDaysMerchtAttr.hbm.xml
+END
+TblSysParam.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblSysParam.hbm.xml
+END
+TblVisitLog.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblVisitLog.hbm.xml
+END
+TblDaysMerchtPosInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblDaysMerchtPosInfo.hbm.xml
+END
+TblRoleConf.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblRoleConf.hbm.xml
+END
+TblInvoiceInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblInvoiceInfo.hbm.xml
+END
+TblAdminStockInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dsmis/!svn/ver/4644/GenHbmTool/build/gen-src/db/po/TblAdminStockInfo.hbm.xml
+END
+TblCardInfoRlv.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblCardInfoRlv.hbm.xml
+END
+TblInnerCardApply.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblInnerCardApply.hbm.xml
+END
+TblDstbHi.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblDstbHi.hbm.xml
+END
+TblCardEventDtl.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblCardEventDtl.hbm.xml
+END
+TblChanlWrtOffDtl.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblChanlWrtOffDtl.hbm.xml
+END
+TblMisList.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblMisList.hbm.xml
+END
+TblPosVindLog.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblPosVindLog.hbm.xml
+END
+TblCardInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblCardInfo.hbm.xml
+END
+TblChanlReqCanlCardMng.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblChanlReqCanlCardMng.hbm.xml
+END
+TblDayEndProc.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblDayEndProc.hbm.xml
+END
+TblChanlSalDtl.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblChanlSalDtl.hbm.xml
+END
+TblOrderPayDtl.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblOrderPayDtl.hbm.xml
+END
+TblAdminObjectInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/dsmis/!svn/ver/4643/GenHbmTool/build/gen-src/db/po/TblAdminObjectInfo.hbm.xml
+END
+TblBigCustAttr.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblBigCustAttr.hbm.xml
+END
+TblMisBill.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblMisBill.hbm.xml
+END
+TblDstb.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblDstb.hbm.xml
+END
+PlsqlProfilerUnit.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/PlsqlProfilerUnit.hbm.xml
+END
+TblSalSchedule.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblSalSchedule.hbm.xml
+END
+TblSaleOrderInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblSaleOrderInfo.hbm.xml
+END
+ViewMerInstTask.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/ViewMerInstTask.hbm.xml
+END
+TblPreOrderInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblPreOrderInfo.hbm.xml
+END
+TblPriConf.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblPriConf.hbm.xml
+END
+TblChanlInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblChanlInfo.hbm.xml
+END
+TblAnnouncementInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/dsmis/!svn/ver/4644/GenHbmTool/build/gen-src/db/po/TblAnnouncementInfo.hbm.xml
+END
+TblBusSchedule.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblBusSchedule.hbm.xml
+END
+TblExpInfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblExpInfo.hbm.xml
+END
+TblBlankCardMade.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build/gen-src/db/po/TblBlankCardMade.hbm.xml
+END

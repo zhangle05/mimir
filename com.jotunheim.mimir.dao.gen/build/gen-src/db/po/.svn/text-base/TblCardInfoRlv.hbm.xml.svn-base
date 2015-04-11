@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblCardInfoRlv" 
+    table="TBL_CARD_INFO_RLV"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="relativeId"
+        type="java.lang.String"
+        column="RELATIVE_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="functionType"
+        type="java.lang.String"
+        column="FUNCTION_TYPE"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="cardNo"
+        type="java.lang.String"
+        column="CARD_NO"
+        length="19"
+    />
+    <property
+        name="cardNoLowerLmt"
+        type="java.lang.String"
+        column="CARD_NO_LOWER_LMT"
+        length="19"
+    />
+    <property
+        name="cardNoUpperLmt"
+        type="java.lang.String"
+        column="CARD_NO_UPPER_LMT"
+        length="19"
+    />
+    <property
+        name="cardFaceValue"
+        type="java.lang.String"
+        column="CARD_FACE_VALUE"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="cardAmt"
+        type="long"
+        column="CARD_AMT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="cardQty"
+        type="java.math.BigDecimal"
+        column="CARD_QTY"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

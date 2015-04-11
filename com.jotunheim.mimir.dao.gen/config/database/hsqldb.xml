@@ -1,0 +1,20 @@
+   <!-- =================================================================== -->
+   <!-- ant properties/targets for hsqldb                                   -->
+   <!-- note: this is not a proper xml file (there is no root element)      -->
+   <!--       it is intended to be imported from a *real* xml file          -->
+   <!-- =================================================================== -->
+
+   <property name="database.script.file"           value="${src.dir}/sql/${name}-hsqldb.sql"/>
+   <property name="database.driver.file"           value="${lib.dir}/hsqldb-1.7.1.jar"/>
+   <property name="database.driver.classpath"      value="${database.driver.file}"/>
+   <property name="database.driver"                value="org.hsqldb.jdbcDriver"/>
+   <property name="database.url"                   value="jdbc:hsqldb:${build.dir}/hsqldb/airline"/>
+   <property name="database.userid"                value="sa"/>
+   <property name="database.password"              value=""/>
+   <property name="database.schema"                value=""/>
+   <property name="database.catalog"               value=""/>
+   
+   <!-- This isonly for the hsqldb-gui target -->
+   <property name="database.urlparams"             value=""/>
+
+   <property name="jboss.datasource.mapping"       value="Hypersonic SQL"/>

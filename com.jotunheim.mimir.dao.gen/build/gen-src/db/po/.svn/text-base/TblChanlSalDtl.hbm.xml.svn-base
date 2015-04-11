@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblChanlSalDtl" 
+    table="TBL_CHANL_SAL_DTL"
+>
+
+    <id
+        name="chanlSalSq"
+        type="binary"
+        column="CHANL_SAL_SQ"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="relativeId"
+        type="java.lang.String"
+        column="RELATIVE_ID"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="custId"
+        type="java.lang.String"
+        column="CUST_ID"
+        not-null="true"
+        length="15"
+    />
+    <property
+        name="chanlCd"
+        type="java.lang.String"
+        column="CHANL_CD"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="subChanlCd"
+        type="java.lang.String"
+        column="SUB_CHANL_CD"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="chanlNm"
+        type="java.lang.String"
+        column="CHANL_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="subChanlNm"
+        type="java.lang.String"
+        column="SUB_CHANL_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

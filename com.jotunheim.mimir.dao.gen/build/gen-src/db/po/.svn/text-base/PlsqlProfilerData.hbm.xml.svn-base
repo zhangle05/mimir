@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.PlsqlProfilerData" 
+    table="PLSQL_PROFILER_DATA"
+>
+
+    <composite-id name="comp_id" class="db.po.PlsqlProfilerDataPK">
+        <key-property 
+            name="runid" 
+            column="RUNID" 
+            type="java.math.BigDecimal"
+            length="22"
+        />
+        <key-property 
+            name="unitNumber" 
+            column="UNIT_NUMBER" 
+            type="java.math.BigDecimal"
+            length="22"
+        />
+        <key-property 
+            name="line#" 
+            column="LINE#" 
+            type="java.math.BigDecimal"
+            length="22"
+        />
+    </composite-id>    
+
+    <property
+        name="totalOccur"
+        type="java.math.BigDecimal"
+        column="TOTAL_OCCUR"
+        length="22"
+    />
+    <property
+        name="totalTime"
+        type="java.math.BigDecimal"
+        column="TOTAL_TIME"
+        length="22"
+    />
+    <property
+        name="minTime"
+        type="java.math.BigDecimal"
+        column="MIN_TIME"
+        length="22"
+    />
+    <property
+        name="maxTime"
+        type="java.math.BigDecimal"
+        column="MAX_TIME"
+        length="22"
+    />
+    <property
+        name="spare1"
+        type="java.math.BigDecimal"
+        column="SPARE1"
+        length="22"
+    />
+    <property
+        name="spare2"
+        type="java.math.BigDecimal"
+        column="SPARE2"
+        length="22"
+    />
+    <property
+        name="spare3"
+        type="java.math.BigDecimal"
+        column="SPARE3"
+        length="22"
+    />
+    <property
+        name="spare4"
+        type="java.math.BigDecimal"
+        column="SPARE4"
+        length="22"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to PlsqlProfilerUnit -->
+    <many-to-one
+        name="plsqlProfilerUnit"
+	    class="db.po.PlsqlProfilerUnit"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="RUNID" />
+    	<column name="UNIT_NUMBER" />
+	</many-to-one>
+	
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd                 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <!-- The controllers are autodetected POJOs labeled with the @Controller 
+        annotation. -->
+    <context:component-scan base-package="com.jotunheim.mimir.web"
+        use-default-filters="false">
+        <context:include-filter
+            expression="org.springframework.stereotype.Controller" type="annotation" />
+    </context:component-scan>
+
+    <!-- Turns on support for mapping requests to Spring MVC @Controller 
+        methods -->
+    <mvc:annotation-driven conversion-service="applicationConversionService" />
+    <bean
+        class="com.jotunheim.mimir.web.ApplicationConversionServiceFactoryBean"
+        id="applicationConversionService" />
+
+    <!-- Turns on support for mapping requests to Spring MVC @Controller 
+        methods -->
+    <mvc:annotation-driven />
+
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+        up static resources -->
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/resources/**"
+        location="/, classpath:/META-INF/web-resources/" />
+    <mvc:resources mapping="/img/**" location="/img/" />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/html/**" location="/html/" />
+    <mvc:resources mapping="/file/**" location="/file/" />
+
+    <!-- Allows for mapping the DispatcherServlet to "/" by forwarding static 
+        resource requests to the container's default Servlet -->
+    <mvc:default-servlet-handler />
+
+    <!-- Register "global" interceptor beans to apply to all registered HandlerMappings -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/img/**" />
+            <mvc:exclude-mapping path="/css/**" />
+            <mvc:exclude-mapping path="/js/**" />
+            <mvc:exclude-mapping path="/html/**" />
+            <mvc:exclude-mapping path="/file/**" />
+            <mvc:exclude-mapping path="/api/**" />
+            <bean
+                class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+                p:paramName="lang" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/img/**" />
+            <mvc:exclude-mapping path="/css/**" />
+            <mvc:exclude-mapping path="/js/**" />
+            <mvc:exclude-mapping path="/html/**" />
+            <mvc:exclude-mapping path="/file/**" />
+            <mvc:exclude-mapping path="/api/**" />
+            <bean
+                class="org.springframework.web.servlet.theme.ThemeChangeInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/img/**" />
+            <mvc:exclude-mapping path="/css/**" />
+            <mvc:exclude-mapping path="/js/**" />
+            <mvc:exclude-mapping path="/html/**" />
+            <mvc:exclude-mapping path="/file/**" />
+            <mvc:exclude-mapping path="/api/**" />
+            <mvc:exclude-mapping path="/catalog/**" />
+            <mvc:exclude-mapping path="/filter/**" />
+            <bean
+                class="com.jotunheim.mimir.web.interceptors.AuthenticationInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- Selects a static view for rendering without the need for an explicit 
+        controller -->
+    <mvc:view-controller path="/" view-name="index" />
+    <mvc:view-controller path="/uncaughtException" />
+    <mvc:view-controller path="/resourceNotFound" />
+    <mvc:view-controller path="/dataAccessFailure" />
+
+    <!-- Resolves localized messages*.properties and application.properties 
+        files in the application to allow for internationalization. The messages*.properties 
+        files translate Roo generated messages which are part of the admin interface, 
+        the application.properties resource bundle localizes all application specific 
+        messages such as entity names and menu items. -->
+    <bean
+        class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+        id="messageSource" p:basenames="WEB-INF/i18n/messages,WEB-INF/i18n/application"
+        p:fallbackToSystemLocale="false" />
+
+    <!-- Store preferred language configuration in a cookie -->
+    <bean class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+        id="localeResolver" p:cookieName="locale" p:defaultLocale="en" />
+
+    <!-- Resolves localized <theme_name>.properties files in the classpath 
+        to allow for theme support -->
+    <bean
+        class="org.springframework.ui.context.support.ResourceBundleThemeSource"
+        id="themeSource" p:basenamePrefix="theme-" />
+
+    <!-- Store preferred theme configuration in a cookie -->
+    <bean class="org.springframework.web.servlet.theme.CookieThemeResolver"
+        id="themeResolver" p:cookieName="theme" p:defaultThemeName="standard" />
+
+    <!-- This bean resolves specific types of exceptions to corresponding 
+        logical - view names for error views. The default behaviour of DispatcherServlet 
+        - is to propagate all exceptions to the servlet container: this will happen 
+        - here with all other types of exceptions. -->
+    <bean
+        class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"
+        p:defaultErrorView="uncaughtException">
+        <property name="exceptionMappings">
+            <props>
+                <prop key=".DataAccessException">dataAccessFailure</prop>
+                <prop key=".NoSuchRequestHandlingMethodException">resourceNotFound</prop>
+                <prop key=".TypeMismatchException">resourceNotFound</prop>
+                <prop key=".MissingServletRequestParameterException">resourceNotFound</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+        <property name="viewClass"
+            value="org.springframework.web.servlet.view.velocity.VelocityLayoutView" />
+        <property name="contentType" value="text/html;charset=UTF-8" />
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+        <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="prefix" value="" />
+        <property name="suffix" value=".vm" />
+        <property name="toolboxConfigLocation" value="/WEB-INF/velocity-toolbox.xml" />
+        <property name="layoutUrl" value="/layout/layout.vm" />
+        <property name="layoutKey" value="layout" />
+        <property name="screenContentKey" value="screen_content" />
+        <property name="allowSessionOverride" value="true" />
+        <property name="allowRequestOverride" value="true" />
+    </bean>
+    <!-- Velocity配置 -->
+    <bean id="velocityConfigurer"
+        class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="WEB-INF/views" />
+        <property name="configLocation" value="classpath:velocity.properties" />
+    </bean>
+</beans>

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblSysParamDef" 
+    table="TBL_SYS_PARAM_DEF"
+>
+
+    <id
+        name="paramId"
+        type="java.lang.String"
+        column="PARAM_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="paramNm"
+        type="java.lang.String"
+        column="PARAM_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="paramClassCd"
+        type="java.lang.String"
+        column="PARAM_CLASS_CD"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="paramTypeCd"
+        type="java.lang.String"
+        column="PARAM_TYPE_CD"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="defaultValue"
+        type="java.lang.String"
+        column="DEFAULT_VALUE"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="paramDesc"
+        type="java.lang.String"
+        column="PARAM_DESC"
+        length="128"
+    />
+    <property
+        name="fractionQt"
+        type="java.lang.Integer"
+        column="FRACTION_QT"
+        length="1"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Timestamp"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Timestamp"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

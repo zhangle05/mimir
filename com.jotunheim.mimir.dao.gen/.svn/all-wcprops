@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/dsmis/!svn/ver/4644/GenHbmTool
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/dsmis/!svn/ver/2397/GenHbmTool/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dsmis/!svn/ver/2397/GenHbmTool/.project
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dsmis/!svn/ver/2397/GenHbmTool/log4j.properties
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/dsmis/!svn/ver/2397/GenHbmTool/build.xml
+END

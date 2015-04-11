@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblTxnDtl" 
+    table="TBL_TXN_DTL"
+>
+
+    <composite-id name="comp_id" class="db.po.TblTxnDtlPK">
+        <key-property 
+            name="txnDt" 
+            column="TXN_DT" 
+            type="java.lang.String"
+            length="8"
+        />
+        <key-property 
+            name="posId" 
+            column="POS_ID" 
+            type="java.lang.String"
+            length="8"
+        />
+        <key-property 
+            name="txnLogId" 
+            column="TXN_LOG_ID" 
+            type="java.lang.String"
+            length="6"
+        />
+    </composite-id>    
+
+    <property
+        name="cardNo"
+        type="java.lang.String"
+        column="CARD_NO"
+        not-null="true"
+        length="19"
+    />
+    <property
+        name="txnTs"
+        type="java.lang.String"
+        column="TXN_TS"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="txnBatchId"
+        type="java.lang.String"
+        column="TXN_BATCH_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="txnAmt"
+        type="long"
+        column="TXN_AMT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="txnType"
+        type="java.lang.String"
+        column="TXN_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="txnRt"
+        type="long"
+        column="TXN_RT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="feeAmt"
+        type="long"
+        column="FEE_AMT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="settleDt"
+        type="java.lang.String"
+        column="SETTLE_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="cardAmt"
+        type="long"
+        column="CARD_AMT"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="merId"
+        type="java.lang.String"
+        column="MER_ID"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="childMerId"
+        type="java.lang.String"
+        column="CHILD_MER_ID"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblCpltInfo" 
+    table="TBL_CPLT_INFO"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="cpltResc"
+        type="java.lang.String"
+        column="CPLT_RESC"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="cpltType"
+        type="java.lang.String"
+        column="CPLT_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="cpltChildType"
+        type="java.lang.String"
+        column="CPLT_CHILD_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="cpltHapDt"
+        type="java.lang.String"
+        column="CPLT_HAP_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="cpltHapTs"
+        type="java.lang.String"
+        column="CPLT_HAP_TS"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="cpltDt"
+        type="java.lang.String"
+        column="CPLT_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="cpltTs"
+        type="java.lang.String"
+        column="CPLT_TS"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="cpltNm"
+        type="java.lang.String"
+        column="CPLT_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="contactTel"
+        type="java.lang.String"
+        column="CONTACT_TEL"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="cardNo"
+        type="java.lang.String"
+        column="CARD_NO"
+        not-null="true"
+        length="19"
+    />
+    <property
+        name="cpltMerId"
+        type="java.lang.String"
+        column="CPLT_MER_ID"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="cpltShopId"
+        type="java.lang.String"
+        column="CPLT_SHOP_ID"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="cpltShopAd"
+        type="java.lang.String"
+        column="CPLT_SHOP_AD"
+        not-null="true"
+        length="100"
+    />
+    <property
+        name="note"
+        type="java.lang.String"
+        column="NOTE"
+        length="512"
+    />
+    <property
+        name="isValid"
+        type="java.lang.String"
+        column="IS_VALID"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblMissionInfo" 
+    table="TBL_MISSION_INFO"
+>
+
+    <id
+        name="recSeqId"
+        type="java.lang.String"
+        column="REC_SEQ_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="merId"
+        type="java.lang.String"
+        column="MER_ID"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="shopId"
+        type="java.lang.String"
+        column="SHOP_ID"
+        length="8"
+    />
+    <property
+        name="area"
+        type="java.lang.String"
+        column="AREA"
+        length="2"
+    />
+    <property
+        name="misTms"
+        type="java.lang.String"
+        column="MIS_TMS"
+        not-null="true"
+        length="14"
+    />
+    <property
+        name="posNo"
+        type="java.lang.String"
+        column="POS_NO"
+        length="20"
+    />
+    <property
+        name="contactor"
+        type="java.lang.String"
+        column="CONTACTOR"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="contactTel"
+        type="java.lang.String"
+        column="CONTACT_TEL"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="inspMethod"
+        type="java.lang.String"
+        column="INSP_METHOD"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="note"
+        type="java.lang.String"
+        column="NOTE"
+        length="512"
+    />
+    <property
+        name="inspType"
+        type="java.lang.String"
+        column="INSP_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="misIn"
+        type="java.lang.String"
+        column="MIS_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="inspRes"
+        type="java.lang.String"
+        column="INSP_RES"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="inspOprId"
+        type="java.lang.String"
+        column="INSP_OPR_ID"
+        length="6"
+    />
+    <property
+        name="actInspDt"
+        type="java.lang.String"
+        column="ACT_INSP_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="misQty"
+        type="java.lang.String"
+        column="MIS_QTY"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="aboType"
+        type="java.lang.String"
+        column="ABO_TYPE"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="errorType"
+        type="java.lang.String"
+        column="ERROR_TYPE"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="excepMisc"
+        type="java.lang.String"
+        column="EXCEP_MISC"
+        not-null="true"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="merAddr"
+        type="java.lang.String"
+        column="MER_ADDR"
+        length="100"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

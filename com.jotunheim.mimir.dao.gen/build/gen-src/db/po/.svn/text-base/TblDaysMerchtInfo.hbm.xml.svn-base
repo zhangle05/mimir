@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="db.po.TblDaysMerchtInfo" 
+    table="TBL_DAYS_MERCHT_INFO"
+>
+
+    <id
+        name="daysMerchtId"
+        type="java.lang.String"
+        column="DAYS_MERCHT_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="daysMerchtIn"
+        type="java.lang.String"
+        column="DAYS_MERCHT_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="upDaysMerchtId"
+        type="java.lang.String"
+        column="UP_DAYS_MERCHT_ID"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="posQt"
+        type="long"
+        column="POS_QT"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="merchtPosStat"
+        type="java.lang.String"
+        column="MERCHT_POS_STAT"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="orgPosPutInInfo"
+        type="java.lang.String"
+        column="ORG_POS_PUT_IN_INFO"
+        not-null="true"
+        length="100"
+    />
+    <property
+        name="shopNm"
+        type="java.lang.String"
+        column="SHOP_NM"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="shopCardMerchtNo"
+        type="java.lang.String"
+        column="SHOP_CARD_MERCHT_NO"
+        length="15"
+    />
+    <property
+        name="shopContactAd"
+        type="java.lang.String"
+        column="SHOP_CONTACT_AD"
+        not-null="true"
+        length="100"
+    />
+    <property
+        name="shopContactTel"
+        type="java.lang.String"
+        column="SHOP_CONTACT_TEL"
+        not-null="true"
+        length="100"
+    />
+    <property
+        name="shopContactor"
+        type="java.lang.String"
+        column="SHOP_CONTACTOR"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="contactorPhone"
+        type="java.lang.String"
+        column="CONTACTOR_PHONE"
+        length="50"
+    />
+    <property
+        name="shopArea"
+        type="java.lang.String"
+        column="SHOP_AREA"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="shopVindFreq"
+        type="long"
+        column="SHOP_VIND_FREQ"
+        not-null="true"
+        length="2"
+    />
+    <property
+        name="vindDt"
+        type="java.lang.String"
+        column="VIND_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="nextVindFreq"
+        type="java.lang.String"
+        column="NEXT_VIND_FREQ"
+        length="2"
+    />
+    <property
+        name="nextVindFreqValdDt"
+        type="java.lang.String"
+        column="NEXT_VIND_FREQ_VALD_DT"
+        length="8"
+    />
+    <property
+        name="lastInspector"
+        type="java.lang.String"
+        column="LAST_INSPECTOR"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="lastInspDt"
+        type="java.lang.String"
+        column="LAST_INSP_DT"
+        not-null="true"
+        length="8"
+    />
+    <property
+        name="lastInspRslt"
+        type="java.lang.String"
+        column="LAST_INSP_RSLT"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="lastInspExpSt"
+        type="java.lang.String"
+        column="LAST_INSP_EXP_ST"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="lastInspExpDesc"
+        type="java.lang.String"
+        column="LAST_INSP_EXP_DESC"
+        length="512"
+    />
+    <property
+        name="rcdCrtOprId"
+        type="java.lang.String"
+        column="RCD_CRT_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdCrtTms"
+        type="java.sql.Date"
+        column="RCD_CRT_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="rcdUpdOprId"
+        type="java.lang.String"
+        column="RCD_UPD_OPR_ID"
+        not-null="true"
+        length="6"
+    />
+    <property
+        name="rcdUpdTms"
+        type="java.sql.Date"
+        column="RCD_UPD_TMS"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="delIn"
+        type="java.lang.String"
+        column="DEL_IN"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="isEntityShop"
+        type="java.lang.String"
+        column="IS_ENTITY_SHOP"
+        not-null="true"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>
