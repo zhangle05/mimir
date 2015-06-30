@@ -1,0 +1,65 @@
+<!-- Panel -->
+<div id="toppanel"> 
+    <div id="panel">
+        <div class="content clearfix">
+            <div class="left">
+                <div id="text-6" class="widget widget_text">
+                    <h1>Welcome</h1>
+                    <div class="textwidget">
+                        <h2>About Kissing Kourami</h2>      
+                        <p class="grey">A graphic design studio &amp; web agency<br>located at the heart of Tokyo and Geneva</p>
+                        <p class="grey">We design and imagine your projects :<br>Logotype, Website, Corporate, Brochures, Edition, Packaging, Posters, Advertising, Illustrations</p>
+                    </div>
+                </div>  
+            </div>
+            <div class="left">
+                <div id="text-5" class="widget widget_text">
+                    <h1>Kissing kourami</h1>
+                    <div class="textwidget">
+                        <h2>Geneva</h2>
+                        <p class="grey">10, rue Blavignac<br>
+                        1227 Carouge - Geneva<br>
+                        Switzerland</p>
+                        <p><a href="mailto:%69nfo@kissi%6eg%6boura%6di%2e%6ap">info@kissingkourami.jp</a> <br></p>
+                        <p class="grey">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="left right">
+                <div id="text-4" class="widget widget_text">
+                    <h1>Kissing kourami Japan</h1>
+                    <div class="textwidget">
+                        <h2>Tokyo</h2>  
+                        <p class="grey">Kotoku Ariake 1 Chome 5-2-2519
+                        <br>135-0063 Tokyo<br>Japan</p>
+
+                        <a href="mailto:%69nfo@kissi%6eg%6boura%6di%2e%6ap">info@kissingkourami.jp</a> <br><p></p>
+
+                        <div style="display: inline-block;">
+                            <a href="https://plus.google.com/b/115872464041013581673/" style="text-decoration: none; color: #333;">
+                                <span style="float: left; font: bold 13px/16px arial,sans-serif; margin-right: 4px;">Kissing Kourami</span>
+                                <span style="float: left; font: 13px/16px arial,sans-serif; margin-right: 11px;">on</span>
+                                <div style="clear: both"></div>
+                            </a>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /login -->  
+
+    <!-- The tab on top --> 
+    <div class="tab">
+        <ul class="login">
+            <li class="left">&nbsp;</li>
+            <!-- Login / Register -->
+            <li id="toggle">
+                <a id="open" class="open" href="#">↑ Contact us</a>
+                <a id="close" style="display: none;" class="close" href="#">× Close Panel</a>
+            </li>
+            <li class="right">&nbsp;</li>
+        </ul> 
+    </div> <!-- / top -->
+</div> <!--END panel -->

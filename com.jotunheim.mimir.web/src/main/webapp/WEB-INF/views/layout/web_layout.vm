@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+    #if($!{title})
+        <title>$!{title}</title>
+    #else
+        <title>标题</title>
+    #end
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+    <meta name="application-name" content="octopus">
+    <meta name="msapplication-TileColor" content="#db144c">
+    <meta name="msapplication-TileImage" content="">
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
+    <link rel="Shortcut Icon" href="/img/icon/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.cycle.all.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.themepunch.revolution.min.js"></script> 
+    <script src="/js/jquery.easing.1.3.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="/js/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script src="/js/slide.js" type="text/javascript"></script>
+
+    <!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.4 - https://yoast.com/wordpress/plugins/seo/ -->
+    <!-- / Yoast WordPress SEO plugin. -->
+    <link rel="stylesheet" id="rs-plugin-settings-css" href="/css/settings.css" type="text/css" media="all">
+    <!--
+    <script type="text/javascript" src="/js/main.js"></script>
+    -->
+        <style type="text/css">
+            .entry-content img {max-width: 100000%; /* override */}
+        </style> 
+                <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    // CUSTOM AJAX CONTENT LOADING FUNCTION
+                    var ajaxRevslider = function(obj) {
+                    
+                        // obj.type : Post Type
+                        // obj.id : ID of Content to Load
+                        // obj.aspectratio : The Aspect Ratio of the Container / Media
+                        // obj.selector : The Container Selector where the Content of Ajax will be injected. It is done via the Essential Grid on Return of Content
+                        
+                        var content = "";
+    
+                        data = {};
+                        
+                        data.action = 'revslider_ajax_call_front';
+                        data.client_action = 'get_slider_html';
+                        data.token = '95c305f828';
+                        data.type = obj.type;
+                        data.id = obj.id;
+                        data.aspectratio = obj.aspectratio;
+                        
+                        // SYNC AJAX REQUEST
+                        jQuery.ajax({
+                            type:"post",
+                            url:"/wp-admin/admin-ajax.php",
+                            dataType: 'json',
+                            data:data,
+                            async:false,
+                            success: function(ret, textStatus, XMLHttpRequest) {
+                                if(ret.success == true)
+                                    content = ret.data;                             
+                            },
+                            error: function(e) {
+                                console.log(e);
+                            }
+                        });
+                        
+                         // FIRST RETURN THE CONTENT WHEN IT IS LOADED !!
+                         return content;                         
+                    };
+                    
+                    // CUSTOM AJAX FUNCTION TO REMOVE THE SLIDER
+                    var ajaxRemoveRevslider = function(obj) {
+                        return jQuery(obj.selector+" .rev_slider").revkill();
+                    };
+    
+                    // EXTEND THE AJAX CONTENT LOADING TYPES WITH TYPE AND FUNCTION
+                    var extendessential = setInterval(function() {
+                        if (jQuery.fn.tpessential != undefined) {
+                            clearInterval(extendessential);
+                            if(typeof(jQuery.fn.tpessential.defaults) !== 'undefined') {
+                                jQuery.fn.tpessential.defaults.ajaxTypes.push({type:"revslider",func:ajaxRevslider,killfunc:ajaxRemoveRevslider,openAnimationSpeed:0.3});   
+                                // type:  Name of the Post to load via Ajax into the Essential 
+                                // func: the Function Name which is Called once the Item with the Post Type has been clicked
+                                // killfunc: function to kill in case the Ajax Window going to be removed (before Remove function !
+                                // openAnimationSpeed: how quick the Ajax Content window should be animated (default is 0.3)
+                            }
+                        }
+                    },30);
+                });
+            </script>
+
+    <script src="/js/jquery.easing.1.3.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="/js/jquery.vgrid.0.1.4-mod.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script type="text/javascript">
+    //<![CDATA[
+    
+    (function($){
+        $(function(){
+            
+            main = $(".a img").attr("src");  
+            $("a img").fadeTo("fast", .9); // This sets the opacity of the thumbs to fade down to 60% when the page loads
+        
+            $("a img").hover(function(){
+                $(this).fadeTo("fast", 0.5); // This should set the opacity to 100% on hover
+            },function(){
+                $(this).fadeTo("fast", .9); // This should set the opacity back to 60% on mouseout
+            });
+    
+            $('#footer').css("visibility", "hidden");
+                var setGrid = function () {
+                return $("#grid-wrapper").vgrid({
+                    easeing: "easeOutQuint",
+                    time: 800,
+                    delay: 60,
+                    selRefGrid: "#grid-wrapper div.x1", 
+                    selFitWidth: ["#container"],
+                    gridDefWidth: 290 + 15 + 15 + 5,
+                    forceAnim: 1            });
+            };
+            
+            
+            setTimeout(setGrid, 0);
+            setTimeout(function() {
+                $('#footer').hide().css("visibility", "visible").fadeIn(500);
+            }, 500);
+            
+            $(window).load(function(e){
+                setTimeout(function(){ 
+                    // prevent flicker in grid area - see also style.css
+                    $("#single-wrapper").css("paddingTop", "0px");
+                }, 1000);
+            });
+    
+        }); // end of document ready
+    })(jQuery); // end of jQuery name space 
+    
+    //]]>
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-363928-14']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</head>
+
+<body>
+    #include("/widget/top_panel.vm")
+
+<div id="container" style="width: 975px;">
+    <div id="header">
+        <div class="headerContent">
+            <div class="logo">
+            <!--
+                <h1><a href="/"><img src="/img/kouramilogo.png" alt="Kissing Kourami Japan" style="opacity: 0.9;"></a></h1>
+            -->
+            </div>
+            <ul id="nav">
+                <div class="menu-kourami-menu-container">
+                    <ul id="menu-kourami-menu" class="menu">
+                        <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142 current-menu-item"><a href="/">Home</a></li>
+                        <li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26"><a href="/studio/">Studio</a></li>
+                        <li id="menu-item-27" class="single-item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-27"><a href="#">Works</a></li>
+                        <li id="menu-item-32" class="single-item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-32"><a href="/blog/">Blog</a></li>
+                        <li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+                    <!-- END #secondary-nav -->
+            </ul>
+        </div>
+    </div>
+
+    $!{screen_content}
+
+    <div class="pagination" id="grid-pagination">
+    </div>
+
+    #include("/widget/footer.vm")
+
+    <script type="text/javascript" src="/js/jquery.form.min.js"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var _wpcf7 = {"loaderUrl":"http:\/\/www.kissingkourami.jp\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"\u9001\u4fe1\u4e2d ..."};
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="/js/scripts.js"></script>
+</div><!-- /container -->
+
+
+<span id="_vgridspan" style="display: none;"> </span>
+</body>
+</html>
