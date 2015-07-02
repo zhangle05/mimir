@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 @Controller
 public class HomeController {
-    private static Log LOG = LogFactory
-            .getLog(HomeController.class);
+    private static Log LOG = LogFactory.getLog(HomeController.class);
 
     /**
      * Constructor
@@ -25,9 +24,10 @@ public class HomeController {
         LOG.debug("Creating HomeController.");
     }
 
-    @RequestMapping("/home")
+    @RequestMapping("")
     public String goHome() {
         LOG.debug("Go home.");
         return "index";
     }
+
 }

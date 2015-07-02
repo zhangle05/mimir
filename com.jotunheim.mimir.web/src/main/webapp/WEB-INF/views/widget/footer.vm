@@ -1,4 +1,9 @@
-<div id="footer" style="visibility: visible; display: block;">
+#if(${footer})
+    ## do nothing
+#else
+    #set($footer="footer")
+#end
+<div id="$!{footer}" style="visibility: visible; display: block;">
     <div class="widget">
         <div id="text-2" class="widget widget_text">
             <h3 class="widget-title">Kissing Kourami</h3>

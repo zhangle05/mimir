@@ -1,63 +1,711 @@
 #set($layout="/layout/web_layout.vm")
-#set($title="index")
+#set($footer="footer-white")
 
-<div id="grid-wrapper" style="position: relative; width: auto; height: 1374px;">
+<div id="primary" class="hfeed">
+    <div id="single-wrapper" class="full-width" style="padding-top: 0px;">
+        <div style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-20">
+            <link href="/css/home.css" rel="stylesheet" type="text/css">
+            <div style="position:relative;width:100%;height:auto;margin-top:0px;margin-bottom:0px" class="forcefullwidth_wrapper_tp_banner">
+                <div id="rev_slider_6_1_wrapper" class="rev_slider_wrapper fullscreen-container" style="padding: 0px; height: 550px; left: 0px; position: absolute; width: 1280px; max-height: none; overflow: visible; background-color: rgb(236, 101, 81);">
+                    <!-- START REVOLUTION SLIDER 4.6.5 fullscreen mode -->
+                    
+                    <div id="rev_slider_6_1" class="rev_slider fullscreenbanner" style="display:none;">
+<ul>    <!-- SLIDE  -->
+    <li data-transition="parallaxtoright,parallaxtoleft,parallaxtotop,parallaxtobottom" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+        <!-- MAIN IMAGE -->
+        <img src="/assets/transparent.png" style='background-color:#ec6551' alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+        <!-- LAYERS -->
 
-    <div class="post-1464 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1464" style="position: absolute; left: 0px; top: 0px;">
-            <h2 class="post-title"><a href="http://www.kissingkourami.jp/nuit-philo-design-poster/" rel="bookmark">La Nuit de la Philo 2014</a></h2>
-                        <div class="post-body">
-<p><span id="result_box" lang="en"><span class="hps">For “La nuit de la Philo</span> <span class="hps">2014″ at</span> <span class="hps">Institut Francais du Japon – Tokyo</span><span class="hps">,</span> <span class="hps">which offered</span> <span class="hps">various artists, performances and</span> <span class="hps">conferences.</span> We was happy to <span class="hps">realized,</span> <span class="hps">this</span> <span class="hps">year</span> <span class="hps">again,</span> <span class="hps">the poster of the</span> <span class="hps">event</span>. You can see the original poster on the <span id="result_box" lang="en"><span class="hps">Institut Francais du Japon – Tokyo</span></span> website, but for the our blog only, <span class="hps">we</span> want also <span class="hps">to show you</span> one <span class="hps">proposal of the</span> <span class="hps">poster</span> <span class="hps">design</span> <span class="hps">we</span> <span class="hps">also</span> <span class="hps">made</span> <span class="hps">to our</span> <span class="hps">client.</span></span> <a href="http://www.kissingkourami.jp/nuit-philo-design-poster/#more-1464" class="more-link">Details »</a></p>
-            </div>
-            <p class="post-meta">
-            On 05/06/2014.<br>
-                        <br>
-                        </p>
+        <!-- LAYER NR. 1 -->
+        <div class="tp-caption tp-fade" 
+             data-x="center" data-hoffset="0" 
+             data-y="center" data-voffset="0" 
+            data-speed="300" 
+            data-start="500" 
+            data-easing="Power3.easeInOut" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 5;"><img src="/img/home/yo.png" alt="" data-ww="360" data-hh="340"> 
         </div>
 
-        <div class="post-1341 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-feature grid-item x1" id="post-1341" style="position: absolute; left: 240px; top: 0px;">
-            <h2 class="post-title"><a href="http://www.kissingkourami.jp/greetings-cards-for-cute-new-year/" rel="bookmark">Our greetings cards for the cute new year</a></h2>
-                        <div class="post-body">
-<p>Japanese Life Tree is our New year greeting card printed on a Deluxe Paper with red edges. Just a Japanese small life in a Swiss pine tree. (Do not forget that we are a swiss-Japanese studio), Bonus, for our customers and friends, a box of Japanese chocolate customised with our design! To all, we wish you a good and cute new year !<br>
- <a href="http://www.kissingkourami.jp/greetings-cards-for-cute-new-year/#more-1341" class="more-link">Details »</a></p>
-            </div>
-            <p class="post-meta">
-            On 31/12/2013.<br>
-                        <br>
-                        </p>
+        <!-- LAYER NR. 2 -->
+        <div class="tp-caption FullTitre tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="270"  
+            data-speed="300" 
+            data-start="800" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">WE ARE 
         </div>
 
-        <div class="post-1326 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1326" style="position: absolute; left: 480px; top: 0px;">
-            <h2 class="post-title"><a href="http://www.kissingkourami.jp/design-french-business-campus-2013/" rel="bookmark">New design for the French Business Campus</a></h2>
-                        <div class="post-body">
-<p>For the second edition of the French Business Campus organized by the CCIFJ and Meiji University, we redesign the original logotype and, most important, we created the mascot of the event. A little Japanese student girl (we will reveal the name maybe for next edition). We also happy to meet some student at Meiji University. We realized logotype, characters, poster, mail marking, brochure documents, indoor giant posters.<br>
- <a href="http://www.kissingkourami.jp/design-french-business-campus-2013/#more-1326" class="more-link">Details »</a></p>
-            </div>
-            <p class="post-meta">
-            On 25/11/2013.<br>
-                        <br>
-                        </p>
+        <!-- LAYER NR. 3 -->
+        <div class="tp-caption FullTitre tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="320"  
+            data-speed="300" 
+            data-start="1100" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">KISSING 
         </div>
 
-        <div class="post-1309 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1309" style="position: absolute; left: 720px; top: 0px;">
-            <h2 class="post-title"><a href="http://www.kissingkourami.jp/quick-stop-at-the-kurami-station/" rel="bookmark">A quick stop at the Kurami station.</a></h2>
-                        <div class="post-body">
-<p>This weekend, on the road to Enoshima (A really beautiful small island not so far), we make a brief stop at the small train station named “Kurami” (倉見駅 Kurami-eki). It is about one hour from Shinjuku. <a href="http://www.kissingkourami.jp/quick-stop-at-the-kurami-station/#more-1309" class="more-link">Details »</a></p>
-            </div>
-            <p class="post-meta">
-            On 13/10/2013.<br>
-                        <br>
-                        </p>
+        <!-- LAYER NR. 4 -->
+        <div class="tp-caption FullTitre tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="370"  
+            data-speed="300" 
+            data-start="1400" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;">KOURAMI 
         </div>
 
-        <div class="post-1207 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-feature grid-item x1" id="post-1207" style="position: absolute; left: 720px; top: 252px;">
-            <h2 class="post-title"><a href="http://www.kissingkourami.jp/franco-japanese-graphic-design-logotype/" rel="bookmark">A franco-japanese logotype</a></h2>
-                        <div class="post-body">
-<p>For the coming of the French president Francois Hollande, the CCIFJ organized a meeting between French and Japanese company and asked us to create the corporate around this day. We realized the graphic design of the official brochure, board, menus, cover bento and the official logo of Franco-Japanese meetings. The logotype is based of Japanese origami and colour of French and Japanese flag.  <a href="http://www.kissingkourami.jp/franco-japanese-graphic-design-logotype/#more-1207" class="more-link">Details »</a></p>
-            </div>
-            <p class="post-meta">
-            On 08/07/2013.<br>
-                        <br>
-                        </p>
+        <!-- LAYER NR. 5 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="420"  
+            data-speed="300" 
+            data-start="1700" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">WE DO 
         </div>
 
+        <!-- LAYER NR. 6 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="470"  
+            data-speed="300" 
+            data-start="2000" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;">WEBSITE 
+        </div>
+
+        <!-- LAYER NR. 7 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="520"  
+            data-speed="300" 
+            data-start="2300" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 11; max-width: auto; max-height: auto; white-space: nowrap;">AND MORE 
+        </div>
+
+        <!-- LAYER NR. 8 -->
+        <div class="tp-caption customin" 
+             data-x="780" 
+             data-y="220"  
+            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" 
+            data-speed="300" 
+            data-start="2600" 
+            data-easing="Power3.easeInOut" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 12;"><img src="/img/home/hi.png" alt="" data-ww="100" data-hh="93"> 
+        </div>
+    </li>
+    <!-- SLIDE  -->
+    <li data-transition="fadefromright,parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+        <!-- MAIN IMAGE -->
+        <img src="/assets/transparent.png" style='background-color:#46adad' alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+        <!-- LAYERS -->
+
+        <!-- LAYER NR. 1 -->
+        <div class="tp-caption tp-fade" 
+             data-x="center" data-hoffset="0" 
+             data-y="center" data-voffset="0" 
+            data-speed="300" 
+            data-start="500" 
+            data-easing="Power3.easeInOut" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 5;"><img src="/img/home/ayu.png" alt="" data-ww="340" data-hh="341"> 
+        </div>
+
+        <!-- LAYER NR. 2 -->
+        <div class="tp-caption FullTitre-Green tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="270"  
+            data-speed="300" 
+            data-start="800" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">WE ARE 
+        </div>
+
+        <!-- LAYER NR. 3 -->
+        <div class="tp-caption FullTitre-Green tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="320"  
+            data-speed="300" 
+            data-start="1100" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">KISSING 
+        </div>
+
+        <!-- LAYER NR. 4 -->
+        <div class="tp-caption FullTitre-Green tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="370"  
+            data-speed="300" 
+            data-start="1400" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;">KOURAMI 
+        </div>
+
+        <!-- LAYER NR. 5 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="420"  
+            data-speed="300" 
+            data-start="1700" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">WE DO 
+        </div>
+
+        <!-- LAYER NR. 6 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="470"  
+            data-speed="300" 
+            data-start="2000" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;">PRINT 
+        </div>
+
+        <!-- LAYER NR. 7 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="520"  
+            data-speed="300" 
+            data-start="2300" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 11; max-width: auto; max-height: auto; white-space: nowrap;">AND MORE 
+        </div>
+
+        <!-- LAYER NR. 8 -->
+        <div class="tp-caption customin" 
+             data-x="780" 
+             data-y="220"  
+            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" 
+            data-speed="300" 
+            data-start="2600" 
+            data-easing="Power3.easeInOut" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 12;"><img src="/img/home/hi.png" alt="" data-ww="100" data-hh="93"> 
+        </div>
+    </li>
+    <!-- SLIDE  -->
+    <li data-transition="parallaxtoright,parallaxtoleft,parallaxtotop,parallaxtobottom" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+        <!-- MAIN IMAGE -->
+        <img src="/assets/transparent.png" style='background-color:#f8ad2d' alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+        <!-- LAYERS -->
+
+        <!-- LAYER NR. 1 -->
+        <div class="tp-caption tp-fade" 
+             data-x="center" data-hoffset="0" 
+             data-y="center" data-voffset="0" 
+            data-speed="300" 
+            data-start="500" 
+            data-easing="Power3.easeInOut" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 5;"><img src="/img/home/yo.png" alt="" data-ww="360" data-hh="340"> 
+        </div>
+
+        <!-- LAYER NR. 2 -->
+        <div class="tp-caption FullTitre-Yellow tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="270"  
+            data-speed="300" 
+            data-start="800" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">WE ARE 
+        </div>
+
+        <!-- LAYER NR. 3 -->
+        <div class="tp-caption FullTitre-Yellow tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="320"  
+            data-speed="300" 
+            data-start="1100" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">KISSING 
+        </div>
+
+        <!-- LAYER NR. 4 -->
+        <div class="tp-caption FullTitre-Yellow tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="370"  
+            data-speed="300" 
+            data-start="1400" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;">KOURAMI 
+        </div>
+
+        <!-- LAYER NR. 5 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="420"  
+            data-speed="300" 
+            data-start="1700" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">WE DO 
+        </div>
+
+        <!-- LAYER NR. 6 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="470"  
+            data-speed="300" 
+            data-start="2000" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;">LOGOTYPES 
+        </div>
+
+        <!-- LAYER NR. 7 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="520"  
+            data-speed="300" 
+            data-start="2300" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 11; max-width: auto; max-height: auto; white-space: nowrap;">AND MORE 
+        </div>
+
+        <!-- LAYER NR. 8 -->
+        <div class="tp-caption customin" 
+             data-x="780" 
+             data-y="220"  
+            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" 
+            data-speed="300" 
+            data-start="2600" 
+            data-easing="Power3.easeInOut" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 12;"><img src="/img/home/hi.png" alt="" data-ww="100" data-hh="93"> 
+        </div>
+    </li>
+    <!-- SLIDE  -->
+    <li data-transition="fadefromright,parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+        <!-- MAIN IMAGE -->
+        <img src="/assets/transparent.png" style='background-color:#435c71' alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+        <!-- LAYERS -->
+
+        <!-- LAYER NR. 1 -->
+        <div class="tp-caption tp-fade" 
+             data-x="center" data-hoffset="0" 
+             data-y="center" data-voffset="0" 
+            data-speed="300" 
+            data-start="500" 
+            data-easing="Power3.easeInOut" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 5;"><img src="/img/home/ayu.png" alt="" data-ww="340" data-hh="341"> 
+        </div>
+
+        <!-- LAYER NR. 2 -->
+        <div class="tp-caption FullTitre-Blue tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="270"  
+            data-speed="300" 
+            data-start="800" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">WE ARE 
+        </div>
+
+        <!-- LAYER NR. 3 -->
+        <div class="tp-caption FullTitre-Blue tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="320"  
+            data-speed="300" 
+            data-start="1100" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">KISSING 
+        </div>
+
+        <!-- LAYER NR. 4 -->
+        <div class="tp-caption FullTitre-Blue tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="370"  
+            data-speed="300" 
+            data-start="1400" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;">KOURAMI 
+        </div>
+
+        <!-- LAYER NR. 5 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="420"  
+            data-speed="300" 
+            data-start="1700" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">WE DO 
+        </div>
+
+        <!-- LAYER NR. 6 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="470"  
+            data-speed="300" 
+            data-start="2000" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;">DESIGN 
+        </div>
+
+        <!-- LAYER NR. 7 -->
+        <div class="tp-caption FullTitre-Blanc tp-fade tp-resizeme" 
+             data-x="20" 
+             data-y="520"  
+            data-speed="300" 
+            data-start="2300" 
+            data-easing="Power3.easeInOut" 
+            data-splitin="none" 
+            data-splitout="none" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 11; max-width: auto; max-height: auto; white-space: nowrap;">AND MORE 
+        </div>
+
+        <!-- LAYER NR. 8 -->
+        <div class="tp-caption customin" 
+             data-x="780" 
+             data-y="220"  
+            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" 
+            data-speed="300" 
+            data-start="2600" 
+            data-easing="Power3.easeInOut" 
+            data-elementdelay="0" 
+            data-endelementdelay="0" 
+             data-end="8700" 
+ data-endspeed="300" 
+
+            style="z-index: 12;"><img src="/img/home/hi.png" alt="" data-ww="100" data-hh="93"> 
+        </div>
+    </li>
+</ul>
+<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div> </div>
+    
+                    <style scoped="">.tp-caption.FullTitre,.FullTitre{font-size:62px;line-height:22px;font-weight:700;font-family:Raleway;color:rgb(210,81,58);text-decoration:none;background-color:transparent;border-width:0px;border-color:rgb(255,255,255);border-style:none}.tp-caption.FullTitre-Blanc,.FullTitre-Blanc{font-size:62px;line-height:22px;font-weight:700;font-family:Raleway;color:rgb(255,255,255);text-decoration:none;background-color:transparent;border-width:0px;border-color:rgb(210,81,58);border-style:none}.tp-caption.FullTitre-Green,.FullTitre-Green{font-size:62px;line-height:22px;font-weight:700;font-family:Raleway;color:rgb(52,150,151);text-decoration:none;background-color:transparent;border-width:0px;border-color:rgb(70,173,173);border-style:none}.tp-caption.FullTitre-Yellow,.FullTitre-Yellow{font-size:62px;line-height:22px;font-weight:700;font-family:Raleway;color:rgb(209,148,38);text-decoration:none;background-color:transparent;border-width:0px;border-color:rgb(209,148,38);border-style:none}.tp-caption.FullTitre-Blue,.FullTitre-Blue{font-size:62px;line-height:22px;font-weight:700;font-family:Raleway;color:rgb(60,80,99);text-decoration:none;background-color:transparent;border-width:0px;border-color:rgb(60,80,99);border-style:none}</style>
+        
+                    <script type="text/javascript">
+        
+                        /******************************************
+                            -   PREPARE PLACEHOLDER FOR SLIDER  -
+                            ******************************************/
+        
+        
+                            var setREVStartSize = function() {
+                                var tpopt = new Object();
+                                tpopt.startwidth = 1180;
+                                tpopt.startheight = 800;
+                                tpopt.container = jQuery('#rev_slider_6_1');
+                                tpopt.fullScreen = "on";
+                                tpopt.forceFullWidth="on";
+        
+                                tpopt.container.closest(".rev_slider_wrapper").css({height:tpopt.container.height()});tpopt.width=parseInt(tpopt.container.width(),0);tpopt.height=parseInt(tpopt.container.height(),0);tpopt.bw=tpopt.width/tpopt.startwidth;tpopt.bh=tpopt.height/tpopt.startheight;if(tpopt.bh>tpopt.bw)tpopt.bh=tpopt.bw;if(tpopt.bh<tpopt.bw)tpopt.bw=tpopt.bh;if(tpopt.bw<tpopt.bh)tpopt.bh=tpopt.bw;if(tpopt.bh>1){tpopt.bw=1;tpopt.bh=1}if(tpopt.bw>1){tpopt.bw=1;tpopt.bh=1}tpopt.height=Math.round(tpopt.startheight*(tpopt.width/tpopt.startwidth));if(tpopt.height>tpopt.startheight&&tpopt.autoHeight!="on")tpopt.height=tpopt.startheight;if(tpopt.fullScreen=="on"){tpopt.height=tpopt.bw*tpopt.startheight;var cow=tpopt.container.parent().width();var coh=jQuery(window).height();if(tpopt.fullScreenOffsetContainer!=undefined){try{var offcontainers=tpopt.fullScreenOffsetContainer.split(",");jQuery.each(offcontainers,function(e,t){coh=coh-jQuery(t).outerHeight(true);if(coh<tpopt.minFullScreenHeight)coh=tpopt.minFullScreenHeight})}catch(e){}}tpopt.container.parent().height(coh);tpopt.container.height(coh);tpopt.container.closest(".rev_slider_wrapper").height(coh);tpopt.container.closest(".forcefullwidth_wrapper_tp_banner").find(".tp-fullwidth-forcer").height(coh);tpopt.container.css({height:"100%"});tpopt.height=coh;}else{tpopt.container.height(tpopt.height);tpopt.container.closest(".rev_slider_wrapper").height(tpopt.height);tpopt.container.closest(".forcefullwidth_wrapper_tp_banner").find(".tp-fullwidth-forcer").height(tpopt.height);}
+                            };
+        
+                            /* CALL PLACEHOLDER */
+                            setREVStartSize();
+        
+        
+                            var tpj=jQuery;
+                            tpj.noConflict();
+                            var revapi6;
+        
+                            tpj(document).ready(function() {
+        
+                                if(tpj('#rev_slider_6_1').revolution == undefined){
+                                    revslider_showDoubleJqueryError('#rev_slider_6_1');
+                                }else{
+                                 revapi6 = tpj('#rev_slider_6_1').show().revolution(
+                                 {   
+                                    dottedOverlay:"none",
+                                    delay:9000,
+                                    startwidth:1180,
+                                    startheight:800,
+                                    hideThumbs:200,
+        
+                                    thumbWidth:100,
+                                    thumbHeight:50,
+                                    thumbAmount:4,
+        
+        
+                                    simplifyAll:"off",
+        
+                                    navigationType:"none",
+                                    navigationArrows:"none",
+                                    navigationStyle:"round",
+        
+                                    touchenabled:"off",
+                                    onHoverStop:"off",
+                                    nextSlideOnWindowFocus:"off",
+        
+        
+        
+        
+                                    keyboardNavigation:"off",
+        
+                                    navigationHAlign:"center",
+                                    navigationVAlign:"bottom",
+                                    navigationHOffset:0,
+                                    navigationVOffset:20,
+        
+                                    soloArrowLeftHalign:"left",
+                                    soloArrowLeftValign:"center",
+                                    soloArrowLeftHOffset:20,
+                                    soloArrowLeftVOffset:0,
+        
+                                    soloArrowRightHalign:"right",
+                                    soloArrowRightValign:"center",
+                                    soloArrowRightHOffset:20,
+                                    soloArrowRightVOffset:0,
+        
+                                    shadow:0,
+                                    fullWidth:"off",
+                                    fullScreen:"on",
+        
+                                    spinner:"spinner0",
+        
+                                    stopLoop:"off",
+                                    stopAfterLoops:-1,
+                                    stopAtSlide:-1,
+        
+                                    shuffle:"off",
+        
+        
+                                    forceFullWidth:"on",
+                                    fullScreenAlignForce:"off",
+                                    minFullScreenHeight:"",
+                                    hideTimerBar:"on",
+                                    hideThumbsOnMobile:"off",
+                                    hideNavDelayOnMobile:1500,
+                                    hideBulletsOnMobile:"off",
+                                    hideArrowsOnMobile:"off",
+                                    hideThumbsUnderResolution:0,
+        
+                                    fullScreenOffsetContainer: "",
+                                    fullScreenOffset: "",
+                                    hideSliderAtLimit:0,
+                                    hideCaptionAtLimit:0,
+                                    hideAllCaptionAtLilmit:0,
+                                    startWithSlide:0                    });
+                            }
+                        }); /*ready*/
+                    </script>
+    
+                    <div style="visibility: hidden; display: none;" class="tp-leftarrow tparrows round">
+                        <div class="tp-arr-allwrapper">
+                            <div class="tp-arr-iwrapper">
+                                <div class="tp-arr-imgholder" style="visibility: inherit; opacity: 1; background-image: url(/assets/transparent.png);">
+                                </div>
+                                <div class="tp-arr-imgholder2"></div>
+                                <div class="tp-arr-titleholder">
+                                </div>
+                                <div class="tp-arr-subtitleholder">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="visibility: hidden; display: none;" class="tp-rightarrow tparrows round">
+                        <div class="tp-arr-allwrapper">
+                            <div class="tp-arr-iwrapper">
+                                <div class="tp-arr-imgholder" style="visibility: inherit; opacity: 1; background-image: url(/assets/transparent.png);">
+                                </div>
+                                <div class="tp-arr-imgholder2"></div>
+                                <div class="tp-arr-titleholder"></div>
+                                <div class="tp-arr-subtitleholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tp-fullwidth-forcer" style="width: 100%; height: 540px;">
+                </div>
+            </div><!-- END REVOLUTION SLIDER -->
+        </div>
+    </div>
 </div>

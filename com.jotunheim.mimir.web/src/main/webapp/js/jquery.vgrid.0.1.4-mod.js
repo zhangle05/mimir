@@ -319,7 +319,7 @@
 				"position": "relative",
 				"width": "auto"
 			});
-			if(_self.data("_vgchild") === undefined) {
+			if(_self.data("_vgchild") == undefined) {
 				// do nothing
 			}
 			else {
@@ -329,31 +329,36 @@
 			//makePos(_self);
 			//moveTo(_self.data("_vgchild"));
 			/* ----- mod start ----- */
-			if(_self.data("_vgopt").forceAnim)
-			{
-				makePos(_self, true); // make init position
-				moveTo(_self.data("_vgchild"));
-				refleshHandler(_self); // animation
+			if(_self.data("_vgopt") == undefined) {
+				// do nothing
 			}
 			else {
-				makePos(_self);
-				moveTo(_self.data("_vgchild")); // no animation
-			}
-			/* ----- mod end ----- */
-			
-			if(_self.data("_vgopt").fadeIn)
-			{
-				var _prop = (typeof(_self.data("_vgopt").fadeIn)=='object')
-								? _self.data("_vgopt").fadeIn
-								: {time: _self.data("_vgopt").fadeIn} ;
-				_self.data("_vgchild").each(function(i)
+				if(_self.data("_vgopt").forceAnim)
 				{
-					var _c = $(this);
-					_c.css('display', 'none');
-					setTimeout(function(){
-						_c.fadeIn(_prop.time || 250);
-					}, i * (_prop.delay || 0));
-				});
+					makePos(_self, true); // make init position
+					moveTo(_self.data("_vgchild"));
+					refleshHandler(_self); // animation
+				}
+				else {
+					makePos(_self);
+					moveTo(_self.data("_vgchild")); // no animation
+				}
+				/* ----- mod end ----- */
+				
+				if(_self.data("_vgopt").fadeIn)
+				{
+					var _prop = (typeof(_self.data("_vgopt").fadeIn)=='object')
+									? _self.data("_vgopt").fadeIn
+									: {time: _self.data("_vgopt").fadeIn} ;
+					_self.data("_vgchild").each(function(i)
+					{
+						var _c = $(this);
+						_c.css('display', 'none');
+						setTimeout(function(){
+							_c.fadeIn(_prop.time || 250);
+						}, i * (_prop.delay || 0));
+					});
+				}
 			}
 			$(window).resize(function(e)
 			{
