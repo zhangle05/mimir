@@ -47,6 +47,8 @@
                 <value>/META-INF/DB-HBM/Location.hbm.xml</value>
                 <value>/META-INF/DB-HBM/User.hbm.xml</value>
                 <value>/META-INF/DB-HBM/UserRole.hbm.xml</value>
+                <value>/META-INF/DB-HBM/Blog.hbm.xml</value>
+                <value>/META-INF/DB-HBM/Photo.hbm.xml</value>
             </list>
         </property>
         <!-- 定义Hibernate 的SessionFactory 属性 -->
@@ -81,6 +83,12 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <bean id="userRoleDao" class="com.jotunheim.mimir.dao.impl.UserRoleDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="blogDao" class="com.jotunheim.mimir.dao.impl.BlogDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="photoDao" class="com.jotunheim.mimir.dao.impl.PhotoDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 </beans>
