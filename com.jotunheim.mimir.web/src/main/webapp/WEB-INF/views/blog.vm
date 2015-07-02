@@ -1,4 +1,5 @@
 #set($layout="/layout/web_layout.vm")
+#set($menu="Blog")
 #set($title="blogs")
 
 <div id="grid-wrapper" style="position: relative; width: auto; height: 1374px;">

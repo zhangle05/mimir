@@ -12,21 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author zhangle
  *
  */
-@RequestMapping("/blog")
+
+@RequestMapping("/work")
 @Controller
-public class BlogController {
-    private static Log LOG = LogFactory.getLog(BlogController.class);
+public class WorkController {
+    private static Log LOG = LogFactory.getLog(WorkController.class);
 
     /**
      * Constructor
      */
-    public BlogController() {
-        LOG.debug("Creating BlogController.");
+    public WorkController() {
+        LOG.debug("Creating WorkController.");
     }
 
     @RequestMapping("/")
-    public String listBlogs() {
-        LOG.debug("List blogs.");
-        return "blog";
+    public String listWorks() {
+        LOG.debug("List works.");
+        return "work";
     }
 }

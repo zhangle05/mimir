@@ -163,11 +163,23 @@
             <ul id="nav">
                 <div class="menu-kourami-menu-container">
                     <ul id="menu-kourami-menu" class="menu">
-                        <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142 current-menu-item"><a href="/">Home</a></li>
-                        <li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26"><a href="/studio/">Studio</a></li>
-                        <li id="menu-item-27" class="single-item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-27"><a href="#">Works</a></li>
-                        <li id="menu-item-32" class="single-item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-32"><a href="/blog/">Blog</a></li>
-                        <li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="/contact/">Contact</a></li>
+                        <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142 #if("Home"==$menu)current-menu-item #end">
+                            <a href="/">Home</a>
+                        </li>
+<!--
+                        <li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26 #if("Studio"==$menu)current-menu-item #end">
+                            <a href="/studio/">Studio</a>
+                        </li>
+-->
+                        <li id="menu-item-27" class="single-item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-27 #if("Works"==$menu)current-menu-item #end">
+                            <a href="/work/">Works</a>
+                        </li>
+                        <li id="menu-item-32" class="single-item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-32 #if("Blog"==$menu)current-menu-item #end">
+                            <a href="/blog/">Blog</a>
+                        </li>
+                        <li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153 #if("Contact"==$menu)current-menu-item #end">
+                            <a href="/contact/">Contact</a>
+                        </li>
                     </ul>
                 </div>
                     <!-- END #secondary-nav -->
