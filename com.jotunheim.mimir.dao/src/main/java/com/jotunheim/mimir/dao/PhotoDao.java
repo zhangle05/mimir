@@ -26,5 +26,7 @@ public interface PhotoDao {
     public Photo findById( long id);
     
     public List<Photo> findByExample(Photo instance);
+    
+    public List<Photo> listPhotos(int page, int pageSize);
 }
 

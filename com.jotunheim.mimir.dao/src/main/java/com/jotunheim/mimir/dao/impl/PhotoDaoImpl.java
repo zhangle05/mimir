@@ -7,7 +7,9 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
 import org.hibernate.criterion.Example;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jotunheim.mimir.dao.PhotoDao;
 import com.jotunheim.mimir.domain.Photo;
@@ -17,6 +19,7 @@ import com.jotunheim.mimir.domain.Photo;
  * @see com.jotunheim.mimir.domain.Photo
  * @author Hibernate Tools
  */
+@Transactional
 public class PhotoDaoImpl extends BaseDaoImpl implements PhotoDao {
 
     private static final Log log = LogFactory.getLog(PhotoDaoImpl.class);
@@ -114,6 +117,23 @@ public class PhotoDaoImpl extends BaseDaoImpl implements PhotoDao {
         }
         catch (RuntimeException re) {
             log.error("find by example failed", re);
+            throw re;
+        }
+    }
+
+    public List<Photo> listPhotos(int page, int pageSize) {
+        log.debug("list photos, page is:" + page + ", pageSize is:" + pageSize);
+        try {
+//            Session session = sessionFactory.openSession();
+            Query q = sessionFactory.getCurrentSession().createQuery("from Photo"); 
+            q.setFirstResult((page-1) * pageSize); 
+            q.setMaxResults(pageSize);
+            List<Photo> results = q.list();
+            log.debug("list user successful, result size: " + results.size());
+            return results;
+        }
+        catch (RuntimeException re) {
+            log.error("get failed", re);
             throw re;
         }
     } 

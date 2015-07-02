@@ -182,6 +182,7 @@
                 </resources>
             </build>
             <properties>
+                <exception.name>ex</exception.name>
                 <!-- 服务属性配置 -->
                 <service.type>online</service.type>
             </properties>
@@ -199,6 +200,7 @@
                 </resources>
             </build>
             <properties>
+                <exception.name>exception</exception.name>
                 <!-- 服务属性配置 -->
                 <service.type>mock</service.type>
             </properties>

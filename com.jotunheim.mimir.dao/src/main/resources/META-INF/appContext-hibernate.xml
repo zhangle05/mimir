@@ -62,7 +62,7 @@
                 </prop>
                 <!--配置启动应用时，是否根据Hibernate 映射自动创建数据表 -->
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate3.SpringSessionContext</prop>
                 <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
             </props>
         </property>
@@ -72,6 +72,7 @@
         class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!-- data source for writing, finish -->
 

@@ -119,6 +119,11 @@ public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
             log.error("find by example failed", re);
             throw re;
         }
+    }
+
+    public List<Blog> listBlogs(int page, int pageSize) {
+        // TODO Auto-generated method stub
+        return null;
     } 
 }
 

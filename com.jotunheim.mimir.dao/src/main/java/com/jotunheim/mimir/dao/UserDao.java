@@ -25,16 +25,16 @@ public interface UserDao {
     
     public User findById( java.lang.Long id);
     
-    public List findByExample(User instance);
+    public List<User> findByExample(User instance);
 
     public User findByName(String name);
 
-    public List findBySchool(long schoolID);
+    public List<User> findBySchool(long schoolID);
 
     public User findByMobile(String mobile);
 
     public int getUserCount();
 
-    public List listUsers(int page, int pageSize);
+    public List<User> listUsers(int page, int pageSize);
 }
 

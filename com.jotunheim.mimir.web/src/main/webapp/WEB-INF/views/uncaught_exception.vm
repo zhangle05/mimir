@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+#set($layout="/layout/web_layout.vm")
+#set($menu="Home")
+#set($title="出错啦")
 
 <div class="text_block">
-	Uncaught Exception
+    出错啦:<br/>
+    $!{errorMsg} <br/>
+    <!-- for releasse version -->
+    $!{ex}
+    <!-- for debug version -->
+    $!{exception} <br/><br/>
+    #foreach($s in $exception.stackTrace)
+       $!{s}<br/>
+    #end
 </div>

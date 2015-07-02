@@ -25,6 +25,6 @@ public interface LocationDao {
     
     public Location findById( long id);
     
-    public List findByExample(Location instance);
+    public List<Location> findByExample(Location instance);
 }
 
