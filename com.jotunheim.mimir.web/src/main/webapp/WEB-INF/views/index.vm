@@ -6,7 +6,7 @@
         <div style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-20">
             <link href="/css/home.css" rel="stylesheet" type="text/css">
             <div style="position:relative;width:100%;height:auto;margin-top:0px;margin-bottom:0px" class="forcefullwidth_wrapper_tp_banner">
-                <div id="rev_slider_6_1_wrapper" class="rev_slider_wrapper fullscreen-container" style="padding: 0px; height: 550px; left: 0px; position: absolute; width: 1280px; max-height: none; overflow: visible; background-color: rgb(236, 101, 81);">
+                <div id="rev_slider_6_1_wrapper" class="rev_slider_wrapper fullscreen-container" style="padding: 0px; height: 550px; left: 0px; position: absolute; width: 1280px; max-height: none; overflow: visible; background-color: rgb(82, 189, 228);">
                     <!-- START REVOLUTION SLIDER 4.6.5 fullscreen mode -->
                     
                     <div id="rev_slider_6_1" class="rev_slider fullscreenbanner" style="display:none;">
