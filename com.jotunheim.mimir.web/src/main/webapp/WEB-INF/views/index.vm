@@ -678,7 +678,7 @@
                             }
                         }); /*ready*/
                     </script>
-    
+
                     <div style="visibility: hidden; display: none;" class="tp-leftarrow tparrows round">
                         <div class="tp-arr-allwrapper">
                             <div class="tp-arr-iwrapper">
