@@ -63,7 +63,7 @@
              data-end="8700" 
  data-endspeed="300" 
 
-            style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">OCTOPUS 
+            style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">$!{msgSource.getMessage("company_name",null,$locale)} 
         </div>
 
         <!-- LAYER NR. 4 -->

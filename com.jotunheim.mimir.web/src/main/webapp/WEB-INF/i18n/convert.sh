@@ -1,4 +1,4 @@
 #!/bin/bash
 
-native2ascii -encoding utf8 application_cn_native.properties application_cn.properties
-native2ascii -encoding utf8 messages_cn_native.properties messages_cn.properties
+native2ascii -encoding utf8 application_zh_native.properties application_zh.properties
+native2ascii -encoding utf8 messages_zh_native.properties messages_zh.properties
