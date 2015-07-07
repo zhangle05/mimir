@@ -150,7 +150,7 @@
 </head>
 
 <body>
-    #include("/widget/top_panel.vm")
+    #parse("/widget/top_panel.vm")
 
 <div id="container" style="width: 975px;">
     <div id="header">
@@ -164,7 +164,7 @@
                 <div class="menu-kourami-menu-container">
                     <ul id="menu-kourami-menu" class="menu">
                         <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142 #if("Home"==$menu)current-menu-item #end">
-                            <a href="/">Home</a>
+                            <a href="/">$!{msgSource.getMessage("global_menu_home",null,$locale)}</a>
                         </li>
 <!--
                         <li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26 #if("Studio"==$menu)current-menu-item #end">
@@ -172,13 +172,13 @@
                         </li>
 -->
                         <li id="menu-item-27" class="single-item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-27 #if("Works"==$menu)current-menu-item #end">
-                            <a href="/work/">Works</a>
+                            <a href="/work/">$!{msgSource.getMessage("global_menu_works",null,$locale)}</a>
                         </li>
                         <li id="menu-item-32" class="single-item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-32 #if("Blog"==$menu)current-menu-item #end">
-                            <a href="/blog/">Blog</a>
+                            <a href="/blog/">$!{msgSource.getMessage("global_menu_blog",null,$locale)}</a>
                         </li>
                         <li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153 #if("Contact"==$menu)current-menu-item #end">
-                            <a href="/contact/">Contact</a>
+                            <a href="/contact/">$!{msgSource.getMessage("global_menu_about",null,$locale)}</a>
                         </li>
                     </ul>
                 </div>

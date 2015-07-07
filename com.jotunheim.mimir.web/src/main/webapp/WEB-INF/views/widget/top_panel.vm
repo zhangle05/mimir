@@ -56,8 +56,8 @@
             <li class="left">&nbsp;</li>
             <!-- Login / Register -->
             <li id="toggle">
-                <a id="open" class="open" href="#">↑ Contact us</a>
-                <a id="close" style="display: none;" class="close" href="#">× Close Panel</a>
+                <a id="open" class="open" href="#">↑ $!{msgSource.getMessage("general_text_contact_us",null,$locale)}</a>
+                <a id="close" style="display: none;" class="close" href="#">× $!{msgSource.getMessage("general_text_close_panel",null,$locale)}</a>
             </li>
             <li class="right">&nbsp;</li>
         </ul> 
