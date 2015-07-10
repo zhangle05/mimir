@@ -26,16 +26,20 @@
                     </div>
                 </div>
             </div>
-<!--
             <div class="left right">
                 <div id="text-4" class="widget widget_text">
-                    <h1>Octopus Studio China</h1>
+                    <h1>
+                        $!{msgSource.getMessage("top_panel_org_name",null,$locale)}
+                        $!{msgSource.getMessage("location_Dongyang",null,$locale)}
+                    </h1>
                     <div class="textwidget">
-                        <h2>Tokyo</h2>  
-                        <p class="grey">Kotoku Ariake 1 Chome 5-2-2519
-                        <br>135-0063 Tokyo<br>Japan</p>
+                        <h2>$!{msgSource.getMessage("location_Dongyang",null,$locale)}</h2>  
+                        <p class="grey">$!{msgSource.getMessage("top_panel_address2",null,$locale)}
+                            $!{msgSource.getMessage("location_Dongyang",null,$locale)}<br>
+                            $!{msgSource.getMessage("location_China",null,$locale)}
+                        </p>
 
-                        <a href="mailto:%69nfo@kissi%6eg%6boura%6di%2e%6ap">info@kissingkourami.jp</a> <br><p></p>
+                        <a href="mailto:info.octopus.studio@gmail.com">info.octopus.studio@gmail.com</a> <br><p></p>
 
                         <div style="display: inline-block;">
                             <a href="https://plus.google.com/b/115872464041013581673/" style="text-decoration: none; color: #333;">
@@ -48,7 +52,6 @@
                     </div>
                 </div>
             </div>
--->
         </div>
     </div> <!-- /login -->  
 
