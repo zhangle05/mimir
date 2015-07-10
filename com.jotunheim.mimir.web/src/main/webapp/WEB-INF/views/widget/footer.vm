@@ -6,64 +6,68 @@
 <div id="$!{footer}" style="visibility: visible; display: block;">
     <div class="widget">
         <div id="text-2" class="widget widget_text">
-            <h3 class="widget-title">Octopus Studio</h3>
-            <div class="textwidget"><p>Cute Creative Company<br>
-                A Swiss graphic design studio<br>
-                in Geneva and Tokyo</p>
+            <h3 class="widget-title">$!{msgSource.getMessage("org_name",null,$locale)}</h3>
+            <div class="textwidget"><p>$!{msgSource.getMessage("footer_into_title",null,$locale)}<br>
+                $!{msgSource.getMessage("footer_into_body",null,$locale)}<br>
+                $!{msgSource.getMessage("footer_into_location",null,$locale)}</p>
             </div>
         </div>
     </div>
     <div class="widget">
-        <div id="text-3" class="widget widget_text"><h3 class="widget-title">Services</h3>
+        <div id="text-3" class="widget widget_text">
+            <h3 class="widget-title">$!{msgSource.getMessage("footer_businesses",null,$locale)}</h3>
             <div class="textwidget">
                 <p>
-                    <a title="Web, Webdesign and dev" href="/tag/web/">Webdesign</a>,
-                    <a title="Design, branding, rebranding, corporate" href="/tag/design/">Design</a>,
-                    <a title="Illustrations, mascots, characters" href="/tag/illustrations/">Illustrations</a>,
-                    <a title="Print" href="/tag/print/">Print</a><br>
-                    Postcards, Brochures, and more...<br>
-                    © 2014, all rights reserved.
+                    <a title="$!{msgSource.getMessage("footer_a_title1",null,$locale)}" href="/tag/web/">
+                        $!{msgSource.getMessage("footer_business_1",null,$locale)}</a>,
+                    <a title="$!{msgSource.getMessage("footer_a_title2",null,$locale)}" href="/tag/design/">
+                        $!{msgSource.getMessage("footer_business_2",null,$locale)}</a>,
+                    <a title="$!{msgSource.getMessage("footer_a_title3",null,$locale)}" href="/tag/illustrations/">
+                        $!{msgSource.getMessage("footer_business_3",null,$locale)}</a>,
+                    <a title="$!{msgSource.getMessage("footer_a_title4",null,$locale)}" href="/tag/print/">
+                        $!{msgSource.getMessage("footer_business_4",null,$locale)}</a><br>
+                    $!{msgSource.getMessage("footer_business_more",null,$locale)}<br>
+                    © 2015, $!{msgSource.getMessage("footer_copy_rights",null,$locale)}
                 </p>
             </div>
         </div>
     </div>
     <div class="widget">
         <div id="advancedrecentposts-3" class="widget widget_advancedrecentposts">
-            <h3 class="widget-title">On blog</h3>
+            <h3 class="widget-title">$!{msgSource.getMessage("footer_on_blog",null,$locale)}</h3>
             <ul class="advanced-recent-posts">
-                <li><a href="/nuit-philo-design-poster/" title="La Nuit de la Philo 2014">La Nuit de la Philo 2014</a></li>
-                <li><a href="/greetings-cards-for-cute-new-year/" title="Our greetings cards for the cute new year">Our greetings cards for the cute new year</a></li>
-                <li><a href="/design-french-business-campus-2013/" title="New design for the French Business Campus">New design for the French Business Campus</a></li>
+                <li><a href="/nuit-philo-design-poster/" title="$!{msgSource.getMessage("footer_a_title5",null,$locale)}">
+                    $!{msgSource.getMessage("footer_on_blog_1",null,$locale)}</a></li>
+                <li><a href="/greetings-cards-for-cute-new-year/" title="$!{msgSource.getMessage("footer_a_title6",null,$locale)}">
+                    $!{msgSource.getMessage("footer_on_blog_2",null,$locale)}</a></li>
+                <li><a href="/design-french-business-campus-2013/" title="$!{msgSource.getMessage("footer_a_title7",null,$locale)}">
+                    $!{msgSource.getMessage("footer_on_blog_3",null,$locale)}</a></li>
             </ul>
         </div>
     </div>
     <div class="widget">
         <div id="rotatingtweets_widget-2" class="widget widget_rotatingtweets_widget">
-            <h3 class="widget-title">On twitter</h3>
+            <h3 class="widget-title">$!{msgSource.getMessage("footer_on_twitter",null,$locale)}</h3>
             <div class="rotatingtweets rotatingtweets_format_0" id="rotatingtweets_554a0c4da8de0" data-cycle-auto-height="calc" data-cycle-fx="fade" data-cycle-pause-on-hover="true" data-cycle-timeout="4000" data-cycle-speed="1000" data-cycle-easing="swing" data-cycle-slides="div.rotatingtweet" data-cycle-log="false" style="position: relative; width: 240px; height: 48px;">
                 <div class="rotatingtweet" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 5; opacity: 0; width: 240px;">
                     <p class="rtw_main">
-                        Un petit goût de Bordeaux au Japon avec les cannelés du Natural Lawson <a href="http://twitter.com/search?q=%23oishii&src=hash" title="#oishii" target="_blank" class="rtw_hashtag_link">#oishii</a> ! <a href="http://t.co/dyeXjzM6mv" title="http://twitter.com/kourami/status/590417896955740160/photo/1" target="_blank" class="rtw_media_link">pic.twitter.com/dyeXjzM6mv</a>
+                        $!{msgSource.getMessage("footer_on_twitter_1",null,$locale)}
+                        <a href="#" title="#" target="_blank" class="rtw_hashtag_link">$!{msgSource.getMessage("footer_on_twitter_2",null,$locale)}</a> ! 
+                        <a href="#" title="#" target="_blank" class="rtw_media_link">$!{msgSource.getMessage("footer_on_twitter_3",null,$locale)}</a>
                     </p>
                 </div>
                 <div class="rotatingtweet" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 5; width: 240px; opacity: 0;">
                     <p class="rtw_main">
-                        Pour les futurs Mangakas : Une école de manga ouvre en France et c'est à Angoulême ! <a href="http://t.co/VEUmpyOsBC" title="http://eu.athuman.com/" target="_blank" class="rtw_url_link">eu.athuman.com</a>
+                        $!{msgSource.getMessage("footer_on_twitter_4",null,$locale)}
+                        <a href="#" title="#" target="_blank" class="rtw_url_link">$!{msgSource.getMessage("footer_on_twitter_5",null,$locale)}</a>
                     </p>
                 </div>
                 <div class="rotatingtweet" style="display: block; position: absolute; top: 0px; left: 0px; z-index: 6; width: 240px; opacity: 1;">
                     <p class="rtw_main">
-                        Live at Tokyo Dome. <a href="http://twitter.com/search?q=%23Awaodori&src=hash" title="#Awaodori" target="_blank" class="rtw_hashtag_link">#Awaodori</a> only in Japan 🗾 <a href="http://t.co/ATyVJa8dl2" title="http://twitter.com/kourami/status/556695527253757952/photo/1" target="_blank" class="rtw_media_link">pic.twitter.com/ATyVJa8dl2</a>
-                    </p>
-                </div>
-                <div class="rotatingtweet" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 2; width: 240px; opacity: 0;">
-                    <p class="rtw_main">
-                        Une petite vue sur le Fuji san et le Rainbow bridge de Tokyo depuis Ariake ! <a href="http://twitter.com/search?q=%23Japan&src=hash" title="#Japan" target="_blank" class="rtw_hashtag_link">#Japan</a> ! <a href="http://t.co/4ma09cXfYh" title="http://twitter.com/kourami/status/556646058764161024/photo/1" target="_blank" class="rtw_media_link">pic.twitter.com/4ma09cXfYh</a>
-                    </p>
-                </div>
-                <div class="rotatingtweet" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 1; width: 240px; opacity: 0;">
-                    <p class="rtw_main">
-                        Quelques minutes de neige ce dimanche à Tokyo ❄ ❄ ❄
+                        $!{msgSource.getMessage("footer_on_twitter_6",null,$locale)}
+                        <a href="#" title="#" target="_blank" class="rtw_hashtag_link">$!{msgSource.getMessage("footer_on_twitter_7",null,$locale)}</a>
+                        $!{msgSource.getMessage("footer_on_twitter_8",null,$locale)}
+                        <a href="#" title="#" target="_blank" class="rtw_media_link">$!{msgSource.getMessage("footer_on_twitter_9",null,$locale)}</a>
                     </p>
                 </div>
             </div>
