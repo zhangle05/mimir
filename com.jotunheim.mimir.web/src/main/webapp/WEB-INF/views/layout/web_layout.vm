@@ -4,7 +4,7 @@
     #if($!{title})
         <title>$!{title}</title>
     #else
-        <title>标题未设置</title>
+        <title>$!{msgSource.getMessage("title_not_set",null,$locale)}</title>
     #end
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Content-Style-Type" content="text/css">
