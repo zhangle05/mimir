@@ -3,7 +3,7 @@
 #set($title="出错啦")
 
 <div class="text_block">
-    出错啦:<br/>
+    $!{msgSource.getMessage("uncaught_exception",null,$locale)}:<br/>
     $!{errorMsg} <br/>
     <!-- for releasse version -->
     $!{ex}
