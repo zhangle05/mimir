@@ -4,17 +4,15 @@
 
 <div id="single-wrapper" style="padding-top: 0px;">
 
-    <div class="post-1464 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1464" style="position: absolute; left: 0px; top: 0px;">
-        <h2 class="post-title">
-            <a href="#" rel="bookmark">$!{blog.title}</a>
-        </h2>
-        <div class="post-body">
-            <p>
-            $!{blog.htmlBody}
-            </p>
-        </div>
-        <p class="post-meta">
-            $!{TimeUtils.formatDate($blog.createTime, "MM/dd/yyyy")}.<br/><br/>
+    <h2 class="post-title">
+        <a href="#" rel="bookmark">$!{blog.title}</a>
+    </h2>
+    <div class="post-body">
+        <p>
+        $!{blog.htmlBody}
         </p>
     </div>
+    <p class="post-meta">
+        $!{TimeUtils.formatDate($blog.createTime, "MM/dd/yyyy")}.<br/><br/>
+    </p>
 </div>
