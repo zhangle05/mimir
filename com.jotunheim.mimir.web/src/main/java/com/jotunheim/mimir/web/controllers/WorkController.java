@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,5 +66,19 @@ public class WorkController {
         json.accumulate("photos", blogList);
         LOG.debug("Ajax list works done, result is:" + json.toString());
         return json.toString();
+    }
+
+
+    @RequestMapping(value = "/detail/{id}")
+    public String workDetail(Model uiModel, HttpServletRequest request,
+            @PathVariable(value = "id") Long photoId) {
+        LOG.debug("Get work (photo) detail of:" + photoId);
+        Photo photo = photoDao.findById(photoId);
+        LOG.debug("Get photo done, result is:" + photo);
+        if(photo != null) {
+            LOG.debug("Photo uri is:" + photo.getUri());
+        }
+        uiModel.addAttribute("photo", photo);
+        return "work_detail";
     }
 }

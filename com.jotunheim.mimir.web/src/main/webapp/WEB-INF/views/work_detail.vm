@@ -1,0 +1,21 @@
+#set($layout="/layout/web_layout.vm")
+#set($menu="Work")
+#set($title=$photo.title)
+
+<div id="single-wrapper" style="padding-top: 0px;">
+
+    <h2 class="post-title">
+        <a href="#" rel="bookmark">$!{photo.title}</a>
+    </h2>
+    <div class="post-body">
+        <p>
+        <img src="$!{photo.uri}" />
+        </p>
+        <p>
+        $!{photo.description}
+        </p>
+    </div>
+    <p class="post-meta">
+        $!{TimeUtils.formatDate($photo.createTime, "MM/dd/yyyy")}.<br/><br/>
+    </p>
+</div>
