@@ -4,90 +4,25 @@
 
 <div id="grid-wrapper" style="position: relative; width: auto; height: 1374px;">
 
-    <div class="post-1464 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1464" style="position: absolute; left: 0px; top: 0px;">
-        <h2 class="post-title">
-            <a href="http://www.kissingkourami.jp/nuit-philo-design-poster/" rel="bookmark">La Nuit de la Philo 2014</a>
-        </h2>
-        <div class="post-body">
-            <p>
-            <span id="result_box" lang="en">
-            <span class="hps">For “La nuit de la Philo</span>
-            <span class="hps">2014″ at</span>
-            <span class="hps">Institut Francais du Japon – Tokyo</span>
-            <span class="hps">,</span>
-            <span class="hps">which offered</span>
-            <span class="hps">various artists, performances and</span>
-            <span class="hps">conferences.</span> We was happy to
-            <span class="hps">realized,</span>
-            <span class="hps">this</span>
-            <span class="hps">year</span>
-            <span class="hps">again,</span>
-            <span class="hps">the poster of the</span> <span class="hps">event</span>. You can see the original poster on the <span id="result_box" lang="en"><span class="hps">Institut Francais du Japon – Tokyo</span></span> website, but for the our blog only, <span class="hps">we</span> want also <span class="hps">to show you</span> one <span class="hps">proposal of the</span> <span class="hps">poster</span> <span class="hps">design</span> <span class="hps">we</span> <span class="hps">also</span> <span class="hps">made</span> <span class="hps">to our</span> <span class="hps">client.</span></span>
-            <a href="http://www.kissingkourami.jp/nuit-philo-design-poster/#more-1464" class="more-link">Details »</a>
+    #foreach($blog in $blogs)
+        <div class="post-1464 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1464" style="position: absolute; left: 0px; top: 0px;">
+            <h2 class="post-title">
+                <a href="#" rel="bookmark">$!{blog.title}</a>
+            </h2>
+            <div class="post-body">
+                <p>
+                #if($blog.abstra)
+                    $!{blog.abstra}
+                #else
+                    $!{blog.htmlBody}
+                #end
+                <a href="http://www.kissingkourami.jp/nuit-philo-design-poster/#more-1464" class="more-link">
+                $!{msgSource.getMessage("general_text_details",null,$locale)} »</a>
+                </p>
+            </div>
+            <p class="post-meta">
+                $!{TimeUtils.formatDate($blog.createTime, "MM/dd/yyyy")}.<br/><br/>
             </p>
         </div>
-        <p class="post-meta">
-            On 05/06/2014.<br>
-                        <br>
-                        </p>
-    </div>
-
-    <div class="post-1341 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-feature grid-item x1" id="post-1341" style="position: absolute; left: 240px; top: 0px;">
-        <h2 class="post-title">
-            <a href="http://www.kissingkourami.jp/greetings-cards-for-cute-new-year/" rel="bookmark">Our greetings cards for the cute new year</a>
-        </h2>
-        <div class="post-body">
-            <p>Japanese Life Tree is our New year greeting card printed on a Deluxe Paper with red edges. Just a Japanese small life in a Swiss pine tree. (Do not forget that we are a swiss-Japanese studio), Bonus, for our customers and friends, a box of Japanese chocolate customised with our design! To all, we wish you a good and cute new year !<br>
-            <a href="http://www.kissingkourami.jp/greetings-cards-for-cute-new-year/#more-1341" class="more-link">Details »</a>
-            </p>
-        </div>
-        <p class="post-meta">
-            On 31/12/2013.<br>
-                        <br>
-        </p>
-    </div>
-
-    <div class="post-1326 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1326" style="position: absolute; left: 480px; top: 0px;">
-        <h2 class="post-title">
-            <a href="http://www.kissingkourami.jp/design-french-business-campus-2013/" rel="bookmark">New design for the French Business Campus</a>
-        </h2>
-        <div class="post-body">
-            <p>For the second edition of the French Business Campus organized by the CCIFJ and Meiji University, we redesign the original logotype and, most important, we created the mascot of the event. A little Japanese student girl (we will reveal the name maybe for next edition). We also happy to meet some student at Meiji University. We realized logotype, characters, poster, mail marking, brochure documents, indoor giant posters.<br>
-            <a href="http://www.kissingkourami.jp/design-french-business-campus-2013/#more-1326" class="more-link">Details »</a>
-            </p>
-        </div>
-        <p class="post-meta">
-            On 25/11/2013.<br>
-                        <br>
-        </p>
-    </div>
-
-    <div class="post-1309 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1309" style="position: absolute; left: 720px; top: 0px;">
-        <h2 class="post-title">
-            <a href="http://www.kissingkourami.jp/quick-stop-at-the-kurami-station/" rel="bookmark">A quick stop at the Kurami station.</a>
-        </h2>
-        <div class="post-body">
-            <p>This weekend, on the road to Enoshima (A really beautiful small island not so far), we make a brief stop at the small train station named “Kurami” (倉見駅 Kurami-eki). It is about one hour from Shinjuku. <a href="http://www.kissingkourami.jp/quick-stop-at-the-kurami-station/#more-1309" class="more-link">Details »</a>
-            </p>
-        </div>
-        <p class="post-meta">
-            On 13/10/2013.<br>
-                    <br>
-        </p>
-    </div>
-
-    <div class="post-1207 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-feature grid-item x1" id="post-1207" style="position: absolute; left: 720px; top: 252px;">
-        <h2 class="post-title">
-            <a href="http://www.kissingkourami.jp/franco-japanese-graphic-design-logotype/" rel="bookmark">A franco-japanese logotype</a>
-        </h2>
-        <div class="post-body">
-            <p>For the coming of the French president Francois Hollande, the CCIFJ organized a meeting between French and Japanese company and asked us to create the corporate around this day. We realized the graphic design of the official brochure, board, menus, cover bento and the official logo of Franco-Japanese meetings. The logotype is based of Japanese origami and colour of French and Japanese flag.  <a href="http://www.kissingkourami.jp/franco-japanese-graphic-design-logotype/#more-1207" class="more-link">Details »</a>
-            </p>
-        </div>
-        <p class="post-meta">
-            On 08/07/2013.<br>
-                    <br>
-        </p>
-    </div>
-
+    #end
 </div>

@@ -1,6 +1,6 @@
 #set($layout="/layout/web_layout.vm")
 #set($menu="Home")
-#set($title="出错啦")
+#set($title=${msgSource.getMessage("uncaught_exception",null,$locale)})
 
 <div class="text_block">
     $!{msgSource.getMessage("uncaught_exception",null,$locale)}:<br/>

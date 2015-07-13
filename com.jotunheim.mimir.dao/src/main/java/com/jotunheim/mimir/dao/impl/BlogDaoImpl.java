@@ -4,13 +4,12 @@ package com.jotunheim.mimir.dao.impl;
 
 import java.util.List;
 
-import javax.naming.InitialContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
-import org.hibernate.SessionFactory;
+import org.hibernate.Query;
 import org.hibernate.criterion.Example;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jotunheim.mimir.dao.BlogDao;
 import com.jotunheim.mimir.domain.Blog;
@@ -20,6 +19,7 @@ import com.jotunheim.mimir.domain.Blog;
  * @see com.jotunheim.mimir.domain.Blog
  * @author Hibernate Tools
  */
+@Transactional
 public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
 
     private static final Log log = LogFactory.getLog(BlogDaoImpl.class);
@@ -122,8 +122,41 @@ public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
     }
 
     public List<Blog> listBlogs(int page, int pageSize) {
-        // TODO Auto-generated method stub
-        return null;
-    } 
+        log.debug("list blogs, page is:" + page + ", pageSize is:" + pageSize);
+        try {
+//            Session session = sessionFactory.openSession();
+            Query q = sessionFactory.getCurrentSession().createQuery("from Blog"); 
+            q.setFirstResult((page-1) * pageSize); 
+            q.setMaxResults(pageSize);
+            List<Blog> results = q.list();
+            log.debug("list blog successful, result size: " + results.size());
+            return results;
+        }
+        catch (RuntimeException re) {
+            log.error("get failed", re);
+            throw re;
+        }
+    }
+
+    public int getBlogCount() {
+        log.debug("getting Blog count");
+        try {
+            Query q = sessionFactory
+                    .getCurrentSession()
+                    .createQuery(
+                            "SELECT COUNT(id) FROM Blog");
+            List results = q.list();
+            Long count = (Long) results.iterator().next();
+            if (count != null) {
+                log.debug("get Blog count successful, result is: "
+                        + count.intValue());
+                return count.intValue();
+            }
+        } catch (RuntimeException re) {
+            log.error("get failed", re);
+            throw re;
+        }
+        return 0;
+    }
 }
 

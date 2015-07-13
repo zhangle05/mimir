@@ -129,13 +129,34 @@ public class PhotoDaoImpl extends BaseDaoImpl implements PhotoDao {
             q.setFirstResult((page-1) * pageSize); 
             q.setMaxResults(pageSize);
             List<Photo> results = q.list();
-            log.debug("list user successful, result size: " + results.size());
+            log.debug("list photo successful, result size: " + results.size());
             return results;
         }
         catch (RuntimeException re) {
             log.error("get failed", re);
             throw re;
         }
-    } 
+    }
+
+    public int getPhotoCount() {
+        log.debug("getting Photo count");
+        try {
+            Query q = sessionFactory
+                    .getCurrentSession()
+                    .createQuery(
+                            "SELECT COUNT(id) FROM Photo");
+            List results = q.list();
+            Long count = (Long) results.iterator().next();
+            if (count != null) {
+                log.debug("get Photo count successful, result is: "
+                        + count.intValue());
+                return count.intValue();
+            }
+        } catch (RuntimeException re) {
+            log.error("get failed", re);
+            throw re;
+        }
+        return 0;
+    }
 }
 

@@ -28,5 +28,7 @@ public interface BlogDao {
     public List<Blog> findByExample(Blog instance);
     
     public List<Blog> listBlogs(int page, int pageSize);
+    
+    public int getBlogCount();
 }
 

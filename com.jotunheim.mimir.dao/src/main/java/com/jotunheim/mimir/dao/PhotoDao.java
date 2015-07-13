@@ -28,5 +28,7 @@ public interface PhotoDao {
     public List<Photo> findByExample(Photo instance);
     
     public List<Photo> listPhotos(int page, int pageSize);
+    
+    public int getPhotoCount();
 }
 
