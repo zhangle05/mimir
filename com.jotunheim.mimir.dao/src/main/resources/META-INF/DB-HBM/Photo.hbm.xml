@@ -8,6 +8,9 @@
             <column name="ID" />
             <generator class="identity" />
         </id>
+        <property name="thumbnail" type="java.lang.String">
+            <column name="THUMBNAIL" />
+        </property>
         <property name="uri" type="java.lang.String">
             <column name="URI" />
         </property>

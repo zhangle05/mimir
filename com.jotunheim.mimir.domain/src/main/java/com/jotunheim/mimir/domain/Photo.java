@@ -26,7 +26,15 @@ public class Photo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    /**
+     * 缩略图地址
+     * uri of the thumbnail
+     */
+    private String thumbnail;
+    /**
+     * 照片地址
+     * uri of the photo
+     */
     private String uri;
 
     private String title;
@@ -47,6 +55,20 @@ public class Photo implements Serializable {
      */
     public void setId(long id) {
         this.id = id;
+    }
+
+    /**
+     * @return the thumbnail
+     */
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    /**
+     * @param thumbnail the thumbnail to set
+     */
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     /**

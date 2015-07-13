@@ -15,11 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jotunheim.mimir.dao.PhotoDao;
-import com.jotunheim.mimir.domain.Blog;
 import com.jotunheim.mimir.domain.Photo;
 
 /**
@@ -51,7 +51,7 @@ public class WorkController {
     }
 
 
-    @RequestMapping(value = "/ajax")
+    @RequestMapping(value = "/ajax", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public @ResponseBody String ajaxWorkList(Model uiModel, HttpServletRequest request,
             @RequestParam(value = "p", required = true) Integer page,
             @RequestParam(value = "ps", required = true) Integer pageSize) {

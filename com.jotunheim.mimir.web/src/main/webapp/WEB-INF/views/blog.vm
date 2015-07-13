@@ -1,13 +1,13 @@
 #set($layout="/layout/web_layout.vm")
 #set($menu="Blog")
-#set($title="blogs")
+#set($title=${msgSource.getMessage("global_menu_blog",null,$locale)})
 
 <div id="grid-wrapper" style="position: relative; width: auto; height: 1374px;">
 
     #foreach($blog in $blogs)
         <div class="post-1464 post type-post status-publish format-standard hentry category-blog grid-item x1" id="post-1464" style="position: absolute; left: 0px; top: 0px;">
             <h2 class="post-title">
-                <a href="#" rel="bookmark">$!{blog.title}</a>
+                <a href="/blog/detail/$!{blog.id}" rel="bookmark">$!{blog.title}</a>
             </h2>
             <div class="post-body">
                 <p>
@@ -16,7 +16,7 @@
                 #else
                     $!{blog.htmlBody}
                 #end
-                <a href="http://www.kissingkourami.jp/nuit-philo-design-poster/#more-1464" class="more-link">
+                <a href="/blog/detail/$!{blog.id}" class="more-link">
                 $!{msgSource.getMessage("general_text_details",null,$locale)} »</a>
                 </p>
             </div>
