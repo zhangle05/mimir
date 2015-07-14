@@ -143,6 +143,26 @@
     })(jQuery); // end of jQuery name space 
     
     //]]>
+
+    function setLanguage(lang) {
+        jQuery.ajax({
+            type:"get",
+            url:"/settings/lang/" + lang,
+            dataType: 'json',
+            async:false,
+            success: function(data) {
+                if(data['result'] == 1) {
+                    window.location.reload(true);
+                }
+                else {
+                    window.alert(data['msg']);
+                }
+            },
+            error: function(e) {
+                console.log(e);
+            }
+        });
+    }
     </script>
 
     #include("/common/stat_baidu.vm")
@@ -161,6 +181,13 @@
             <ul id="nav">
                 <div class="menu-kourami-menu-container">
                     <ul id="menu-kourami-menu" class="menu">
+                        <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142 #if("Home"==$menu)current-menu-item #end">
+                            <a title="简体中文" href="#" onclick="setLanguage('zh');"><img class="lang-flag" src="/img/flag-cn.png" /></a>
+                        </li>
+                        <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142 #if("Home"==$menu)current-menu-item #end">
+                            <a title="English" href="#" onclick="setLanguage('en');"><img class="lang-flag" src="/img/flag-uk.png" /></a>
+                        </li>
+
                         <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142 #if("Home"==$menu)current-menu-item #end">
                             <a href="/">$!{msgSource.getMessage("global_menu_home",null,$locale)}</a>
                         </li>
