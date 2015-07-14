@@ -125,7 +125,7 @@ public class PhotoDaoImpl extends BaseDaoImpl implements PhotoDao {
         log.debug("list photos, page is:" + page + ", pageSize is:" + pageSize);
         try {
 //            Session session = sessionFactory.openSession();
-            Query q = sessionFactory.getCurrentSession().createQuery("from Photo"); 
+            Query q = sessionFactory.getCurrentSession().createQuery("FROM Photo ORDER BY createTime DESC"); 
             q.setFirstResult((page-1) * pageSize); 
             q.setMaxResults(pageSize);
             List<Photo> results = q.list();

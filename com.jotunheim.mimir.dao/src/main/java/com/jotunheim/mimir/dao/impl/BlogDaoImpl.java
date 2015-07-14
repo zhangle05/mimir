@@ -125,7 +125,7 @@ public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
         log.debug("list blogs, page is:" + page + ", pageSize is:" + pageSize);
         try {
 //            Session session = sessionFactory.openSession();
-            Query q = sessionFactory.getCurrentSession().createQuery("from Blog"); 
+            Query q = sessionFactory.getCurrentSession().createQuery("FROM Blog ORDER BY lastUpdateTime DESC"); 
             q.setFirstResult((page-1) * pageSize); 
             q.setMaxResults(pageSize);
             List<Blog> results = q.list();
