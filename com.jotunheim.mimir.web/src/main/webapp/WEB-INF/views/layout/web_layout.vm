@@ -204,7 +204,7 @@
                             <a href="/blog/">$!{msgSource.getMessage("global_menu_blog",null,$locale)}</a>
                         </li>
                         <li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153 #if("Contact"==$menu)current-menu-item #end">
-                            <a href="/contact/">$!{msgSource.getMessage("global_menu_about",null,$locale)}</a>
+                            <a href="/contact/">$!{msgSource.getMessage("global_menu_contact",null,$locale)}</a>
                         </li>
                     </ul>
                 </div>

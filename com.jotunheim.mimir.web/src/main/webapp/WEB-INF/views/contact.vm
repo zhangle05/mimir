@@ -1,5 +1,6 @@
 #set($layout="/layout/web_layout.vm")
 #set($menu="Contact")
+#set($title=${msgSource.getMessage("global_menu_contact",null,$locale)})
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <style type="text/css">
@@ -21,17 +22,17 @@
 </script>
 <div id="single-wrapper" style="padding-top: 0px;">
     <div class="post-149 page type-page status-publish hentry single-folio" id="post-149">
-    
-    
         <div class="description">
             <div class="subnav">
                 <ul class="submenu">  
-                    <li class="page_item page-item-149 current_page_item"><a href="./Kissing Kourami Japan - Graphic Design Tokyo & Geneva, Contact us._files/Kissing Kourami Japan - Graphic Design Tokyo & Geneva, Contact us..html">Contact</a></li>
+                    <li class="page_item page-item-149 current_page_item"><a href="#">Contact</a></li>
                 </ul>  
              </div>
-             <div class="infos">Contact us now, to get more information about our services in graphic design, webdesign, print, illustration and more... we are located in Geneva and Tokyo
+             <div class="infos">
+                $!{msgSource.getMessage("contact_info_1",null,$locale)}
+                $!{msgSource.getMessage("contact_info_2",null,$locale)}
                 <br><br>
-                Discover us also on :
+                $!{msgSource.getMessage("contact_info_3",null,$locale)}
                 <br>
                 <a href="https://plus.google.com/b/115872464041013581673/115872464041013581673/posts"> Our Google+</a>
                 <br>
@@ -43,27 +44,23 @@
         <div class="post-article">
             <div class="two-even">
                 <p></p>
-                <h2>Kissing Kourami Geneva</h2>
+                <h2>$!{msgSource.getMessage("contact_address_title_1",null,$locale)}</h2>
                 <p></p>
                 <div id="map-beijing" style="width: 320px; height: 280px; position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
                 </div>
                 <br>
-                10, rue Blavignac<br>
-                1227 Carouge – Geneva<br>
-                Switzerland<p></p>
+                $!{msgSource.getMessage("contact_address_1",null,$locale)}<p></p>
                 <p><a href="mailto:info.octopus.studio@gmail.com">info.octopus.studio@gmail.com</a><br>
                 </p>
             </div>
             <div class="two-even last">
                 <p></p>
-                <h2>Kissing Kourami Tokyo</h2>
+                <h2>$!{msgSource.getMessage("contact_address_title_2",null,$locale)}</h2>
                 <p></p>
                 <div id="map-dongyang" style="width: 320px; height: 280px; position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
                 </div>
                 <br>
-                Kotoku Ariake 1 Chome 5-2-2519<br>
-                〒135-0063 Tokyo<br>
-                Japan<p></p>
+                $!{msgSource.getMessage("contact_address_2",null,$locale)}<p></p>
                 <p><a href="mailto:info.octopus.studio@gmail.com">info.octopus.studio@gmail.com</a><br>
                 </p>
             </div>
