@@ -8,18 +8,27 @@
 </style>
 
 #if($locale == "zh")
+    <!-- 中文地图 -->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=TXtycxGmXvtoGL27Tdrha4xz"></script>
     <script type="text/javascript" src="/js/map-baidu.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            showMap("map-beijing", 116.275, 40.125, "北京");
+            showMap("map-dongyang", 120.255, 29.26, "东阳");
+        });
+    </script>
 #else
+    <!-- English map -->
     <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
     <script type="text/javascript" src="/js/map-bing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            showMap("map-beijing", 116.275, 40.125, "北京");
+            showMap("map-dongyang", 120.255, 29.26, "东阳");
+        });
+    </script>
 #end
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        showMap("map-beijing", 116.275, 40.125, "北京");
-        showMap("map-dongyang", 116.275, 40.125, "东阳");
-    });
-</script>
+
 <div id="single-wrapper" style="padding-top: 0px;">
     <div class="post-149 page type-page status-publish hentry single-folio" id="post-149">
         <div class="description">
