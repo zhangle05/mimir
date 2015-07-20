@@ -4,7 +4,7 @@
         <div class="content clearfix">
             <div class="left">
                 <div id="text-6" class="widget widget_text">
-                    <h1>Welcome</h1>
+                    <h1>$!{msgSource.getMessage("general_text_welcome",null,$locale)}</h1>
                     <div class="textwidget">
                         <h2>$!{msgSource.getMessage("top_panel_about",null,$locale)}</h2>
                         <p class="grey">$!{msgSource.getMessage("top_panel_intro",null,$locale)}</p>
@@ -40,15 +40,6 @@
                         </p>
 
                         <a href="mailto:info.octopus.studio@gmail.com">info.octopus.studio@gmail.com</a> <br><p></p>
-
-                        <div style="display: inline-block;">
-                            <a href="https://plus.google.com/b/115872464041013581673/" style="text-decoration: none; color: #333;">
-                                <span style="float: left; font: bold 13px/16px arial,sans-serif; margin-right: 4px;">Octopus Studio</span>
-                                <span style="float: left; font: 13px/16px arial,sans-serif; margin-right: 11px;">on</span>
-                                <div style="clear: both"></div>
-                            </a>
-                        </div>
-                        <p></p>
                     </div>
                 </div>
             </div>

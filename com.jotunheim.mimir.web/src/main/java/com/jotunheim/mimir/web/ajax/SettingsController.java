@@ -64,4 +64,14 @@ public class SettingsController {
         json.accumulate("msg", "ok");
         return json.toString();
     }
+
+    @RequestMapping("/check/conn")
+    public @ResponseBody String checkConn(Model uiModel, HttpServletRequest request,
+            HttpServletResponse response) {
+        LOG.debug("SettingsController.checkConn");
+        JSONObject json = new JSONObject();
+        json.accumulate("result", "1");
+        json.accumulate("msg", "ok");
+        return json.toString();
+    }
 }
