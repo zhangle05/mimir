@@ -1,6 +1,7 @@
 #set($layout="/layout/web_layout.vm")
 #set($menu="Home")
 #set($footer="footer-white")
+#set($title=${msgSource.getMessage("global_menu_home",null,$locale)})
 
 <div id="primary" class="hfeed">
     <div id="single-wrapper" class="full-width" style="padding-top: 0px;">

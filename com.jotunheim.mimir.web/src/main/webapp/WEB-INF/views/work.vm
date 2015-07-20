@@ -1,5 +1,6 @@
 #set($layout="/layout/web_layout.vm")
 #set($menu="Works")
+#set($title=${msgSource.getMessage("global_menu_works",null,$locale)})
 
 <div id="grid-wrapper" style="position: relative; width: auto; height: 1374px;">
 
