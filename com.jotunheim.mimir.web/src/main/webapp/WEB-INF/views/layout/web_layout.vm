@@ -116,7 +116,8 @@
             });
     
             $('#footer').css("visibility", "hidden");
-                var setGrid = function () {
+            $('#footer-icp').css("visibility", "hidden");
+            var setGrid = function () {
                 return $("#grid-wrapper").vgrid({
                     easeing: "easeOutQuint",
                     time: 800,
@@ -131,6 +132,7 @@
             setTimeout(setGrid, 0);
             setTimeout(function() {
                 $('#footer').hide().css("visibility", "visible").fadeIn(500);
+                $('#footer-icp').hide().css("visibility", "visible").fadeIn(500);
             }, 500);
             
             $(window).load(function(e){
