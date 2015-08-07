@@ -317,7 +317,12 @@ code strong {
     }
     
     
-    
+.footer-icp {
+    display: block;
+    width:960px;
+    text-align: center;
+    visibility: visible;
+}
 
 /* ---------- Grid Items, Single Item and Comments ---------- */
 

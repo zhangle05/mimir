@@ -31,9 +31,4 @@
 		display:none;
 	}
 </style>
-<!-- 百度统计-->
-<script type="text/javascript">
-	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1b9d92d42ae504720a551426ca4281c9' type='text/javascript'%3E%3C/script%3E"));
-</script>
 #end

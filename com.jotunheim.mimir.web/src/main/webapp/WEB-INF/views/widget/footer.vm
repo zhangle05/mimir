@@ -74,6 +74,6 @@
         </div>
     </div>
 </div>
-<div id="footer-icp" style="display:block;width=100%;text-align:center">
+<div id="footer-icp" class="footer-icp">
     $!{msgSource.getMessage("footer_icp",null,$locale)}
 </div>
