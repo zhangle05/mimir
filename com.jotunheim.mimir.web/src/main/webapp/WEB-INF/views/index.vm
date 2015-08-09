@@ -1,6 +1,7 @@
 #set($layout="/layout/web_layout.vm")
 #set($menu="Home")
 #set($footer="footer-white")
+#set($footer_icp="footer-icp-home")
 #set($title=${msgSource.getMessage("global_menu_home",null,$locale)})
 
 <div id="primary" class="hfeed">

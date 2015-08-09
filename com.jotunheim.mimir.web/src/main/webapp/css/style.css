@@ -1455,7 +1455,7 @@ h3.trigger.active{
 
 
 
-    #footer-white {
+#footer-white {
     margin: 20px 0 0;
     padding: 25px 0;
     overflow: hidden;
@@ -1465,6 +1465,13 @@ h3.trigger.active{
         bottom: 10px;
     opacity: 0.5;
 }
+#footer-icp-home {
+	position: fixed;
+	bottom: 5px;
+    width:960px;
+    text-align: center;
+}
+
     #footer-white p {
         margin: 0;
         padding: 0;

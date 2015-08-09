@@ -2,6 +2,7 @@
     ## do nothing
 #else
     #set($footer="footer")
+    #set($footer_icp="footer-icp")
 #end
 <div id="$!{footer}" style="visibility: visible; display: block;">
     <div class="widget">
@@ -74,6 +75,6 @@
         </div>
     </div>
 </div>
-<div id="footer-icp" class="footer-icp">
+<div id="$!{footer_icp}" class="footer-icp">
     $!{msgSource.getMessage("footer_icp",null,$locale)}
 </div>
