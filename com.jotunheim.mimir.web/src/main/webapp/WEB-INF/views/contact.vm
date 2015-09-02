@@ -43,9 +43,9 @@
                 <br><br>
                 $!{msgSource.getMessage("contact_info_3",null,$locale)}
                 <br>
-                <a href="https://plus.google.com/b/115872464041013581673/115872464041013581673/posts"> Our Google+</a>
+                <a href="https://plus.google.com/104477294880878405480/posts"> Our Google+</a>
                 <br>
-                <a href="https://twitter.com/kourami"> Our Twitter</a>
+                <a href="https://twitter.com/InfoOctopus"> Our Twitter</a>
             </div>
         </div>
         
