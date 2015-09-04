@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="no-js">
+    
+    <head>
+        <title>Octopus admin console</title>
+        <!-- Bootstrap -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="/static/bootstrap-template/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="/static/bootstrap-template/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="/static/bootstrap-template/assets/styles.css" rel="stylesheet" media="screen">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/bootstrap-template/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/static/bootstrap-template/assets/scripts.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-paginator.js"></script>
+    <script type="text/javascript">
+        function bootstrapPaginator(element,page,totalPages,pageClick){
+              var options = {
+                    bootstrapMajorVersion:3,
+                    currentPage: page,
+                    numberOfPages: 10,
+                    totalPages:totalPages,
+                    tooltipTitles: function (type, page, current) {
+            switch (type) {
+            case "first":
+                return "首页";
+            case "prev":
+                return "上一页";
+            case "next":
+                return "下一页";
+            case "last":
+                return "最后一页";
+            case "page":
+                return (page === current) ? "当前第" + page+"页" : "第" + page+"页";
+            }
+        },
+        itemTexts:function (type, page, current) {
+                    switch (type) {
+                        case "first":
+                            return "首页";
+                        case "prev":
+                            return "上一页";
+                        case "next":
+                            return "下一页";
+                        case "last":
+                            return "最后一页";
+                        case "page":
+                            return page;
+                    }
+                },
+                onPageClicked: function (event, originalEvent, type, page) {
+                    pageClick(page);
+                }
+            };
+            element.bootstrapPaginator(options);
+        }
+    </script>
+    #include("/common/stat_baidu.vm")
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    #if(${userRole.accessLevel}==16)
+                        #set($homeUrl ="/supervisor/index")
+                    #else
+                        #set($homeUrl ="/admin/index")
+                    #end
+                    <a class="brand" href="$homeUrl">云作业后台管理</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> $!{loginUser.userName} <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">用户中心</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="/account/logout">退出</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="$homeUrl">主页</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                    
+                    #if(${userRole.accessLevel}==16)
+                        <li #if($nav == 1)class="active" #end>
+                            <a href="/supervisor/addsbj"><i class="icon-chevron-right"></i>增加学科</a>
+                        </li>
+                        <li #if($nav == 2)class="active" #end>
+                            <a href="/supervisor/addschool"><i class="icon-chevron-right"></i>增加学校</a>
+                        </li>
+                        <li #if($nav == 3)class="active" #end>
+                            <a href="/supervisor/addadmin"><i class="icon-chevron-right"></i>增加学校管理员</a>
+                        </li>
+                        <li #if($nav == 4)class="active" #end>
+                            <a href="/supervisor/subjects"><i class="icon-chevron-right"></i>学科列表</a>
+                        </li>
+                        <li #if($nav == 5)class="active" #end>
+                            <a href="/supervisor/schools"><i class="icon-chevron-right"></i>学校列表</a>
+                        </li>
+                        <li #if($nav == 6)class="active" #end>
+                            <a href="/supervisor/admins"><i class="icon-chevron-right"></i>学校管理员列表</a>
+                        </li>
+                    #else
+                    <li  #if($nav == 1)class="active" #end>
+                        <a href="/admin/adduser?type=t"><i class="icon-chevron-right"></i>添加老师</a>
+                    </li>
+                    <!--
+                    <li #if($nav == 2)class="active" #end>
+                        <a href="/admin/adduser?type=tp"><i class="icon-chevron-right"></i>添加老师(家长)</a>
+                    </li>
+                    -->
+                    <li #if($nav == 3)class="active" #end>
+                        <a href="/school/addclass"><i class="icon-chevron-right"></i>添加班级</a>
+                    </li>
+                     <!--
+                    <li #if($nav == 4)class="active" #end>
+                        <a href="/admin/adduser?type=s"><i class="icon-chevron-right"></i>添加学生</a>
+                    </li>
+                    <li #if($nav == 5)class="active" #end>
+                        <a href="/admin/adduser?type=p"><i class="icon-chevron-right"></i>添加家长</a>
+                    </li>
+                    <!--
+                    <li #if($nav == 6)class="active"#end>
+                        <a href="/batchinsert/upload"><i class="icon-chevron-right"></i>批量添加</a>
+                    </li>
+                    -->
+
+                    <li #if($nav == 7)class="active" #end>
+                        <a href="/school/classlist"><i class="icon-chevron-right"></i>班级列表</a>
+                    </li>
+                    <li #if($nav == 8)class="active"#end>
+                        <a href="/admin/userlist" ><i class="icon-chevron-right"></i>用户列表</a>
+                    </li>
+                    #end
+                    </ul>
+                </div>
+                
+                <!--/span-->
+                <div class="span9" id="content">
+                <!--
+                    <div class="row-fluid">
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <h4>提示</h4>
+                            操作成功
+                        </div>
+                       <div class="navbar">
+                           <div class="navbar-inner">
+                                <ul class="breadcrumb">
+                                        <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
+                                        <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
+                                        <li>
+                                            <a href="#">Dashboard</a> <span class="divider">/</span>    
+                                        </li>
+                                        <li>
+                                            <a href="#">Settings</a> <span class="divider">/</span> 
+                                        </li>
+                                        <li class="active">Tools</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                    <div class="row-fluid">
+                        $!{screen_content}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <footer>
+                <p style="text-align:center;">CopyRight 2015 JingYouMath Team | 增值电信业务经营许可证：湘B2-20100081 | 邮箱地址： jingyou@talkweb.com.cn</p>
+            </footer>
+        </div>
+        <!--/.fluid-container-->
+
+    </body>
+
+</html>

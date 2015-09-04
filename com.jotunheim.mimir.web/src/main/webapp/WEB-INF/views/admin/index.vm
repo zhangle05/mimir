@@ -1,0 +1,14 @@
+#set($layout="/layout/bootstrap_admin_layout.vm")
+<!--
+<a href="/account/logout">退出</a><br/><br/>
+<div class="list-group bootstrap-wrap">
+<a href="/admin/adduser?type=t" class="list-group-item">添加老师</a>
+<a href="/admin/adduser?type=tp" class="list-group-item">添加老师(家长)</a>
+<a href="/school/addclass" class="list-group-item">添加班级</a>
+<a href="/admin/adduser?type=s" class="list-group-item">添加学生</a>
+<a href="/admin/adduser?type=p" class="list-group-item">添加家长</a>
+##<a href="/batchinsert/upload" class="list-group-item">批量添加</a>
+<a href="/admin/userlist" class="list-group-item">用户列表</a>
+<a href="/school/classlist" class="list-group-item">班级列表</a>
+</div>
+-->

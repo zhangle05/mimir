@@ -1,0 +1,83 @@
+#set($layout="/layout/bootstrap_layout.vm")
+#include("/common/encryptUtils.vm")
+
+<div class="login">
+    $!{errorMessage}
+    <form action="/account/login" method="POST">
+        <input type="text" name="userName" /> <br/>
+        <input type="password" name="userPassword" /> <br/>
+        <input type="submit" name="submit" value="submit" /> <br/>
+    </form>
+    <!--
+        <input type="text" name="name" /> <br/>
+        <input type="password" name="pwd" /> <br/>
+        <div id="btn-login" class="btn-login" style="">login</div>
+    -->
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        var isShowDialog=false;
+        function dialogCallback(code){
+            isShowDialog=false;
+        }
+        var profile=$('#profile');
+        var loginBox=$('.sign-content[data-role="login"]');
+        
+        var lmob=jQuery.cookie(saveKey);
+        if(lmob != null && lmob != ''){
+           loginBox.find('input[name="mobile"]').val(lmob); 
+        }
+        $('#btn-login').click(function(){
+            var mobile=loginBox.find('input[name="name"]').val();
+            var pwd=loginBox.find('input[name="pwd"]').val();
+            if(mobile == '') {
+                isShowDialog=cloudAlert("请输入用户名",dialogCallback);
+                return;
+            }
+            
+            if(pwd.length < 6){
+                if(pwd == ''){
+                    isShowDialog=cloudAlert("请输入密码",dialogCallback);
+                }else{
+                    cloudAlert("输入密码不能少于6位",dialogCallback);
+                }
+                return;
+            }     
+        
+            login(mobile,pwd);
+            
+        });
+    });
+    function login(username,pwd){
+        jQuery.ajax({
+            type:'post',
+            dataType:'json',
+            url:'/account/ajaxLogin',
+            data:{'userName':username,'userPassword':encrypt(pwd),'returnurl':url},
+            beforeSend:function(){
+                
+            },
+            success:function(data){
+                var result=data['code'];
+                if(result==1){
+                    var url=data['url'];
+                    if(url!=null){
+                        window.location.href=url;
+                    }else{
+                        window.location.href='/student/index';
+                    }
+                }else{
+                    var msg=data['msg'];
+                    if(msg==null){
+                        msg='验证失败';
+                    }
+                    isShowDialog=cloudAlert(msg);
+                }
+            },
+            complete:function(){
+                
+            }       
+        });
+    }
+</script>

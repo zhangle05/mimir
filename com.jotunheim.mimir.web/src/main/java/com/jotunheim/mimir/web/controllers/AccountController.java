@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.LocaleResolver;
 
 import com.jotunheim.mimir.common.utils.CipherHelper;
-import com.jotunheim.mimir.common.utils.URLHelper;
 import com.jotunheim.mimir.dao.UserDao;
 import com.jotunheim.mimir.dao.UserRoleDao;
 import com.jotunheim.mimir.domain.User;
@@ -72,20 +71,13 @@ public class AccountController {
         if(user == null || role == null) {
             return "account/login";
         }
-        else if(role.getAccessLevel() == RoleAccessLevel.TEACHER) {
-            return "redirect:/teacher/list";
-        }
         else if(role.getAccessLevel() == RoleAccessLevel.ADMIN) {
-            return "redirect:/admin/index";
+            return "redirect:/admin";
         }
-        else if(role.getAccessLevel() == RoleAccessLevel.STUDENT) {
-            return "redirect:/student/list";
+        else if(role.getAccessLevel() == RoleAccessLevel.SUPERVISOR) {
+            return "redirect:/supervisor";
         }
-        else if(role.getAccessLevel() == RoleAccessLevel.PARENT) {
-            return "redirect:/parent/index";
-        }
-        return "account/" + URLHelper.encodeUrlPathSegment(String.valueOf(user.getId()),
-                request);
+        return "account/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "text/html")
@@ -114,28 +106,28 @@ public class AccountController {
                         new String[] { user.getUserName() }, locale));
                 return "account/login";
             } else {
-            	String returnurl=httpServletRequest.getParameter("returnurl");
+                String returnurl=httpServletRequest.getParameter("returnurl");
                 uiModel.addAttribute("loginUser", realUser);
                 UserRole role = roleDao.findById(realUser.getRoleID());
                 LOG.debug("role is:" + role);
                 if(role != null) {
                     uiModel.addAttribute("userRole", role);
                     if(!StringUtils.isEmpty(returnurl)){
-                		return "redirect:"+returnurl;
-                	}
-                    if(role.getAccessLevel() == RoleAccessLevel.TEACHER) {
-                        return "redirect:/teacher/list";
+                        return "redirect:"+returnurl;
+                    }
+                    if(role.getAccessLevel() == RoleAccessLevel.USER) {
+                        return "redirect:/";
                     }
                     else if(role.getAccessLevel() == RoleAccessLevel.ADMIN) {
-                        return "redirect:/admin/index";
+                        return "redirect:/admin";
                     }
-                    else if(role.getAccessLevel() == RoleAccessLevel.PARENT) {
-                        return "redirect:/parent/index";
+                    else if(role.getAccessLevel() == RoleAccessLevel.SUPERVISOR) {
+                        return "redirect:/supervisor";
                     }
                 }
             }
         }
-        return "redirect:/student/list";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET, produces = "text/html")
@@ -156,6 +148,7 @@ public class AccountController {
     }
 
     private boolean passwordMatch(String pswd, String encryptedPswd) {
+        LOG.info("pswd is:" + pswd + ", encrypted pswd is:" + CipherHelper.encrypt(pswd));
         if (null == pswd || "".equals(pswd)) {
             return false;
         } else if (!CipherHelper.encrypt(pswd).equals(encryptedPswd)) {

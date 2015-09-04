@@ -33,9 +33,15 @@ public class AdminController {
     @Autowired
     private UserDao userDao;
 
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "text/html")
+    public String adminHome(Model uiModel, HttpServletRequest request) {
+        LOG.debug("admin home.");
+        return "redirect:/admin/index";
+    }
+
     @RequestMapping(value = "/index", method = RequestMethod.GET, produces = "text/html")
     public String adminIndex(Model uiModel, HttpServletRequest request) {
-        LOG.debug("create login form.");
+        LOG.debug("admin index.");
         User user = (User) request.getSession().getAttribute("loginUser");
         LOG.debug("user is:" + user);
         UserRole role = (UserRole) request.getSession().getAttribute("userRole");

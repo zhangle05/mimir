@@ -34,6 +34,7 @@
     <mvc:resources mapping="/js/**" location="/js/" />
     <mvc:resources mapping="/html/**" location="/html/" />
     <mvc:resources mapping="/file/**" location="/file/" />
+    <mvc:resources mapping="/static/**" location="/static/" />
 
     <!-- Allows for mapping the DispatcherServlet to "/" by forwarding static 
         resource requests to the container's default Servlet -->
@@ -76,6 +77,7 @@
             <mvc:exclude-mapping path="/js/**" />
             <mvc:exclude-mapping path="/html/**" />
             <mvc:exclude-mapping path="/file/**" />
+            <mvc:exclude-mapping path="/static/**" />
             <mvc:exclude-mapping path="/api/**" />
             <mvc:exclude-mapping path="/wechat/api/**" />
             <bean

@@ -89,14 +89,10 @@ public class WapAccountController {
 
         if (user == null || role == null) {
             return "wap/account/login";
-        } else if (role.getAccessLevel() == RoleAccessLevel.TEACHER) {
-            return "redirect:/wap/teacher/index";
         } else if (role.getAccessLevel() == RoleAccessLevel.ADMIN) {
             return "redirect:/wap/admin/index";
-        } else if (role.getAccessLevel() == RoleAccessLevel.STUDENT) {
+        } else if (role.getAccessLevel() == RoleAccessLevel.SUPERVISOR) {
             return "redirect:/wap/student/list";
-        } else if (role.getAccessLevel() == RoleAccessLevel.PARENT) {
-            return "redirect:/parent/index";
         }
         return "account/"
                 + URLHelper.encodeUrlPathSegment(String.valueOf(user.getId()),
@@ -145,38 +141,10 @@ public class WapAccountController {
                     // 如果是老师和家长，绑定openid
                     if (StringUtils.isNotEmpty(openId)
                             && StringUtils.isEmpty(realUser.getOpenId())) {
-                        switch (role.getAccessLevel()) {
-                        case RoleAccessLevel.PARENT: // 家长除了要更新user表 还需更新parent表
-                        {
-
-
-                        }
-                        case RoleAccessLevel.TEACHER:
-                            try {
-
-                                realUser.setOpenId(openId);
-                                userDao.attachDirty(realUser);
-                            } catch (Exception e) {
-
-                            }
-                            break;
-                        default:
-                            break;
-                        }
                     }
 
                     if (!StringUtils.isEmpty(returnurl)) {
                         return "redirect:" + returnurl;
-                    }
-                    if (role.getAccessLevel() == RoleAccessLevel.TEACHER) {
-
-                        if (!StringUtils.isEmpty(returnurl)) {
-                            return "redirect:" + returnurl;
-                        }
-
-                        return "redirect:/wap/teacher/add";
-                    } else if (role.getAccessLevel() == RoleAccessLevel.ADMIN) {
-                        return "redirect:/wap/admin/index";
                     }
                 }
             }

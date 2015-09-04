@@ -1,0 +1,14 @@
+<script src="http://cdn.staticfile.org/crypto-js/3.1.2/rollups/md5.js"></script>
+<script type="text/javascript">
+    var salt = 'cloud_homework-';
+
+    function encrypt(data) {
+        return encryptMD5(data);
+    }
+
+    function encryptMD5(data) {
+        var saltData = salt + data;
+        var hash = CryptoJS.MD5(saltData);
+        return hash.toString();
+    }
+</script>
