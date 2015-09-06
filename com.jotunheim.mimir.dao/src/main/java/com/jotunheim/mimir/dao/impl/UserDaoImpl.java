@@ -9,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jotunheim.mimir.common.utils.CipherHelper;
 import com.jotunheim.mimir.dao.UserDao;
@@ -19,6 +20,7 @@ import com.jotunheim.mimir.domain.User;
  * @see com.jotunheim.mimir.domain.User
  * @author Hibernate Tools
  */
+@Transactional
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
     private static final Log log = LogFactory.getLog(UserDaoImpl.class);
@@ -26,10 +28,8 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public void persist(User transientInstance) {
         log.debug("persisting User instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             transientInstance.setUserPassword(CipherHelper.encrypt(transientInstance.getUserPassword()));
             sessionFactory.getCurrentSession().persist(transientInstance);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("persist successful");
         }
         catch (RuntimeException re) {
@@ -41,9 +41,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public void attachDirty(User instance) {
         log.debug("attaching dirty User instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             sessionFactory.getCurrentSession().saveOrUpdate(instance);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("attach successful");
         }
         catch (RuntimeException re) {
@@ -55,9 +53,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public void attachClean(User instance) {
         log.debug("attaching clean User instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("attach successful");
         }
         catch (RuntimeException re) {
@@ -69,9 +65,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public void delete(User persistentInstance) {
         log.debug("deleting User instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             sessionFactory.getCurrentSession().delete(persistentInstance);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("delete successful");
         }
         catch (RuntimeException re) {
@@ -83,10 +77,8 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public User merge(User detachedInstance) {
         log.debug("merging User instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             User result = (User) sessionFactory.getCurrentSession()
                     .merge(detachedInstance);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("merge successful");
             return result;
         }
@@ -99,10 +91,8 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public User findById( java.lang.Long id) {
         log.debug("getting User instance with id: " + id);
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             User instance = (User) sessionFactory.getCurrentSession()
                     .get("com.jotunheim.mimir.domain.User", id);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             if (instance==null) {
                 log.debug("get successful, no instance found");
             }
@@ -120,12 +110,10 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public List findByExample(User instance) {
         log.debug("finding User instance by example");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             List results = sessionFactory.getCurrentSession()
                     .createCriteria("com.jotunheim.mimir.domain.User")
                     .add(Example.create(instance))
             .list();
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("find by example successful, result size: " + results.size());
             return results;
         }
@@ -172,12 +160,10 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public List listUsers(int page, int pageSize) {
         log.debug("list users, page is:" + page + ", pageSize is:" + pageSize);
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             Query q = sessionFactory.getCurrentSession().createQuery("from User"); 
             q.setFirstResult(page * pageSize); 
             q.setMaxResults(pageSize);
             List results = q.list();
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("list user successful, result size: " + results.size());
             return results;
         }

@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.criterion.Example;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jotunheim.mimir.dao.LocationDao;
 import com.jotunheim.mimir.domain.Location;
@@ -17,6 +18,7 @@ import com.jotunheim.mimir.domain.Location;
  * @see com.jotunheim.mimir.domain.Location
  * @author Hibernate Tools
  */
+@Transactional
 public class LocationDaoImpl extends BaseDaoImpl implements LocationDao {
 
     private static final Log log = LogFactory.getLog(LocationDaoImpl.class);

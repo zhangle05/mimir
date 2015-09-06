@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.criterion.Example;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jotunheim.mimir.dao.UserRoleDao;
 import com.jotunheim.mimir.domain.UserRole;
@@ -17,6 +18,7 @@ import com.jotunheim.mimir.domain.UserRole;
  * @see com.jotunheim.mimir.domain.UserRole
  * @author Hibernate Tools
  */
+@Transactional
 public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
 
     private static final Log log = LogFactory.getLog(UserRoleDaoImpl.class);
@@ -24,9 +26,7 @@ public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
     public void persist(UserRole transientInstance) {
         log.debug("persisting UserRole instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             sessionFactory.getCurrentSession().persist(transientInstance);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("persist successful");
         }
         catch (RuntimeException re) {
@@ -38,9 +38,7 @@ public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
     public void attachDirty(UserRole instance) {
         log.debug("attaching dirty UserRole instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             sessionFactory.getCurrentSession().saveOrUpdate(instance);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("attach successful");
         }
         catch (RuntimeException re) {
@@ -52,9 +50,7 @@ public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
     public void attachClean(UserRole instance) {
         log.debug("attaching clean UserRole instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("attach successful");
         }
         catch (RuntimeException re) {
@@ -67,7 +63,6 @@ public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
         log.debug("deleting UserRole instance");
         try {
             sessionFactory.getCurrentSession().delete(persistentInstance);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("delete successful");
         }
         catch (RuntimeException re) {
@@ -79,10 +74,8 @@ public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
     public UserRole merge(UserRole detachedInstance) {
         log.debug("merging UserRole instance");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             UserRole result = (UserRole) sessionFactory.getCurrentSession()
                     .merge(detachedInstance);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("merge successful");
             return result;
         }
@@ -95,10 +88,8 @@ public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
     public UserRole findById( long id) {
         log.debug("getting UserRole instance with id: " + id);
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             UserRole instance = (UserRole) sessionFactory.getCurrentSession()
                     .get("com.jotunheim.mimir.domain.UserRole", id);
-            sessionFactory.getCurrentSession().getTransaction().commit();
             if (instance==null) {
                 log.debug("get successful, no instance found");
             }
@@ -116,12 +107,10 @@ public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
     public List findByExample(UserRole instance) {
         log.debug("finding UserRole instance by example");
         try {
-            sessionFactory.getCurrentSession().beginTransaction();
             List results = sessionFactory.getCurrentSession()
                     .createCriteria("com.jotunheim.mimir.domain.UserRole")
                     .add(Example.create(instance))
             .list();
-            sessionFactory.getCurrentSession().getTransaction().commit();
             log.debug("find by example successful, result size: " + results.size());
             return results;
         }

@@ -8,6 +8,8 @@
         <link href="/static/bootstrap-template/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/static/bootstrap-template/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
         <link href="/static/bootstrap-template/assets/styles.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
+        <link rel="stylesheet" id="rs-plugin-settings-css" href="/css/settings.css" type="text/css" media="all">
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -193,9 +195,7 @@
                 </div>
             </div>
             <hr>
-            <footer>
-                <p style="text-align:center;">CopyRight 2015 JingYouMath Team | 增值电信业务经营许可证：湘B2-20100081 | 邮箱地址： jingyou@talkweb.com.cn</p>
-            </footer>
+#parse("/widget/footer.vm")
         </div>
         <!--/.fluid-container-->
 

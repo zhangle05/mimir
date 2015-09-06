@@ -27,6 +27,12 @@ public class SupervisorController {
     private static Log LOG = LogFactory
             .getLog(SupervisorController.class);
 
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "text/html")
+    public String supervisorHome(Model uiModel, HttpServletRequest request) {
+        LOG.debug("supervisor home.");
+        return "redirect:/supervisor/index";
+    }
+
     @RequestMapping(value = "/index", method = RequestMethod.GET, produces = "text/html")
     public String adminIndex(Model uiModel, HttpServletRequest request) {
         LOG.debug("create login form.");
@@ -38,6 +44,6 @@ public class SupervisorController {
             return "redirect:/account/login";
         }
         uiModel.addAttribute("user", user);
-        return "admin/index";
+        return "supervisor/index";
     }
 }
