@@ -31,48 +31,54 @@
     line-height: 42px;
     font-size: 18px;
     margin-bottom: 8px;
+    cursor:default;
 }
 </style>
 
 <div class="login">
-    <!--
-    <form action="/account/login" method="POST">
-        <input type="text" name="userName" /> <br/>
-        <input type="password" name="userPassword" /> <br/>
-        <input type="submit" name="submit" value="login" /> <br/>
-    </form>
-    -->
     <input type="text" name="userName" /> <br/>
     <input type="password" name="password" /> <br/>
     <div id="btn-login" class="btn-login" style="">login</div>
 </div>
 
 <script type="text/javascript">
-    $(function(){
-        var isShowDialog=false;
-        function dialogCallback(code){
-            isShowDialog=false;
+    var errorInput;
+    var isShowDialog=false;
+    function dialogCallback(code){
+        isShowDialog=false;
+        if(errorInput!=null && errorInput!='undefined'){
+            errorInput.focus();
         }
+    }
+    $(function(){
         var loginBox=$('.login');
+        loginBox.find('input[name="userName"]').focus();
         $('#btn-login').click(function(){
             var user=loginBox.find('input[name="userName"]').val();
             var pwd=loginBox.find('input[name="password"]').val();
             if(user == '') {
                 isShowDialog=octopusAlert("请输入用户名",dialogCallback);
+                errorInput = loginBox.find('input[name="userName"]');
                 return;
             }
-            
             if(pwd.length < 6){
                 if(pwd == ''){
                     isShowDialog=octopusAlert("请输入密码",dialogCallback);
                 }else{
                     octopusAlert("输入密码不能少于6位",dialogCallback);
                 }
+                errorInput = loginBox.find('input[name="password"]');
                 return;
-            }     
-        
+            }
             login(user,pwd);
-            
+        });
+
+        $('.login input').keydown(function(e){
+            if(e.keyCode==13){
+                $('#btn-login').click();
+                $(this).blur();
+            }
+            return true;
         });
     });
     function login(username,pwd){
@@ -83,7 +89,6 @@
             url:'/account/ajaxLogin',
             data:{'userName':username,'password':encrypt(pwd),'returnurl':url},
             beforeSend:function(){
-                
             },
             success:function(data){
                 var result=data['code'];
@@ -95,16 +100,16 @@
                         window.location.href='/';
                     }
                 }else{
-                    var msg=data['msg'];
+                    var msg=data['message'];
                     if(msg==null){
                         msg='验证失败';
                     }
-                    isShowDialog=cloudAlert(msg);
+                    errorInput = $('input[name="userName"]');
+                    isShowDialog=octopusAlert(msg, dialogCallback);
                 }
             },
             complete:function(){
-                
-            }       
+            }
         });
     }
 </script>

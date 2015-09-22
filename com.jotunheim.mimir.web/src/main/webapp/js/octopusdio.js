@@ -19,9 +19,17 @@ function octopusAlert(msg,c){
          modalwidth: "400" ,
          opacity: 0.22
      },function(callback){
-    	 if(c!=null&& c!='undefined'){
-    		c(callback); 
-    	 }
-     }); 
+         if(c!=null&& c!='undefined'){
+            c(callback); 
+         }
+     });
+    $("#okay").attr("tabindex", "0");
+    $("#okay").focus();
+    $("#okay").keydown(function(e){
+        // enter or escape
+        if(e.keyCode==13 || e.keyCode==27){
+            $("#okay").click();
+        }
+    });
     return true;
 }
