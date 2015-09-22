@@ -6,7 +6,7 @@
     <form action="/account/login" method="POST">
         <input type="text" name="userName" /> <br/>
         <input type="password" name="userPassword" /> <br/>
-        <input type="submit" name="submit" value="submit" /> <br/>
+        <input type="submit" name="submit" value="login" /> <br/>
     </form>
     <!--
         <input type="text" name="name" /> <br/>

@@ -18,9 +18,8 @@ import com.jotunheim.mimir.domain.User;
  */
 public final class UserHelper {
     private static Log LOG = LogFactory.getLog(UserHelper.class);
-    private static final String DEFAULT_SALT_PREFIX = "yzy-";
-    private static final String DEFAULT_CLIENT_SALT_PREFIX = "cloud_homework-";
-    private static final int DEFAULT_USER_NAME_LENGTH = 8;
+    private static final String DEFAULT_SALT_PREFIX = "mimir-";
+    private static final String DEFAULT_CLIENT_SALT_PREFIX = "front_end-";
     private static final int DEFAULT_PASSWORD_LENGTH = 6;
 
     /**
@@ -53,24 +52,6 @@ public final class UserHelper {
         passwd = CipherHelper.md5sum(passwdWithSalt);
         LOG.debug("encrypted passwd:" + passwd);
         return passwd;
-    }
-
-    /**
-     * Check user's inputing password
-     * 
-     * @param inputUser
-     *            user input user, must has his password, may not has his Id
-     * @param realUser
-     *            user stored in server
-     * @return whether the user's inputing name/password pair is correct
-     */
-    public static boolean checkPassword(User inputUser, User realUser) {
-        if (inputUser == null || realUser == null) {
-            return false;
-        }
-        // using realuser's ID here because the inputUser may not has it
-        return UserHelper.checkPassword(realUser.getUserName(),
-                inputUser.getUserPassword(), realUser);
     }
 
     /**

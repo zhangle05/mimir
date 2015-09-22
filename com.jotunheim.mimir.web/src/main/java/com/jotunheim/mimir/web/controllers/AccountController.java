@@ -16,17 +16,17 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.LocaleResolver;
 
-import com.jotunheim.mimir.common.utils.CipherHelper;
 import com.jotunheim.mimir.dao.UserDao;
 import com.jotunheim.mimir.dao.UserRoleDao;
 import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
+import com.jotunheim.mimir.web.service.AccountService;
+import com.jotunheim.mimir.web.service.AccountService.LoginData;
 import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 
 /**
@@ -52,6 +52,9 @@ public class AccountController {
 
     @Autowired
     private LocaleResolver localeResolver;
+
+    @Autowired
+    private AccountService accountService;
 
     /**
      * Constructor
@@ -89,24 +92,24 @@ public class AccountController {
         }
         uiModel.asMap().clear();
         Locale locale = localeResolver.resolveLocale(httpServletRequest);
-        if (userDao != null) {
-            User realUser = userDao.findByName(user.getUserName());
-            if (null == realUser) {
+        LoginData data = accountService.login(user.getUserName(), user.getUserPassword());
+        if (data != null) {
+            if (data.statusCode == AccountService.ACCOUNT_NOT_EXIST) {
                 // user name not exist
                 LOG.debug("User " + user.getUserName() + " does not exist.");
                 populateEditForm(uiModel, user, messageSource.getMessage(
                         "login_user_not_exist",
                         new String[] { user.getUserName() }, locale));
                 return "account/login";
-            } else if (!passwordMatch(user.getUserPassword(),
-                    realUser.getUserPassword())) {
+            } else if (data.statusCode == AccountService.ACCOUNT_WRONG_PASSWORD) {
                 LOG.debug("User " + user.getUserName() + ", password wrong.");
                 populateEditForm(uiModel, user, messageSource.getMessage(
                         "login_wrong_password",
                         new String[] { user.getUserName() }, locale));
                 return "account/login";
-            } else {
+            } else if (data.statusCode == AccountService.ACCOUNT_LOGIN_SUCCEED){
                 String returnurl=httpServletRequest.getParameter("returnurl");
+                User realUser = data.realUser;
                 uiModel.addAttribute("loginUser", realUser);
                 UserRole role = roleDao.findById(realUser.getRoleID());
                 LOG.debug("role is:" + role);
@@ -140,26 +143,8 @@ public class AccountController {
         return "account/login";
     }
 
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String accountMain(@PathVariable("id") String id, Model uiModel) {
-//        uiModel.addAttribute("user", userDao.getUser(Integer.valueOf(id)));
-//        uiModel.addAttribute("userId", id);
-        return "account/userinfo";
-    }
-
-    private boolean passwordMatch(String pswd, String encryptedPswd) {
-        LOG.info("pswd is:" + pswd + ", encrypted pswd is:" + CipherHelper.encrypt(pswd));
-        if (null == pswd || "".equals(pswd)) {
-            return false;
-        } else if (!CipherHelper.encrypt(pswd).equals(encryptedPswd)) {
-            return false;
-        }
-        return true;
-    }
-
     private void populateEditForm(Model uiModel, User user, String message) {
         uiModel.addAttribute("errorMessage", message);
          uiModel.addAttribute("userName", user.getUserName());
-         uiModel.addAttribute("password", user.getUserPassword());
     }
 }
