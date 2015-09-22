@@ -3,7 +3,7 @@
  * @param msg
  * @param c
  */
-function cloudAlert(msg,c){
+function octopusAlert(msg,c){
     $(".alert").html(msg);
     $(".alert").fbmodal({
          title: "温馨提示",  

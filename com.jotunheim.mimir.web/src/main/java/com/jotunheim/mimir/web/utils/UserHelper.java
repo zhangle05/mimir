@@ -18,8 +18,8 @@ import com.jotunheim.mimir.domain.User;
  */
 public final class UserHelper {
     private static Log LOG = LogFactory.getLog(UserHelper.class);
-    private static final String DEFAULT_SALT_PREFIX = "mimir-";
-    private static final String DEFAULT_CLIENT_SALT_PREFIX = "front_end-";
+    private static final String DEFAULT_SALT_PREFIX = "mimir_backend-";
+    private static final String DEFAULT_CLIENT_SALT_PREFIX = "octopus_front-";
     private static final int DEFAULT_PASSWORD_LENGTH = 6;
 
     /**

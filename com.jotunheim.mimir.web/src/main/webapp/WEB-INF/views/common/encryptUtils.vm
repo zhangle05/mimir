@@ -1,6 +1,6 @@
 <script src="http://cdn.staticfile.org/crypto-js/3.1.2/rollups/md5.js"></script>
 <script type="text/javascript">
-    var salt = 'cloud_homework-';
+    var salt = 'octopus_front-';
 
     function encrypt(data) {
         return encryptMD5(data);

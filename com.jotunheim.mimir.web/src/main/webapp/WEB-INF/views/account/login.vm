@@ -1,18 +1,43 @@
 #set($layout="/layout/bootstrap_layout.vm")
 #include("/common/encryptUtils.vm")
+<style>
+.login{
+    margin-top:20px;
+}
+.login input{
+    width: 100%;
+    border-radius: 5px;
+    border:1px solid #979797;
+    height: 42px;
+    margin-top: 2px;
+    padding: 5px;
+    font-size: 15px;
+}
+.btn-login{
+    width: 100%;
+    background-color: #0765c3;
+    color: #ffffff;
+    border-radius: 5px;
+    height: 42px;
+    text-align: center;
+    margin-top: 53px;
+    line-height: 42px;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+</style>
 
 <div class="login">
-    $!{errorMessage}
+    <!--
     <form action="/account/login" method="POST">
         <input type="text" name="userName" /> <br/>
         <input type="password" name="userPassword" /> <br/>
         <input type="submit" name="submit" value="login" /> <br/>
     </form>
-    <!--
-        <input type="text" name="name" /> <br/>
-        <input type="password" name="pwd" /> <br/>
-        <div id="btn-login" class="btn-login" style="">login</div>
     -->
+    <input type="text" name="userName" /> <br/>
+    <input type="password" name="password" /> <br/>
+    <div id="btn-login" class="btn-login" style="">login</div>
 </div>
 
 <script type="text/javascript">
@@ -21,40 +46,35 @@
         function dialogCallback(code){
             isShowDialog=false;
         }
-        var profile=$('#profile');
-        var loginBox=$('.sign-content[data-role="login"]');
-        
-        var lmob=jQuery.cookie(saveKey);
-        if(lmob != null && lmob != ''){
-           loginBox.find('input[name="mobile"]').val(lmob); 
-        }
+        var loginBox=$('.login');
         $('#btn-login').click(function(){
-            var mobile=loginBox.find('input[name="name"]').val();
-            var pwd=loginBox.find('input[name="pwd"]').val();
-            if(mobile == '') {
-                isShowDialog=cloudAlert("请输入用户名",dialogCallback);
+            var user=loginBox.find('input[name="userName"]').val();
+            var pwd=loginBox.find('input[name="password"]').val();
+            if(user == '') {
+                isShowDialog=octopusAlert("请输入用户名",dialogCallback);
                 return;
             }
             
             if(pwd.length < 6){
                 if(pwd == ''){
-                    isShowDialog=cloudAlert("请输入密码",dialogCallback);
+                    isShowDialog=octopusAlert("请输入密码",dialogCallback);
                 }else{
-                    cloudAlert("输入密码不能少于6位",dialogCallback);
+                    octopusAlert("输入密码不能少于6位",dialogCallback);
                 }
                 return;
             }     
         
-            login(mobile,pwd);
+            login(user,pwd);
             
         });
     });
     function login(username,pwd){
+        var url = '$!{returnurl}';
         jQuery.ajax({
             type:'post',
             dataType:'json',
             url:'/account/ajaxLogin',
-            data:{'userName':username,'userPassword':encrypt(pwd),'returnurl':url},
+            data:{'userName':username,'password':encrypt(pwd),'returnurl':url},
             beforeSend:function(){
                 
             },
@@ -65,7 +85,7 @@
                     if(url!=null){
                         window.location.href=url;
                     }else{
-                        window.location.href='/student/index';
+                        window.location.href='/';
                     }
                 }else{
                     var msg=data['msg'];

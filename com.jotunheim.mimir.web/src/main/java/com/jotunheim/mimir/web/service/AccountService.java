@@ -53,16 +53,21 @@ public class AccountService {
 
     public LoginData loginByCookie(String userCookie) {
         LOG.info("AccountService.loginByCookie, user cookie is:" + userCookie);
-        String[] userCredential = CipherHelper.decrypt(userCookie)
-                .split("-");
-        if(userCredential == null || userCredential.length < 2) {
-            LOG.info("login by cookie, userCredential is:" + userCredential);
+        try {
+            String[] userCredential = CipherHelper.decrypt(userCookie)
+                    .split("-");
+            if(userCredential == null || userCredential.length < 2) {
+                LOG.info("login by cookie, userCredential is:" + userCredential);
+                return new LoginData(ACCOUNT_WRONG_COOKIE, null);
+            }
+            String userName = userCredential[0];
+            String password = userCredential[1];
+            LOG.info("user:" + userName + ", password:" + userCredential);
+            return login(userName, password);
+        } catch (Exception ex) {
+            LOG.error("login by cookie failed, exception is:" + ex + "-" + ex.getMessage());
             return new LoginData(ACCOUNT_WRONG_COOKIE, null);
         }
-        String userName = userCredential[0];
-        String password = userCredential[1];
-        LOG.info("user:" + userName + ", password:" + userCredential);
-        return login(userName, password);
     }
 
     /**

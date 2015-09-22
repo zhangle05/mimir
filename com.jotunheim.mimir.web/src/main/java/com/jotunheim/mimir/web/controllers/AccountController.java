@@ -8,6 +8,8 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,6 +20,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.LocaleResolver;
 
@@ -28,6 +32,7 @@ import com.jotunheim.mimir.domain.UserRole;
 import com.jotunheim.mimir.web.service.AccountService;
 import com.jotunheim.mimir.web.service.AccountService.LoginData;
 import com.jotunheim.mimir.web.utils.RoleAccessLevel;
+import com.jotunheim.mimir.web.utils.SharedConstants;
 
 /**
  * @author dannyzha
@@ -131,6 +136,62 @@ public class AccountController {
             }
         }
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/ajaxLogin", method = RequestMethod.POST)
+    public @ResponseBody String ajaxLogin(Model uiModel, HttpServletRequest httpServletRequest,
+            @RequestParam(value = "userName", required = true) String userName,
+            @RequestParam(value = "password", required = true) String password) {
+        LOG.debug("ajax login, userName:" + userName + ", password:" + password);
+        uiModel.asMap().clear();
+        JSONObject json = new JSONObject();
+        LoginData data = accountService.login(userName, password);
+        try {
+            if (data.statusCode == AccountService.ACCOUNT_NOT_EXIST) {
+                // user name not exist
+                String msg = "User " + userName + " does not exist.";
+                LOG.debug(msg);
+                json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+                json.accumulate(SharedConstants.AJAX_MSG_KEY, msg);
+                return json.toString();
+            } else if (data.statusCode == AccountService.ACCOUNT_WRONG_PASSWORD) {
+                String msg = "User " + userName + ", password wrong.";
+                LOG.debug(msg);
+                json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+                json.accumulate(SharedConstants.AJAX_MSG_KEY, msg);
+                return json.toString();
+            } else if (data.statusCode == AccountService.ACCOUNT_LOGIN_SUCCEED){
+                String returnurl=httpServletRequest.getParameter("returnurl");
+                User realUser = data.realUser;
+                uiModel.addAttribute("loginUser", realUser);
+                UserRole role = roleDao.findById(realUser.getRoleID());
+                LOG.debug("role is:" + role);
+                String url = returnurl;
+                if(role != null) {
+                    uiModel.addAttribute("userRole", role);
+                    if(role.getAccessLevel() == RoleAccessLevel.USER) {
+                        url = "/";
+                    }
+                    else if(role.getAccessLevel() == RoleAccessLevel.ADMIN) {
+                        url = "/admin";
+                    }
+                    else if(role.getAccessLevel() == RoleAccessLevel.SUPERVISOR) {
+                        url = "/supervisor";
+                    }
+                }
+                json.accumulate("url", url);
+                json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_OK);
+                json.accumulate(SharedConstants.AJAX_MSG_KEY, "OK");
+                return json.toString();
+            }
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "unknow reason");
+            return json.toString();
+        } catch (Exception ex) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_SYSTEM_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, ex.toString() + ":" + ex.getMessage());
+            return json.toString();
+        }
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET, produces = "text/html")

@@ -5,6 +5,7 @@
         <title>Octupus studio</title>
         <!-- Bootstrap -->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link href="/static/bootstrap-template/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/static/bootstrap-template/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
         <link href="/static/bootstrap-template/assets/styles.css" rel="stylesheet" media="screen">

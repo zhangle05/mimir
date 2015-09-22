@@ -13,7 +13,7 @@ public class SharedConstants {
     /**
      * cookie for user auto-login
      */
-    public static final String USER_COOKIE_KEY = CipherHelper.md5sum("UserCookie");
+    public static final String USER_COOKIE_KEY = CipherHelper.md5sum("Octopus-UserCookie");
     /**
      * cookie expire time, in seconds
      */
@@ -28,4 +28,8 @@ public class SharedConstants {
     public static final int AJAXCODE_SYSTEM_ERROR = -1;
 
     public static final int AJAXCODE_AUTHENTICATION_ERROR = -2;
+
+    public static final String AJAX_CODE_KEY = "code";
+
+    public static final String AJAX_MSG_KEY = "message";
 }
