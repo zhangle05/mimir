@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
+import com.jotunheim.mimir.web.annotation.Login;
 import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 
 /**
@@ -23,6 +24,7 @@ import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 
 @RequestMapping("/supervisor")
 @Controller
+@Login(role = RoleAccessLevel.SUPERVISOR)
 public class SupervisorController {
     private static Log LOG = LogFactory
             .getLog(SupervisorController.class);
