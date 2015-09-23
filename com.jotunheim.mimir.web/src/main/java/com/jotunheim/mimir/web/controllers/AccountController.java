@@ -6,6 +6,7 @@ package com.jotunheim.mimir.web.controllers;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import net.sf.json.JSONObject;
@@ -31,6 +32,7 @@ import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
 import com.jotunheim.mimir.web.service.AccountService;
 import com.jotunheim.mimir.web.service.AccountService.LoginData;
+import com.jotunheim.mimir.web.utils.CookieUtils;
 import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 import com.jotunheim.mimir.web.utils.SharedConstants;
 
@@ -57,6 +59,9 @@ public class AccountController {
 
     @Autowired
     private LocaleResolver localeResolver;
+
+    @Autowired
+    private CookieUtils cookieUtils;
 
     @Autowired
     private AccountService accountService;
@@ -139,7 +144,9 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/ajaxLogin", method = RequestMethod.POST)
-    public @ResponseBody String ajaxLogin(Model uiModel, HttpServletRequest httpServletRequest,
+    public @ResponseBody String ajaxLogin(Model uiModel,
+            HttpServletRequest httpServletRequest,
+            HttpServletResponse response,
             @RequestParam(value = "userName", required = true) String userName,
             @RequestParam(value = "password", required = true) String password) {
         LOG.debug("ajax login, userName:" + userName + ", password:" + password);
@@ -179,6 +186,8 @@ public class AccountController {
                         url = "/supervisor";
                     }
                 }
+                String cookie = accountService.generateUserCookie(userName, password);
+                cookieUtils.setCookie(response, SharedConstants.USER_COOKIE_KEY, cookie, SharedConstants.COOKIE_EXPIRE_TIME);
                 json.accumulate("url", url);
                 json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_OK);
                 json.accumulate(SharedConstants.AJAX_MSG_KEY, "OK");
