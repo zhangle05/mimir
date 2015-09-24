@@ -11,9 +11,9 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jotunheim.mimir.common.utils.CipherHelper;
 import com.jotunheim.mimir.dao.UserDao;
 import com.jotunheim.mimir.domain.User;
+import com.jotunheim.mimir.domain.utils.UserHelper;
 
 /**
  * DaoImpl object for domain model class User.
@@ -28,7 +28,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public void persist(User transientInstance) {
         log.debug("persisting User instance");
         try {
-            transientInstance.setUserPassword(CipherHelper.encrypt(transientInstance.getUserPassword()));
+            transientInstance.setUserPassword(UserHelper.generateEncryptPassword(transientInstance));
             sessionFactory.getCurrentSession().persist(transientInstance);
             log.debug("persist successful");
         }

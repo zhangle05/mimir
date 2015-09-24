@@ -27,7 +27,7 @@ import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
 import com.jotunheim.mimir.web.annotation.Login;
 import com.jotunheim.mimir.web.service.AccountService;
-import com.jotunheim.mimir.web.service.AccountService.LoginData;
+import com.jotunheim.mimir.web.service.AccountService.LoginResult;
 import com.jotunheim.mimir.web.utils.CookieUtils;
 import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 import com.jotunheim.mimir.web.utils.SharedConstants;
@@ -74,7 +74,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
                 LOG.debug("cookie object is:" + cookie);
                 if (cookie != null) {
                     String userCookie = cookie.getValue();
-                    LoginData ld = accountService.loginByCookie(userCookie);
+                    LoginResult ld = accountService.loginByCookie(userCookie);
                     if(ld.statusCode == AccountService.ACCOUNT_LOGIN_SUCCEED) {
                         user = ld.realUser;
                         request.getSession().setAttribute("loginUser", user);

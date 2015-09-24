@@ -31,7 +31,7 @@ import com.jotunheim.mimir.dao.UserRoleDao;
 import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
 import com.jotunheim.mimir.web.service.AccountService;
-import com.jotunheim.mimir.web.service.AccountService.LoginData;
+import com.jotunheim.mimir.web.service.AccountService.LoginResult;
 import com.jotunheim.mimir.web.utils.CookieUtils;
 import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 import com.jotunheim.mimir.web.utils.SharedConstants;
@@ -102,7 +102,7 @@ public class AccountController {
         }
         uiModel.asMap().clear();
         Locale locale = localeResolver.resolveLocale(httpServletRequest);
-        LoginData data = accountService.login(user.getUserName(), user.getUserPassword());
+        LoginResult data = accountService.login(user.getUserName(), user.getUserPassword());
         if (data != null) {
             if (data.statusCode == AccountService.ACCOUNT_NOT_EXIST) {
                 // user name not exist
@@ -152,7 +152,7 @@ public class AccountController {
         LOG.debug("ajax login, userName:" + userName + ", password:" + password);
         uiModel.asMap().clear();
         JSONObject json = new JSONObject();
-        LoginData data = accountService.login(userName, password);
+        LoginResult data = accountService.login(userName, password);
         try {
             if (data.statusCode == AccountService.ACCOUNT_NOT_EXIST) {
                 // user name not exist
@@ -195,6 +195,41 @@ public class AccountController {
             }
             json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
             json.accumulate(SharedConstants.AJAX_MSG_KEY, "unknow reason");
+            return json.toString();
+        } catch (Exception ex) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_SYSTEM_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, ex.toString() + ":" + ex.getMessage());
+            return json.toString();
+        }
+    }
+
+    @RequestMapping(value = "/ajaxCreate", method = RequestMethod.POST)
+    public @ResponseBody String ajaxCreate(Model uiModel,
+            HttpServletRequest httpServletRequest,
+            HttpServletResponse response,
+            @RequestParam(value = "userName", required = true) String userName,
+            @RequestParam(value = "password", required = true) String password,
+            @RequestParam(value = "phone", required = false) String phoneNumber,
+            @RequestParam(value = "nickName", required = false) String nickName,
+            @RequestParam(value = "role", required = false) Long roleID) {
+        LOG.debug("ajax create, userName:" + userName + ", password:" + password);
+        uiModel.asMap().clear();
+        JSONObject json = new JSONObject();
+        if(StringUtils.isEmpty(userName)) {
+            json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.put(SharedConstants.AJAX_MSG_KEY, "user name is empty!");
+            return json.toString();
+        }
+        try {
+            User user = new User();
+            user.setUserName(userName);
+            user.setUserPassword(password);
+            user.setPhoneNumber(phoneNumber);
+            user.setUserNickName(nickName);
+            user.setRoleID(roleID);
+            accountService.addUser(user, json);
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_OK);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "OK");
             return json.toString();
         } catch (Exception ex) {
             json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_SYSTEM_ERROR);

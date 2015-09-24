@@ -112,54 +112,21 @@
                     
                     #if(${userRole.accessLevel}==16)
                         <li #if($nav == 1)class="active" #end>
-                            <a href="/supervisor/addsbj"><i class="icon-chevron-right"></i>增加学科</a>
-                        </li>
-                        <li #if($nav == 2)class="active" #end>
-                            <a href="/supervisor/addschool"><i class="icon-chevron-right"></i>增加学校</a>
-                        </li>
-                        <li #if($nav == 3)class="active" #end>
-                            <a href="/supervisor/addadmin"><i class="icon-chevron-right"></i>增加学校管理员</a>
-                        </li>
-                        <li #if($nav == 4)class="active" #end>
-                            <a href="/supervisor/subjects"><i class="icon-chevron-right"></i>学科列表</a>
-                        </li>
-                        <li #if($nav == 5)class="active" #end>
-                            <a href="/supervisor/schools"><i class="icon-chevron-right"></i>学校列表</a>
+                            <a href="/supervisor/addAdmin"><i class="icon-chevron-right"></i>增加管理员</a>
                         </li>
                         <li #if($nav == 6)class="active" #end>
-                            <a href="/supervisor/admins"><i class="icon-chevron-right"></i>学校管理员列表</a>
+                            <a href="/supervisor/admins"><i class="icon-chevron-right"></i>管理员列表</a>
                         </li>
                     #else
-                    <li  #if($nav == 1)class="active" #end>
-                        <a href="/admin/adduser?type=t"><i class="icon-chevron-right"></i>添加老师</a>
-                    </li>
-                    <!--
-                    <li #if($nav == 2)class="active" #end>
-                        <a href="/admin/adduser?type=tp"><i class="icon-chevron-right"></i>添加老师(家长)</a>
-                    </li>
-                    -->
-                    <li #if($nav == 3)class="active" #end>
-                        <a href="/school/addclass"><i class="icon-chevron-right"></i>添加班级</a>
-                    </li>
-                     <!--
-                    <li #if($nav == 4)class="active" #end>
-                        <a href="/admin/adduser?type=s"><i class="icon-chevron-right"></i>添加学生</a>
-                    </li>
-                    <li #if($nav == 5)class="active" #end>
-                        <a href="/admin/adduser?type=p"><i class="icon-chevron-right"></i>添加家长</a>
-                    </li>
-                    <!--
-                    <li #if($nav == 6)class="active"#end>
-                        <a href="/batchinsert/upload"><i class="icon-chevron-right"></i>批量添加</a>
-                    </li>
-                    -->
-
-                    <li #if($nav == 7)class="active" #end>
-                        <a href="/school/classlist"><i class="icon-chevron-right"></i>班级列表</a>
-                    </li>
-                    <li #if($nav == 8)class="active"#end>
-                        <a href="/admin/userlist" ><i class="icon-chevron-right"></i>用户列表</a>
-                    </li>
+                        <li #if($nav == 1)class="active" #end>
+                            <a href="/admin/adduser?type=t"><i class="icon-chevron-right"></i>添加用户</a>
+                        </li>
+                        <li #if($nav == 7)class="active" #end>
+                            <a href="/admin/bloglist"><i class="icon-chevron-right"></i>文章列表</a>
+                        </li>
+                        <li #if($nav == 8)class="active"#end>
+                            <a href="/admin/photolist" ><i class="icon-chevron-right"></i>照片列表</a>
+                        </li>
                     #end
                     </ul>
                 </div>
