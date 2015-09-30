@@ -36,6 +36,7 @@
 </style>
 
 <div class="login">
+    <div><img src="/img/logo-icon-16x16.png"/><span>Administrator console login</span></div>
     <input type="text" name="userName" /> <br/>
     <input type="password" name="password" /> <br/>
     <div id="btn-login" class="btn-login" style="">login</div>
