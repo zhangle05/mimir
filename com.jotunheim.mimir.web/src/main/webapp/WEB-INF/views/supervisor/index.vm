@@ -1,3 +1,6 @@
 #set($layout="/layout/bootstrap_admin_layout.vm")
-
-supervisor home
+<script type="text/javascript">
+$(function(){
+    window.location.href='/admin/userlist';
+});
+</script>

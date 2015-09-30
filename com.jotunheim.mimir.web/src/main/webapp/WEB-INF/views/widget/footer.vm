@@ -4,7 +4,7 @@
     #set($footer="footer")
     #set($footer_icp="footer-icp")
 #end
-<div id="$!{footer}" style="visibility: visible; display: block;">
+<div id="$!{footer}" class="page-footer" style="visibility: visible; display: block;">
     <div class="widget">
         <div id="text-2" class="widget widget_text">
             <h3 class="widget-title">$!{msgSource.getMessage("org_name",null,$locale)}</h3>

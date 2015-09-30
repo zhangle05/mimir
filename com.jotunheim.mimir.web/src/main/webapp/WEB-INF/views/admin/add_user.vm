@@ -1,5 +1,5 @@
 #set($layout="/layout/bootstrap_admin_layout.vm")
-#set($nav = 1)
+#set($nav = 2)
 #include("/common/encryptUtils.vm")
 <script src="http://i.gtimg.cn/vipstyle/frozenjs/lib/zepto.min.js?_bid=304"></script>
 

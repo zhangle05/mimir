@@ -158,7 +158,9 @@ public class AdminController {
             return "uncaught_exception";
         }
         UserRole userRole = roleDao.findById(realUser.getRoleID());
-        if(userRole != null && userRole.getAccessLevel() >= role.getAccessLevel()) {
+        LOG.debug("user role is:" + userRole + ", login level:" + role.getAccessLevel()
+                + ", user level:" + (userRole == null ? 0 : userRole.getAccessLevel()));
+        if(userRole == null || userRole.getAccessLevel() >= role.getAccessLevel()) {
             uiModel.addAttribute("errorMsg", "没有权限删除" + userRole.getRoleName() + "用户'" + realUser.getUserName() + "'!");
             return "uncaught_exception";
         }
