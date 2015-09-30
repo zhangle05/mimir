@@ -56,6 +56,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         checkCookie(request, response);
         if (handler instanceof HandlerMethod) {
             HandlerMethod hmethod = (HandlerMethod) handler;
+            initAttribute(hmethod, request, response);
             if (!checkLogin(hmethod, request, response)) {
                 return false;
             }
@@ -98,6 +99,45 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
                     + ex.getMessage());
             ex.printStackTrace();
         }
+    }
+
+    /**
+     * 初始化request Attribute属性
+     * 
+     * @param request
+     * @param response
+     */
+    private void initAttribute(HandlerMethod hmethod,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String partner = request.getParameter("partner");
+        if (StringUtils.isNotEmpty(partner)) {
+            // 退出浏览器 parnter失效
+            cookieUtils.setCookieWithPrefix(response, "partner", partner, -1);
+            request.setAttribute("partner", partner);
+        } else {
+            partner = cookieUtils.getCookieValueWithPrefix(request, "partner");
+            if (StringUtils.isNotEmpty(partner)) {
+                request.setAttribute("partner", partner);
+            } else {
+                request.setAttribute("partner", "");
+            }
+        }
+
+        LOG.info("Partner is " + partner);
+
+        String userAgent = request.getHeader("User-Agent");
+        if (userAgent.toLowerCase().indexOf("micromessenger") != -1) {
+            request.setAttribute("isWechat", true);
+        } else {
+            request.setAttribute("isWechat", false);
+        }
+
+        boolean isMobile = false;
+        if (userAgent.indexOf("Mobile") > -1) {
+            isMobile = true;
+        }
+        request.setAttribute("isMobile", isMobile);
     }
 
     private boolean checkLogin(HandlerMethod hmethod,

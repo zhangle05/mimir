@@ -117,6 +117,10 @@ public class AccountService {
         return true;
     }
 
+    public boolean changePswd(long uid, String oldPswd, String newPswd, JSONObject json) {
+        return false;
+    }
+
     private LoginResult checkUser(String password, User realUser) {
         if (realUser == null) {
             return new LoginResult(ACCOUNT_NOT_EXIST, null);
