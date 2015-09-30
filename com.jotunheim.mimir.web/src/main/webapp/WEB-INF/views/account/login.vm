@@ -36,7 +36,10 @@
 </style>
 
 <div class="login">
-    <div><img src="/img/logo-icon-16x16.png"/><span>Administrator console login</span></div>
+    <div style="margin:0px;padding:0px;height:30px;line-height:30px;text-align:center;">
+        <span style="display: inline-block;vertical-align: middle;line-height: normal; "><img src="/img/logo-icon-16x16.png"/></span>
+        <span style="display: inline-block;vertical-align: middle;line-height: normal; ">Administrator console login</span>
+    </div>
     <input type="text" name="userName" /> <br/>
     <input type="password" name="password" /> <br/>
     <div id="btn-login" class="btn-login" style="">login</div>

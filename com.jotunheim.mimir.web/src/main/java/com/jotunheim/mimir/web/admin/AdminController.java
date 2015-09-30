@@ -3,7 +3,6 @@
  */
 package com.jotunheim.mimir.web.admin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,11 +23,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jotunheim.mimir.dao.UserDao;
-import com.jotunheim.mimir.dao.UserRoleDao;
 import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
 import com.jotunheim.mimir.domain.data.RoleAccessLevel;
 import com.jotunheim.mimir.web.annotation.Login;
+import com.jotunheim.mimir.web.service.AccountService;
 import com.jotunheim.mimir.web.utils.SharedConstants;
 
 /**
@@ -46,7 +45,7 @@ public class AdminController {
     private UserDao userDao;
 
     @Autowired
-    private UserRoleDao roleDao;
+    private AccountService accountService;
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "text/html")
     public String adminHome(Model uiModel, HttpServletRequest request) {
@@ -121,19 +120,21 @@ public class AdminController {
             json.accumulate(SharedConstants.AJAX_MSG_KEY, "用户密码不能为空!");
             return json.toString();
         }
-        UserRole addedRole = roleDao.findById(user.getRoleID());
-        if(addedRole == null) {
+        int userLevel = RoleAccessLevel.getAccessLevel(user.getRoleID());
+        if(userLevel == 0) {
             json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
             json.accumulate(SharedConstants.AJAX_MSG_KEY, "新增用户未设置权限!");
             return json.toString();
         }
-        if(addedRole.getAccessLevel() >= role.getAccessLevel()) {
+        if(userLevel >= role.getAccessLevel()) {
             json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
             json.accumulate(SharedConstants.AJAX_MSG_KEY, "新用户权限高于当前用户权限!");
             return json.toString();
         }
         try {
-            userDao.persist(user);
+            if(!accountService.addUser(user, json)) {
+                return json.toString();
+            }
             json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_OK);
             json.accumulate(SharedConstants.AJAX_MSG_KEY, "success");
         } catch (Exception ex) {
@@ -157,33 +158,88 @@ public class AdminController {
             uiModel.addAttribute("errorMsg", "用户'" + user.getId() + "'不存在!");
             return "uncaught_exception";
         }
-        UserRole userRole = roleDao.findById(realUser.getRoleID());
-        LOG.debug("user role is:" + userRole + ", login level:" + role.getAccessLevel()
-                + ", user level:" + (userRole == null ? 0 : userRole.getAccessLevel()));
-        if(userRole == null || userRole.getAccessLevel() >= role.getAccessLevel()) {
-            uiModel.addAttribute("errorMsg", "没有权限删除" + userRole.getRoleName() + "用户'" + realUser.getUserName() + "'!");
+        int userLevel = RoleAccessLevel.getAccessLevel(realUser.getRoleID());
+        LOG.debug("login level:" + role.getAccessLevel() + ", user level:" + userLevel);
+        if(userLevel >= role.getAccessLevel()) {
+            uiModel.addAttribute("errorMsg", "没有权限删除" + userLevel + "级用户'" + realUser.getUserName() + "'!");
             return "uncaught_exception";
         }
         userDao.delete(user);
         return "redirect:/admin/userlist";
     }
 
-    private void initRoleList(Model uiModel, UserRole loginRole) {
-        List<UserRole> roleList = new ArrayList<UserRole>();
-        UserRole userRole = roleDao.findById(RoleAccessLevel.ROLE_ID_USER);
-        UserRole adminRole = roleDao.findById(RoleAccessLevel.ROLE_ID_ADMIN);
-        if(loginRole == null || loginRole.getAccessLevel() < RoleAccessLevel.ADMIN) {
-            return;
-        } else {
-            if(userRole != null) {
-                roleList.add(userRole);
-            }
-            if(loginRole.getAccessLevel() == RoleAccessLevel.SUPERVISOR) {
-                if(adminRole != null) {
-                    roleList.add(adminRole);
-                }
-            }
+    @RequestMapping(value = "/changepswd", method = RequestMethod.GET, produces = "text/html")
+    public String changePswdForm(Model uiModel, HttpServletRequest request,
+            @RequestParam(value = "uid", required = false) Long userID) {
+        LOG.debug("create change-password form.");
+        User admin = (User) request.getSession().getAttribute("loginUser");
+        LOG.debug("admin is:" + admin);
+        UserRole role = (UserRole) request.getSession().getAttribute("userRole");
+        LOG.debug("role is:" + role);
+        if(role == null || role.getAccessLevel() < RoleAccessLevel.ADMIN) {
+            return "redirect:/account/login";
         }
+
+        User u=userDao.findById(userID);
+        if(u == null){
+            uiModel.addAttribute("errorMsg", "没找到对应的用户!");
+            return "uncaughtException";
+        }
+        int userLevel = RoleAccessLevel.getAccessLevel(u.getRoleID());
+        if(userLevel >= role.getAccessLevel()){
+            uiModel.addAttribute("errorMsg", "无权限修改" + userLevel + "级用户'" + u.getUserName() + "'的信息!");
+            return "uncaughtException";
+        }
+        uiModel.addAttribute("uid", userID);
+        return "admin/change_pswd";
+    }
+
+    @RequestMapping(value = "/changepswd", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody String changePswd(Model uiModel, HttpServletRequest request, HttpServletRequest httpServletRequest,
+            @RequestParam(value = "uid", required = false) Long userID,
+            @RequestParam(value = "userPswd", required = false) String pswd,
+            @RequestParam(value = "confirmPswd", required = false) String confirmPswd
+            ) {
+        LOG.debug("change password for user:" + userID);
+        JSONObject json = new JSONObject();
+        User admin = (User) request.getSession().getAttribute("loginUser");
+        LOG.debug("admin is:" + admin);
+        UserRole role = (UserRole) request.getSession().getAttribute("userRole");
+        LOG.debug("role is:" + role);
+        if(role == null || role.getAccessLevel() < RoleAccessLevel.ADMIN) {
+            return "redirect:/account/login";
+        }
+        User realUser = userDao.findById(userID);
+        if(realUser == null) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "没找到对应的用户!");
+            return json.toString();
+        }
+        LOG.debug("real user role id is:" + realUser.getRoleID());
+        int userLevel = RoleAccessLevel.getAccessLevel(realUser.getRoleID());
+        if(userLevel >= RoleAccessLevel.getAccessLevel(admin.getRoleID())
+                && admin.getId() != userID) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "无权限修改" + userLevel + "级用户'" + realUser.getUserName() + "'!");
+            return json.toString();
+        }
+        LOG.debug("pswd is:" + pswd);
+        try {
+            if(!accountService.changePswdByAdmin(realUser, pswd, confirmPswd, json)) {
+                return json.toString();
+            }
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_OK);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "success");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_SYSTEM_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, ex + "-" + ex.getMessage());
+        }
+        return json.toString();
+    }
+
+    private void initRoleList(Model uiModel, UserRole loginRole) {
+        List<UserRole> roleList = RoleAccessLevel.getRoleList(loginRole);
         uiModel.addAttribute("roles", roleList);
     }
 }

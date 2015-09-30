@@ -70,6 +70,15 @@
         var phone = $('#phone').val().trim();
         var role = $('#role').val().trim();
 
+        if(pwd.length < 6){
+            if(pwd == ''){
+                isShowDialog=octopusAlert("请输入密码",dialogCallback);
+            }else{
+                octopusAlert("输入密码不能少于6位",dialogCallback);
+            }
+            return;
+        }
+
         jQuery.ajax({
             type:'post',
             url:'/admin/adduser',

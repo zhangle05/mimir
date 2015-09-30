@@ -125,31 +125,49 @@ public class AccountService {
     }
 
     /**
-     * change user password
+     * change user password by himself
      *
      * @param uid
      * @param oldPswd
      * @param newPswd
+     * @param confirmPswd
      * @param json
      * @return
      */
-    public boolean changePswd(long uid, String oldPswd, String newPswd, JSONObject json) {
-        User u = userDao.findById(uid);
-        if(u == null) {
-            json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
-            json.put(SharedConstants.AJAX_MSG_KEY, "Cannot find user '" + uid + "'!");
-            return false;
-        }
+    public boolean changePswd(User u, String oldPswd, String newPswd, String confirmPswd, JSONObject json) {
         if(!UserHelper.checkPassword(oldPswd, u)) {
             json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
             json.put(SharedConstants.AJAX_MSG_KEY, "Old password is wrong!");
+            return false;
+        }
+        return changePswdByAdmin(u, newPswd, confirmPswd, json);
+    }
+
+    /**
+     * change user password by admin
+     *
+     * @param u
+     * @param newPswd
+     * @param confirmPswd
+     * @param json
+     * @return
+     */
+    public boolean changePswdByAdmin(User u, String newPswd, String confirmPswd, JSONObject json) {
+        if(StringUtils.isEmpty(newPswd)) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "新密码为空!");
+            return false;
+        }
+        if(!newPswd.equals(confirmPswd)) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "两次输入的密码不一致!");
             return false;
         }
         u.setUserPassword(newPswd);
         String encrypted = UserHelper.generateEncryptPassword(u);
         u.setUserPassword(encrypted);
         userDao.attachDirty(u);
-        return false;
+        return true;
     }
 
     private LoginResult checkUser(String password, User realUser) {

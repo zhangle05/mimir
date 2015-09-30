@@ -187,9 +187,7 @@ code strong {
 }
 
 #container {
-    left:50%;
-    margin-left:-480px;
-    position:absolute;
+    margin:0 auto;
     width:960px !important;
 }
 

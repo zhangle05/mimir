@@ -23,6 +23,27 @@ public class UserRole implements Serializable {
     private long id;
 
     /**
+     * default constructor
+     */
+    public UserRole() {
+    }
+
+    /**
+     * constructor with arguments
+     *
+     * @param id
+     * @param name
+     * @param level
+     * @param desc
+     */
+    public UserRole(long id, String name, int level, String desc) {
+        this.id = id;
+        this.roleName = name;
+        this.accessLevel = level;
+        this.description = desc;
+    }
+
+    /**
      * 角色名
      */
     private String roleName;
