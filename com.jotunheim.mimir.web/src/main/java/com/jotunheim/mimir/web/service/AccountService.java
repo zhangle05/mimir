@@ -88,6 +88,13 @@ public class AccountService {
         return CipherHelper.encrypt(credential);
     }
 
+    /**
+     * add a new user with non-duplicated user name
+     *
+     * @param user
+     * @param json
+     * @return
+     */
     public synchronized boolean addUser(User user, JSONObject json) {
         LOG.info("AccountService.addUser:" + user);
         try {
@@ -117,7 +124,31 @@ public class AccountService {
         return true;
     }
 
+    /**
+     * change user password
+     *
+     * @param uid
+     * @param oldPswd
+     * @param newPswd
+     * @param json
+     * @return
+     */
     public boolean changePswd(long uid, String oldPswd, String newPswd, JSONObject json) {
+        User u = userDao.findById(uid);
+        if(u == null) {
+            json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.put(SharedConstants.AJAX_MSG_KEY, "Cannot find user '" + uid + "'!");
+            return false;
+        }
+        if(!UserHelper.checkPassword(oldPswd, u)) {
+            json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.put(SharedConstants.AJAX_MSG_KEY, "Old password is wrong!");
+            return false;
+        }
+        u.setUserPassword(newPswd);
+        String encrypted = UserHelper.generateEncryptPassword(u);
+        u.setUserPassword(encrypted);
+        userDao.attachDirty(u);
         return false;
     }
 

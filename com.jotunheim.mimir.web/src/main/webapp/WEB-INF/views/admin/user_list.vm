@@ -1,0 +1,137 @@
+#set($layout="/layout/bootstrap_admin_layout.vm")
+#set($nav = 8)
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">用户列表($!{count})</div>
+    </div>
+    <div class="block-content collapse in">
+        <div class="span12">
+            <!-- <div class="dataTables_wrapper form-inline" role="grid"> -->
+                    <div class="span12">
+                        <div class="dataTables_filter">
+                            
+                            <form action="/admin/userlist" method="GET" class="form-horizontal">
+                                <label>筛选:&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <select name="roleID" class="form-control">
+                                        <option value="2" #if($roleID==2) selected #end>学生</option>
+                                        <option value="5" #if($roleID==5) selected #end>家长</option>
+                                        <option value="3" #if($roleID==3) selected #end>老师</option>
+                                        <option value="1" #if($roleID==1) selected #end>管理员</option>
+                                    </select>
+                                    <input type="text" name="userName" value="$!{userName}" class="form-control" placeholder="输入用户名/用户昵称/手机号码"/>  
+                                    <input type="submit" name="submit" value="提交" class="btn btn-success"/>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table table-bordered">
+    <tr><th>用户名</th><th>昵称</th><th>类型</th><th>班级</th><th>是否登录过</th><th>操作</th></tr>
+#foreach($u in ${users})
+    <tr>
+        <td><a href="/admin/edituser?uid=$!{u.id}">$!{u.userName}</a></td>
+        <td>$!{u.userNickName}</td>
+        <td>
+            #if($u.roleID == 1)
+                学校管理员
+            #elseif($u.roleID == 2)
+                学生
+            #elseif($u.roleID == 3)
+                老师
+            #elseif($u.roleID == 4)
+                超级管理员
+            #elseif($u.roleID == 5)
+                家长
+            #elseif($u.roleID == 6)
+                老师&家长
+            #end
+        </td>
+        <td>
+            #if($u.classID !=0)
+            <a href="/school/classdetail?id=$!{u.classID}">$!{classMap.get($u.classID).name}</a>
+            #else
+            --
+            #end
+            
+        </td>
+        <td>
+            #if($!{u.loginTimes} && ${u.loginTimes} > 0)
+            是
+            #else
+            否
+            #end
+        </th>
+        <td><a href="/admin/deluser?id=$!{u.id}">删除用户</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/edituser?uid=$!{u.id}">修改信息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/changepswd?uid=$!{u.id}">修改密码</a></td>
+    </tr>
+#end
+</table>
+    <div class="span12">
+        <div class="dataTables_paginate paging_bootstrap pagination"><ul id="pagination"></ul></div></div>
+    </div>
+           <!-- </div> -->
+        </div>
+    </div>
+
+
+
+        
+</div>
+
+<script type="text/javascript">
+var page=$page+1;
+#set($totalPages=$count/10)
+var totalPages = $totalPages;
+#if($count%10 != 0)
+totalPages+=1;
+#end
+$(function(){
+    var options = {
+        bootstrapMajorVersion:3,
+        currentPage: page,
+        numberOfPages: 10,
+        totalPages:totalPages,
+        tooltipTitles: function (type, page, current) {
+            switch (type) {
+            case "first":
+                return "首页";
+            case "prev":
+                return "上一页";
+            case "next":
+                return "下一页";
+            case "last":
+                return "最后一页";
+            case "page":
+                return (page === current) ? "当前第" + page+"页" : "第" + page+"页";
+            }
+        },
+        itemTexts:function (type, page, current) {
+                    switch (type) {
+                        case "first":
+                            return "首页";
+                        case "prev":
+                            return "上一页";
+                        case "next":
+                            return "下一页";
+                        case "last":
+                            return "最后一页";
+                        case "page":
+                            return page;
+                    }
+                },
+                onPageClicked: function (event, originalEvent, type, page) {
+                    var url ='/admin/userlist?page='+(page-1);
+                    
+                    #if($!{roleID})
+                        url += '&roleID=$!{roleID}'
+                    #end
+                    
+                    #if(${userName})
+                        url += '&userName=$!{userName}'
+                    #end
+                    window.location.href=url;
+                }
+            };
+
+    $('#pagination').bootstrapPaginator(options);
+
+});
+</script>

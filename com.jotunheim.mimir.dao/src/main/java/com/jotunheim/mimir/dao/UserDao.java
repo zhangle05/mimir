@@ -33,8 +33,8 @@ public interface UserDao {
 
     public User findByMobile(String mobile);
 
-    public int getUserCount();
+    public int getUserCount(boolean isSupervisor);
 
-    public List<User> listUsers(int page, int pageSize);
+    public List<User> listUsers(int page, int pageSize, boolean isSupervisor);
 }
 

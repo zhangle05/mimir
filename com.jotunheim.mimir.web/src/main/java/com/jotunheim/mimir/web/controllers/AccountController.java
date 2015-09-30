@@ -30,10 +30,10 @@ import com.jotunheim.mimir.dao.UserDao;
 import com.jotunheim.mimir.dao.UserRoleDao;
 import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
+import com.jotunheim.mimir.domain.data.RoleAccessLevel;
 import com.jotunheim.mimir.web.service.AccountService;
 import com.jotunheim.mimir.web.service.AccountService.LoginResult;
 import com.jotunheim.mimir.web.utils.CookieUtils;
-import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 import com.jotunheim.mimir.web.utils.SharedConstants;
 
 /**

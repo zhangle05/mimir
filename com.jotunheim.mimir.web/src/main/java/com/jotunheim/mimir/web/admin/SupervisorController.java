@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
+import com.jotunheim.mimir.domain.data.RoleAccessLevel;
 import com.jotunheim.mimir.web.annotation.Login;
-import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 
 /**
  * @author zhangle

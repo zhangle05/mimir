@@ -25,11 +25,11 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.jotunheim.mimir.dao.UserRoleDao;
 import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
+import com.jotunheim.mimir.domain.data.RoleAccessLevel;
 import com.jotunheim.mimir.web.annotation.Login;
 import com.jotunheim.mimir.web.service.AccountService;
 import com.jotunheim.mimir.web.service.AccountService.LoginResult;
 import com.jotunheim.mimir.web.utils.CookieUtils;
-import com.jotunheim.mimir.web.utils.RoleAccessLevel;
 import com.jotunheim.mimir.web.utils.SharedConstants;
 
 /**
@@ -127,14 +127,14 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         LOG.info("Partner is " + partner);
 
         String userAgent = request.getHeader("User-Agent");
-        if (userAgent.toLowerCase().indexOf("micromessenger") != -1) {
+        if (userAgent != null && userAgent.toLowerCase().indexOf("micromessenger") != -1) {
             request.setAttribute("isWechat", true);
         } else {
             request.setAttribute("isWechat", false);
         }
 
         boolean isMobile = false;
-        if (userAgent.indexOf("Mobile") > -1) {
+        if (userAgent != null && userAgent.indexOf("Mobile") > -1) {
             isMobile = true;
         }
         request.setAttribute("isMobile", isMobile);

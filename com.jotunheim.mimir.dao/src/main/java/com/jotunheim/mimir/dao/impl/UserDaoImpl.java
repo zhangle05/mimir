@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jotunheim.mimir.dao.UserDao;
 import com.jotunheim.mimir.domain.User;
+import com.jotunheim.mimir.domain.data.RoleAccessLevel;
 import com.jotunheim.mimir.domain.utils.UserHelper;
 
 /**
@@ -140,11 +141,14 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         }
     }
 
-    public int getUserCount() {
+    public int getUserCount(boolean isSupervisor) {
         log.debug("getting User count");
         try {
-            Long count = (Long)getReadTemplate().find(
-                    "select count(*) from User as user").iterator().next();
+            String sql = "SELECT COUNT(*) FROM User AS user";
+            if(!isSupervisor) {
+                sql += " WHERE NOT user.roleID=" + RoleAccessLevel.ROLE_ID_SUPERVISOR;
+            }
+            Long count = (Long)getReadTemplate().find(sql).iterator().next();
             if(count != null) {
                 log.debug("get user count successful, result is: " + count.intValue());
                 return count.intValue();
@@ -157,10 +161,14 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         return 0;
     }
 
-    public List listUsers(int page, int pageSize) {
+    public List<User> listUsers(int page, int pageSize, boolean isSupervisor) {
         log.debug("list users, page is:" + page + ", pageSize is:" + pageSize);
         try {
-            Query q = sessionFactory.getCurrentSession().createQuery("from User"); 
+            Query q = sessionFactory.getCurrentSession().createQuery("FROM User AS u"
+                    + (isSupervisor ? "" : " WHERE NOT u.roleID = :superRoleId"));
+            if(!isSupervisor) {
+                q.setParameter("superRoleId", RoleAccessLevel.ROLE_ID_SUPERVISOR);
+            }
             q.setFirstResult(page * pageSize); 
             q.setMaxResults(pageSize);
             List results = q.list();

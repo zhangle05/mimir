@@ -29,6 +29,8 @@ public class SharedConstants {
 
     public static final int AJAXCODE_AUTHENTICATION_ERROR = -2;
 
+    public static final int AJAXCODE_ROLE_ACCESS_LEVEL_ERROR = -3;
+
     public static final String AJAX_CODE_KEY = "code";
 
     public static final String AJAX_MSG_KEY = "message";

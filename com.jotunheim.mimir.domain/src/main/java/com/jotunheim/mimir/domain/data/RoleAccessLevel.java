@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jotunheim.mimir.web.utils;
+package com.jotunheim.mimir.domain.data;
 
 /**
  * @author zhangle
