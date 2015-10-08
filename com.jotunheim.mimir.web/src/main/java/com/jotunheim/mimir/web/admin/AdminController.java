@@ -149,6 +149,8 @@ public class AdminController {
     public String deleteUser(Model uiModel, @Valid User user, BindingResult bindingResult, HttpServletRequest request) {
         LOG.debug("deleting user.");
         UserRole role = (UserRole) request.getSession().getAttribute("userRole");
+        User admin = (User) request.getSession().getAttribute("loginUser");
+        LOG.debug("admin is:" + admin);
         LOG.debug("role is:" + role);
         if(role == null || role.getAccessLevel() < RoleAccessLevel.ADMIN) {
             return "redirect:/account/login";
@@ -158,10 +160,9 @@ public class AdminController {
             uiModel.addAttribute("errorMsg", "用户'" + user.getId() + "'不存在!");
             return "uncaught_exception";
         }
-        int userLevel = RoleAccessLevel.getAccessLevel(realUser.getRoleID());
-        LOG.debug("login level:" + role.getAccessLevel() + ", user level:" + userLevel);
-        if(userLevel >= role.getAccessLevel()) {
-            uiModel.addAttribute("errorMsg", "没有权限删除" + userLevel + "级用户'" + realUser.getUserName() + "'!");
+        JSONObject json = new JSONObject();
+        if(!checkPermission(admin, realUser, json)) {
+            uiModel.addAttribute("errorMsg", json.get(SharedConstants.AJAX_MSG_KEY));
             return "uncaught_exception";
         }
         userDao.delete(user);
@@ -183,12 +184,12 @@ public class AdminController {
         User u=userDao.findById(userID);
         if(u == null){
             uiModel.addAttribute("errorMsg", "没找到对应的用户!");
-            return "uncaughtException";
+            return "uncaught_exception";
         }
-        int userLevel = RoleAccessLevel.getAccessLevel(u.getRoleID());
-        if(userLevel >= role.getAccessLevel()){
-            uiModel.addAttribute("errorMsg", "无权限修改" + userLevel + "级用户'" + u.getUserName() + "'的信息!");
-            return "uncaughtException";
+        JSONObject json = new JSONObject();
+        if(!checkPermission(admin, u, json)){
+            uiModel.addAttribute("errorMsg", json.get(SharedConstants.AJAX_MSG_KEY));
+            return "uncaught_exception";
         }
         uiModel.addAttribute("uid", userID);
         return "admin/change_pswd";
@@ -216,11 +217,7 @@ public class AdminController {
             return json.toString();
         }
         LOG.debug("real user role id is:" + realUser.getRoleID());
-        int userLevel = RoleAccessLevel.getAccessLevel(realUser.getRoleID());
-        if(userLevel >= RoleAccessLevel.getAccessLevel(admin.getRoleID())
-                && admin.getId() != userID) {
-            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
-            json.accumulate(SharedConstants.AJAX_MSG_KEY, "无权限修改" + userLevel + "级用户'" + realUser.getUserName() + "'!");
+        if(!checkPermission(admin, realUser, json)) {
             return json.toString();
         }
         LOG.debug("pswd is:" + pswd);
@@ -236,6 +233,88 @@ public class AdminController {
             json.accumulate(SharedConstants.AJAX_MSG_KEY, ex + "-" + ex.getMessage());
         }
         return json.toString();
+    }
+
+    @RequestMapping(value = "/edituser", method = RequestMethod.GET, produces = "text/html")
+    public String updateUserForm(Model uiModel, HttpServletRequest request,
+            @RequestParam(value = "uid", required = false) Long userID) {
+        LOG.debug("create edit-user form.");
+        User admin = (User) request.getSession().getAttribute("loginUser");
+        LOG.debug("admin is:" + admin);
+        UserRole role = (UserRole) request.getSession().getAttribute("userRole");
+        LOG.debug("role is:" + role);
+        if(role == null || role.getAccessLevel() < RoleAccessLevel.ADMIN) {
+            return "redirect:/account/login";
+        }
+        if(userID == null) {
+            uiModel.addAttribute("errorMsg", "uid不能为空!");
+            return "uncaught_exception";
+        }
+        User u = userDao.findById(userID);
+        if(u == null) {
+            uiModel.addAttribute("errorMsg", "没找到对应的用户!");
+            return "uncaught_exception";
+        }
+        JSONObject json = new JSONObject();
+        if(!checkPermission(admin, u, json)){
+            uiModel.addAttribute("errorMsg", json.get(SharedConstants.AJAX_MSG_KEY));
+            return "uncaught_exception";
+        }
+        LOG.info("find user:" + u.getUserNickName());
+        uiModel.addAttribute("user", u);
+        return "admin/edit_user";
+    }
+
+    @RequestMapping(value = "/edituser", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody String editUser(Model uiModel, HttpServletRequest request, @Valid User user, BindingResult bindingResult) {
+        LOG.debug("edit user");
+        User admin = (User) request.getSession().getAttribute("loginUser");
+        LOG.debug("admin is:" + admin);
+        UserRole role = (UserRole) request.getSession().getAttribute("userRole");
+        LOG.debug("role is:" + role);
+        if(role == null || role.getAccessLevel() < RoleAccessLevel.ADMIN) {
+            return "redirect:/account/login";
+        }
+        JSONObject json = new JSONObject();
+        LOG.debug("user id is:" + user.getId());
+        User realUser = userDao.findById(user.getId());
+        if(realUser == null) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "没找到对应的用户!");
+            return json.toString();
+        }
+        if(!checkPermission(admin, realUser, json)){
+            return json.toString();
+        }
+        try {
+            LOG.debug("========= fields to edit: ==================");
+            LOG.debug("nick name: " + user.getUserNickName());
+            realUser.setUserNickName(user.getUserNickName());
+            LOG.debug("phone number:" + user.getPhoneNumber());
+            if(!StringUtils.isEmpty(user.getPhoneNumber())) {
+                realUser.setPhoneNumber(user.getPhoneNumber());
+            }
+            userDao.attachDirty(realUser);
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_OK);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "success");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_SYSTEM_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, ex + "-" + ex.getMessage());
+        }
+        return json.toString();
+    }
+
+    private boolean checkPermission(User admin, User u, JSONObject json) {
+        LOG.debug("user role id is:" + u.getRoleID());
+        int userLevel = RoleAccessLevel.getAccessLevel(u.getRoleID());
+        if(userLevel >= RoleAccessLevel.getAccessLevel(admin.getRoleID())
+                && admin.getId() != u.getId()) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "无权限修改" + userLevel + "级用户'" + u.getUserName() + "'!");
+            return false;
+        }
+        return true;
     }
 
     private void initRoleList(Model uiModel, UserRole loginRole) {
