@@ -161,7 +161,7 @@ public class AdminController {
             return "uncaught_exception";
         }
         JSONObject json = new JSONObject();
-        if(!checkPermission(admin, realUser, json)) {
+        if(!checkDeletePermission(admin, realUser, json)) {
             uiModel.addAttribute("errorMsg", json.get(SharedConstants.AJAX_MSG_KEY));
             return "uncaught_exception";
         }
@@ -187,7 +187,7 @@ public class AdminController {
             return "uncaught_exception";
         }
         JSONObject json = new JSONObject();
-        if(!checkPermission(admin, u, json)){
+        if(!checkChangePermission(admin, u, json)){
             uiModel.addAttribute("errorMsg", json.get(SharedConstants.AJAX_MSG_KEY));
             return "uncaught_exception";
         }
@@ -217,7 +217,7 @@ public class AdminController {
             return json.toString();
         }
         LOG.debug("real user role id is:" + realUser.getRoleID());
-        if(!checkPermission(admin, realUser, json)) {
+        if(!checkChangePermission(admin, realUser, json)) {
             return json.toString();
         }
         LOG.debug("pswd is:" + pswd);
@@ -256,7 +256,7 @@ public class AdminController {
             return "uncaught_exception";
         }
         JSONObject json = new JSONObject();
-        if(!checkPermission(admin, u, json)){
+        if(!checkChangePermission(admin, u, json)){
             uiModel.addAttribute("errorMsg", json.get(SharedConstants.AJAX_MSG_KEY));
             return "uncaught_exception";
         }
@@ -283,7 +283,7 @@ public class AdminController {
             json.accumulate(SharedConstants.AJAX_MSG_KEY, "没找到对应的用户!");
             return json.toString();
         }
-        if(!checkPermission(admin, realUser, json)){
+        if(!checkChangePermission(admin, realUser, json)){
             return json.toString();
         }
         try {
@@ -305,13 +305,32 @@ public class AdminController {
         return json.toString();
     }
 
-    private boolean checkPermission(User admin, User u, JSONObject json) {
-        LOG.debug("user role id is:" + u.getRoleID());
+    private boolean checkChangePermission(User admin, User u, JSONObject json) {
+        LOG.debug("checkChangePermission, user role id is:" + u.getRoleID());
         int userLevel = RoleAccessLevel.getAccessLevel(u.getRoleID());
         if(userLevel >= RoleAccessLevel.getAccessLevel(admin.getRoleID())
                 && admin.getId() != u.getId()) {
             json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
             json.accumulate(SharedConstants.AJAX_MSG_KEY, "无权限修改" + userLevel + "级用户'" + u.getUserName() + "'!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkDeletePermission(User admin, User u, JSONObject json) {
+        LOG.debug("checkDeletePermission, user role id is:" + u.getRoleID());
+        if(!checkChangePermission(admin, u, json)) {
+            return false;
+        }
+        if(admin.getId() == u.getId()) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "无法删除自己!");
+            return false;
+        }
+        int userLevel = RoleAccessLevel.getAccessLevel(u.getRoleID());
+        if(userLevel >= RoleAccessLevel.ROLE_ID_SUPERVISOR) {
+            json.accumulate(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+            json.accumulate(SharedConstants.AJAX_MSG_KEY, "无权限删除超级用户'" + u.getUserName() + "'!");
             return false;
         }
         return true;
