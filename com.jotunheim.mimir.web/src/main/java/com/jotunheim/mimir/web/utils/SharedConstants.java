@@ -34,4 +34,8 @@ public class SharedConstants {
     public static final String AJAX_CODE_KEY = "code";
 
     public static final String AJAX_MSG_KEY = "message";
+
+    public static final int DEFAULT_PAGE_SIZE = 10;
+
+    public static final int DEFAULT_ABSTRA_LENGTH = 20;
 }
