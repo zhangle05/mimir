@@ -59,6 +59,7 @@ public class PhotoAdminController {
         if(page == null) {
             page = 0;
         }
+        uiModel.addAttribute("page", page);
         uiModel.addAttribute("count", photoDao.getPhotoCount());
         uiModel.addAttribute("photoes", photoDao.listPhotos(page, SharedConstants.DEFAULT_PAGE_SIZE));
         return "admin/photo_list";

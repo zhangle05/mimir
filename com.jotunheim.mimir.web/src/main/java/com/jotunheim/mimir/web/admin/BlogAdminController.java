@@ -59,6 +59,7 @@ public class BlogAdminController {
         if(page == null) {
             page = 0;
         }
+        uiModel.addAttribute("page", page);
         uiModel.addAttribute("count", blogDao.getBlogCount());
         uiModel.addAttribute("blogs", blogDao.listBlogs(page, SharedConstants.DEFAULT_PAGE_SIZE));
         return "admin/blog_list";

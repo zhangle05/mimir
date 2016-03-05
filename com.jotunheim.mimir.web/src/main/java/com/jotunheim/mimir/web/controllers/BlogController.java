@@ -46,7 +46,7 @@ public class BlogController {
     @RequestMapping("/")
     public String listBlogs(Model uiModel, HttpServletRequest request) {
         LOG.debug("List blogs.");
-        List<Blog> blogList = blogDao.listBlogs(1, 10);
+        List<Blog> blogList = blogDao.listBlogs(0, 10);
         uiModel.addAttribute("blogs", blogList);
         return "blog";
     }
@@ -56,8 +56,8 @@ public class BlogController {
             @RequestParam(value = "p", required = true) Integer page,
             @RequestParam(value = "ps", required = true) Integer pageSize) {
         LOG.debug("Ajax list blogs.");
-        if(page <= 0) {
-            page = 1;
+        if(page < 0) {
+            page = 0;
         }
         List<Blog> blogList = blogDao.listBlogs(page, pageSize);
         JSONObject json = new JSONObject();

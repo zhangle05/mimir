@@ -46,7 +46,7 @@ public class WorkController {
     @RequestMapping("/")
     public String listWorks(Model uiModel, HttpServletRequest request) {
         LOG.debug("List works.");
-        List<Photo> photoList = photoDao.listPhotos(1, 10);
+        List<Photo> photoList = photoDao.listPhotos(0, 10);
         uiModel.addAttribute("photos", photoList);
         return "work";
     }
@@ -57,8 +57,8 @@ public class WorkController {
             @RequestParam(value = "p", required = true) Integer page,
             @RequestParam(value = "ps", required = true) Integer pageSize) {
         LOG.debug("Ajax list works.");
-        if(page <= 0) {
-            page = 1;
+        if(page < 0) {
+            page = 0;
         }
         List<Photo> blogList = photoDao.listPhotos(page, pageSize);
         JSONObject json = new JSONObject();

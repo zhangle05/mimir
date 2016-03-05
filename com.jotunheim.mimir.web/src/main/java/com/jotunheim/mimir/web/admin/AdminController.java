@@ -81,6 +81,7 @@ public class AdminController {
         }
         initRoleList(uiModel, role);
         boolean isSuper = (role.getId() == RoleAccessLevel.ROLE_ID_SUPERVISOR);
+        uiModel.addAttribute("page", page);
         uiModel.addAttribute("count", userDao.getUserCount(isSuper));
         uiModel.addAttribute("users", userDao.listUsers(page, SharedConstants.DEFAULT_PAGE_SIZE, isSuper));
         return "admin/user_list";

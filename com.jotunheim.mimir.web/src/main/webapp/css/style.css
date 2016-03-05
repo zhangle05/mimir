@@ -501,7 +501,7 @@ p.comment-meta {
 }
 
 .comment-list li.comment .reply {
-    margin: 10px 0 20px;
+    margin: 5px 0 20px;
 }
 
 
@@ -510,7 +510,7 @@ p.comment-meta {
 
 /* Pagination for grid items and paginated posts */
 .pagination {
-    margin: 50px 0 0;
+    margin: 10px 0 0;
     font-size: 12px;
 }
 .pagination .current {
