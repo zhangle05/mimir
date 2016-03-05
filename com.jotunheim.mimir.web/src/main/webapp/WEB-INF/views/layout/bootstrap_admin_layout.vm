@@ -67,7 +67,7 @@
     #include("/common/stat_baidu.vm")
     </head>
     
-    <body>
+    <body style="padding-top: 60px;">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -110,7 +110,7 @@
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="span3" id="sidebar">
+                <div class="span3" id="admin_sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                     
                     #if(${userRole.accessLevel}==16)
@@ -128,16 +128,16 @@
                             <a href="/admin/adduser"><i class="icon-chevron-right"></i>添加用户</a>
                         </li>
                         <li #if($nav == 3)class="active" #end>
-                            <a href="/admin/bloglist"><i class="icon-chevron-right"></i>文章列表</a>
+                            <a href="/admin/blog/list"><i class="icon-chevron-right"></i>文章列表</a>
                         </li>
                         <li #if($nav == 4)class="active"#end>
-                            <a href="/admin/addblog" ><i class="icon-chevron-right"></i>添加文章</a>
+                            <a href="/admin/blog/add" ><i class="icon-chevron-right"></i>添加文章</a>
                         </li>
                         <li #if($nav == 5)class="active"#end>
-                            <a href="/admin/photolist" ><i class="icon-chevron-right"></i>照片列表</a>
+                            <a href="/admin/photo/list" ><i class="icon-chevron-right"></i>照片列表</a>
                         </li>
                         <li #if($nav == 6)class="active"#end>
-                            <a href="/admin/addphoto" ><i class="icon-chevron-right"></i>添加照片</a>
+                            <a href="/admin/photo/add" ><i class="icon-chevron-right"></i>添加照片</a>
                         </li>
                     #end
                     </ul>

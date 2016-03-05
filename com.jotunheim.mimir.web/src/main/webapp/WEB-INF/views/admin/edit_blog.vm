@@ -1,0 +1,45 @@
+#set($layout="/layout/bootstrap_admin_layout.vm")
+#set($nav = 3)
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">修改文章信息</div>
+    </div>
+    <div class="block-content collapse in">
+        <div class="span12">
+    <form action="/admin/blog/edit" method="POST"  class="form-horizontal">
+        <fieldset>
+        <legend>修改文章信息</legend>
+        <input type="hidden" name="id" value="$!{blog.id}" />
+        <div class="control-group">
+            <label class="control-label">标题</label>
+            <div class="controls">
+                <input name="title" type="text" value="$!{blog.title}" class="form-control"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">作者</label>
+            <div class="controls">
+                $!{blog.author}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">摘要</label>
+            <div class="controls">
+                <input name="abstra" type="text" value="$!{blog.abstra}" style="width:500px;" class="form-control"/>
+            </div>
+        </div>
+         <div class="control-group">
+            <label class="control-label">正文</label>
+            <div class="controls">
+                <textarea name="htmlBody" type="text" value="$!{blog.htmlBody}" class="form-control" style="width:500px;" rows=15>$!{blog.htmlBody}</textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">修改</button>
+            <button type="reset" class="btn">取消</button>
+        </div>
+        </fieldset>
+    </form>
+    </div>
+    </div>
+</div>

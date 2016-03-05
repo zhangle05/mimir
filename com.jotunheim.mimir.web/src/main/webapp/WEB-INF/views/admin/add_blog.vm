@@ -1,0 +1,82 @@
+#set($layout="/layout/bootstrap_admin_layout.vm")
+#set($nav = 4)
+#include("/common/encryptUtils.vm")
+<script src="http://i.gtimg.cn/vipstyle/frozenjs/lib/zepto.min.js?_bid=304"></script>
+
+<div class="block">
+<div class="navbar navbar-inner block-header">
+    <div class="muted pull-left">添加文章</div>
+</div>
+<div class="block-content collapse in">
+    <div class="span12">
+
+<div class="bootstrap-form">
+    <div  class="form-horizontal" >
+        <div class="control-group">
+            <label class="control-label">文章标题:</label>
+            <div class="controls">
+                <input id="title" name="title" type="text" value="" class="form-control"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">作者:</label>
+            <div class="controls">
+                <input id="author" name="author" type="hidden" value="$!{userName}"  class="form-control"/>
+                $!{userName}
+            </div>
+        </div>
+         <div class="control-group">
+            <label class="control-label">摘要:</label>
+            <div class="controls">
+                <input id="abstra" name="abstra" type="text" value="" style="width:500px;" class="form-control"/>
+            </div>
+        </div>
+         <div class="control-group">
+            <label class="control-label">正文:</label>
+            <div class="controls">
+                <textarea id="htmlBody" name="htmlBody" type="text" value=""  class="form-control" style="width:500px;" rows=15></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+          <button onclick="addBlog();" class="btn btn-primary">提交</button>
+          <button onclick="history.go(-1);" type="reset" class="btn">取消</button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var isShowDialog=false;
+    function dialogCallback(code){
+        isShowDialog=false;
+    }
+
+    function addBlog(){
+        var title = $('#title').val().trim();
+        var author = $('#author').val().trim();
+        var abstra = $('#abstra').val().trim();
+        var htmlBody = $('#htmlBody').val().trim();
+
+        jQuery.ajax({
+            type:'post',
+            url:'/admin/blog/add',
+            data:{'title':title, 'author':author, 'abstra':abstra, 'htmlBody':htmlBody},
+            success:function(data){
+                var result=data['code'];
+                if(result == 1) {
+                    window.location='$!{returnUrl}';
+                }else{
+                    var msg=data['message'];
+                    if(msg==null){
+                        msg='添加失败';
+                    }
+                    isShowDialog=octopusAlert(msg, dialogCallback);
+                }
+            },
+            complete:function(){
+            }
+        });
+   }
+</script>

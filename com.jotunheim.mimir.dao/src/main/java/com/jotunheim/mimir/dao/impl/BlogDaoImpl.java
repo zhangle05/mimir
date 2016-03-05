@@ -27,6 +27,7 @@ public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
     public void persist(Blog transientInstance) {
         log.debug("persisting Blog instance");
         try {
+            super.setUtf8mb4();
             sessionFactory.getCurrentSession().persist(transientInstance);
             log.debug("persist successful");
         }
@@ -39,6 +40,7 @@ public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
     public void attachDirty(Blog instance) {
         log.debug("attaching dirty Blog instance");
         try {
+            super.setUtf8mb4();
             sessionFactory.getCurrentSession().saveOrUpdate(instance);
             log.debug("attach successful");
         }

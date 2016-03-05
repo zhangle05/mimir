@@ -72,6 +72,8 @@ public class BlogAdminController {
         if(role == null || role.getAccessLevel() < RoleAccessLevel.ADMIN) {
             return "redirect:/account/login";
         }
+        User admin = (User) request.getSession().getAttribute("loginUser");
+        uiModel.addAttribute("userName", admin.getUserName());
         uiModel.addAttribute("returnUrl", "/admin/blog/list");
         return "admin/add_blog";
     }

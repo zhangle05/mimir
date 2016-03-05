@@ -1,0 +1,98 @@
+#set($layout="/layout/bootstrap_admin_layout.vm")
+#set($nav = 3)
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">文章列表($!{count})</div>
+    </div>
+    <div class="block-content collapse in">
+        <div class="span12">
+                    <div class="span12">
+                        <div class="dataTables_filter">
+                            
+                            <form action="/admin/userlist" method="GET" class="form-horizontal">
+                                <label>筛选:&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="text" name="keyword" value="$!{keyword}" class="form-control" placeholder="输入关键字"/>  
+                                    <input type="submit" name="submit" value="提交" class="btn btn-success"/>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table table-bordered">
+    <tr><th>标题</th><th>作者</th><th>创建时间</th><th>最近更新</th><th>操作</th></tr>
+#foreach($b in ${blogs})
+    <tr>
+        <td><a href="/admin/blog/edit?bid=$!{b.id}">$!{b.title}</a></td>
+        <td>$!{b.author}</td>
+        <td>$!{b.createTime}</td>
+        <td>$!{b.lastUpdateTime}</td>
+        <td><a href="/admin/blog/del?id=$!{b.id}">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/blog/edit?bid=$!{b.id}">修改</a></td>
+    </tr>
+#end
+</table>
+    <div class="span12">
+        <div class="dataTables_paginate paging_bootstrap pagination"><ul id="pagination"></ul></div></div>
+    </div>
+           <!-- </div> -->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var page=$page+1;
+#set($totalPages=$count/10)
+var totalPages = $totalPages;
+#if($count%10 != 0)
+totalPages+=1;
+#end
+$(function(){
+    var options = {
+        bootstrapMajorVersion:3,
+        currentPage: page,
+        numberOfPages: 10,
+        totalPages:totalPages,
+        tooltipTitles: function (type, page, current) {
+            switch (type) {
+            case "first":
+                return "首页";
+            case "prev":
+                return "上一页";
+            case "next":
+                return "下一页";
+            case "last":
+                return "最后一页";
+            case "page":
+                return (page === current) ? "当前第" + page+"页" : "第" + page+"页";
+            }
+        },
+        itemTexts:function (type, page, current) {
+                    switch (type) {
+                        case "first":
+                            return "首页";
+                        case "prev":
+                            return "上一页";
+                        case "next":
+                            return "下一页";
+                        case "last":
+                            return "最后一页";
+                        case "page":
+                            return page;
+                    }
+                },
+                onPageClicked: function (event, originalEvent, type, page) {
+                    var url ='/admin/blog/list?page='+(page-1);
+                    
+                    #if($!{roleID})
+                        url += '&roleID=$!{roleID}'
+                    #end
+                    
+                    #if(${keyword})
+                        url += '&keyword=$!{keyword}'
+                    #end
+                    window.location.href=url;
+                }
+            };
+
+    $('#pagination').bootstrapPaginator(options);
+
+});
+</script>

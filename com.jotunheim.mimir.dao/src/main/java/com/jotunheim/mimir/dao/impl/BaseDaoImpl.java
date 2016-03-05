@@ -3,6 +3,7 @@
  */
 package com.jotunheim.mimir.dao.impl;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -36,4 +37,8 @@ public abstract class BaseDaoImpl {
         return template;
     }
 
+    protected void setUtf8mb4(){
+        Query q = sessionFactory.getCurrentSession().createSQLQuery("SET NAMES utf8mb4");
+        q.executeUpdate();
+    }
 }

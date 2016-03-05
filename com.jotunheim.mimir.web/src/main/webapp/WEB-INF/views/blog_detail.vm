@@ -9,7 +9,7 @@
     </h2>
     <div class="post-body">
         <p>
-        $!{blog.htmlBody}
+        <pre>$!{blog.htmlBody}</pre>
         </p>
     </div>
     <p class="post-meta">
