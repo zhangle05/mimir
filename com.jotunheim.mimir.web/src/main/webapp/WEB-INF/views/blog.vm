@@ -26,3 +26,69 @@
         </div>
     #end
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        var page = 1;
+        var innerHeight = window.innerHeight;
+        var timer2 = null;
+        var container = $("#grid-wrapper");
+        var ajax_getting = false;　
+        $(window).scroll(function() {
+            clearTimeout(timer2);
+            timer2 = setTimeout(function() {
+                var scrollTop = $(document.body).scrollTop();　　
+                var scrollHeight = $('body').height();　　
+                var windowHeight = innerHeight;
+                var scrollWhole = Math.max(scrollHeight - scrollTop - windowHeight);
+                if (scrollWhole < 100) {
+                    if (ajax_getting) {
+                        return false;
+                    } else {
+                        ajax_getting = true;
+                    }
+                    container.append('<div class="load"><img src="/img/load.gif" width="6%" /></div>');
+                    $('html,body').scrollTop($(window).height() + $(document).height());
+                    page++;
+                    $.ajax({
+                        url: '/blog/ajax?p=' + page + '&ps=10',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.code === 1) {
+                                if(data.blogs.length > 0) {
+                                    var arrText = [];
+                                    for (var i = 0, t; t = data.list[i++];) {
+                                        arrText.push('<div class="consume-whole"><a href="/lightapp/marketing/verify/page/info?rule_id=' + t.rule_id + '&coupon_id='+ t.coupon_id +'">');
+                                        arrText.push('<h3>' + t.title + '</h3>');
+                                        if (t.coupon_type == 1 ) {
+                                            arrText.push('<p>金额：￥' + t.amount + '</p>');
+                                        } else {
+                                            arrText.push('<p>优惠：' + t.amount + '</p>');
+                                        };
+                                        arrText.push('<p><span class="hx-user">用户：账户飒111111111' + t.user_name +'</span>' + '<span>核销时间：' + t.use_time + '</span></p>');
+                                        arrText.push('</a></div>');
+                                    }
+                                    $(".load").remove();
+                                    container.append(arrText.join(''));
+                                } else {
+                                    $(".load").remove();
+                                    container.append('<div class="no-data">没有更多数据。</div>');
+                                }
+                            } else {
+                                alert(data.msg);
+                                $(".load").remove();
+                                $(window).unbind('scroll');
+                            };
+                            ajax_getting = false;
+                        }
+                    });
+                };
+                $(".load").remove();
+            }, 200);
+        });
+        $(window).bind("orientationchange", function() {
+            $('.sliders').css('left',$(window).width() / 2 +'px');
+        });
+    });
+</script>
