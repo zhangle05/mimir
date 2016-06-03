@@ -203,6 +203,12 @@ public class AccountController {
         }
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.GET, produces = "text/html")
+    public String registerForm(Model uiModel, HttpServletRequest request) {
+        LOG.debug("create register form.");
+        return "account/register";
+    }
+
     @RequestMapping(value = "/ajaxCreate", method = RequestMethod.POST)
     public @ResponseBody String ajaxCreate(Model uiModel,
             HttpServletRequest httpServletRequest,

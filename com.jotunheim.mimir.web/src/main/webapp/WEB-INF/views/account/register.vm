@@ -1,0 +1,254 @@
+#set($layout="/layout/bootstrap_layout.vm")
+#include("/common/encryptUtils.vm")
+<style>
+.login{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+    width:300px;
+}
+.login input{
+    width: 100%;
+    border-radius: 5px;
+    border:1px solid #979797;
+    height: 37px;
+    margin-top: 5px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left: 10px;
+    font-size: 15px;
+}
+#phone {
+    width: 60%;
+}
+.btn-verify-container {
+    display:inline-block;
+    width: 30%;
+}
+.captcha-container {
+    display:none;
+    width: 100%;
+}
+.captcha-container input{
+    width:60%;
+    font-size: 13px;
+}
+.captcha-img {
+    display:inline-block;
+    width: 30%;
+    position: relative;
+    top: 13px;
+}
+.captcha-tips {
+    width: 100%;
+}
+.btn-verify {
+    display:inline-block;
+    width: 100%;
+    background-color: #08acc3;
+    color: #ffffff;
+    border-radius: 5px;
+    height: 37px;
+    text-align: center;
+    margin-top: 5px;
+    line-height: 42px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    cursor:pointer;
+}
+#btn-verify-count-down {
+    display:inline-block;
+    width: 100%;
+    background-color: #aaa;
+    color: #ffffff;
+    border-radius: 5px;
+    height: 37px;
+    text-align: center;
+    margin-top: 5px;
+    line-height: 42px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    cursor:default;
+}
+.btn-login{
+    width: 100%;
+    background-color: #0765c3;
+    color: #ffffff;
+    border-radius: 5px;
+    height: 37px;
+    text-align: center;
+    margin-top: 40px;
+    line-height: 42px;
+    font-size: 18px;
+    margin-bottom: 8px;
+    cursor:pointer;
+}
+</style>
+
+<div class="login">
+    <div style="margin:0px;padding:0px;height:30px;line-height:30px;text-align:center;">
+        <span style="display: inline-block;vertical-align: middle;line-height: normal; "><img src="/img/logo-icon-16x16.png"/></span>
+        <span style="display: inline-block;vertical-align: middle;line-height: normal; ">Register to Octopus Studio</span>
+    </div>
+    <input id="userName" type="text" name="userName" placeholder="user name" /> <br/>
+    <input id="password" type="password" name="password" placeholder="password" /> <br/>
+    <input id="confirmPwd" type="password" name="confirm-pwd" placeholder="confirm password" /> <br/>
+    <input id="phone" type="text" name="phone" placeholder="mobile phone" />
+    <div class="btn-verify-container">
+        <div id="btn-verify" class="btn-verify">Verify phone</div>
+        <div id="btn-verify-count-down" class="btn-verify" style="display:none;"><span id="time-left">60</span>s</div>
+    </div>
+    <div id="captcha-container" class="captcha-container">
+        <input id="captcha" class="captcha" type="text" name="captcha" placeholder="input text in the right image" />
+        <img id="captcha-img" class="captcha-img" src="/captcha/image" imgUrl="/captcha/image" />
+        <div id="captcha-tips" class="captcha-tips">
+            You need to input text in the image before sending SMS verify code.
+        </div>
+    </div>
+    <input id="smsCode" type="text" name="smsCode" placeholder="input verify code in SMS" style="display:none" />
+    <div id="btn-register" class="btn-login" style="">register</div>
+</div>
+
+<script type="text/javascript">
+    var errorInput;
+    var isShowDialog=false;
+    function dialogCallback(code){
+        isShowDialog=false;
+        if(errorInput!=null && errorInput!='undefined'){
+            errorInput.focus();
+        }
+    }
+    $(function(){
+        var loginBox=$('.login');
+        loginBox.find('input[name="userName"]').focus();
+        $('#btn-register').click(function(){
+            var user=loginBox.find('input[name="userName"]').val();
+            var pwd=loginBox.find('input[name="password"]').val();
+            var confirmPwd=loginBox.find('input[name="confirm-pwd"]').val();
+            var phoneNumber=loginBox.find('input[name="phone"]').val();
+            var smsCode=loginBox.find('input[name="smsCode"]').val();
+            if(user == '') {
+                isShowDialog=octopusAlert("请输入用户名",dialogCallback);
+                errorInput = loginBox.find('input[name="userName"]');
+                return;
+            }
+            if(pwd.length < 6){
+                if(pwd == ''){
+                    isShowDialog=octopusAlert("请输入密码",dialogCallback);
+                }else{
+                    octopusAlert("输入密码不能少于6位",dialogCallback);
+                }
+                errorInput = loginBox.find('input[name="password"]');
+                return;
+            }
+            register(user,pwd,phoneNumber,smsCode);
+        });
+
+        $('.login input').keydown(function(e){
+            if(e.keyCode==13){
+                $('#btn-register').click();
+                $(this).blur();
+            }
+            return true;
+        });
+        $("#captcha-img").click(function(){
+            refreshVerifyCode();
+       });
+        $('#btn-verify').click(function(e){
+            var phoneNumber = $("#phone").val();
+            if (phoneNumber == '') {
+                alert('Please input phone number.');
+                return;
+            }
+            if (!$("#captcha-container").is(":visible")) {
+                refreshVerifyCode();
+                $("#captcha-container").toggle();
+                return;
+            }
+            var captcha = $("#captcha").val();
+            if (captcha == '') {
+                alert('Please input text in the image');
+                return;
+            }
+            sendSMSverifyCode(phoneNumber, captcha);
+        });
+    });
+    function sendSMSverifyCode(phoneNumber, captchaCode) {
+        jQuery.ajax({
+            type:'post',
+            dataType:'json',
+            url:'/sms/send',
+            data:{'p':phoneNumber,'captcha':captchaCode,'action':'1'},
+            beforeSend:function(){
+            },
+            success:function(data){
+                var result=data['code'];
+                if(result==1){
+                    $("#captcha-container").hide();
+                    $("#smsCode").show();
+                    $(".btn-verify").toggle();
+                    setTimeout("countDown60s()",1000);
+                }else{
+                    var msg=data['message'];
+                    if(msg==null){
+                        msg='验证失败';
+                    }
+                    alert(msg);
+                }
+            },
+            complete:function(){
+            }
+        });
+    }
+    function countDown60s() {
+        var timeLeft = $("#time-left").html();
+        timeLeft -= 1;
+        $("#time-left").html(timeLeft);
+        if (timeLeft <= 0) {
+            $(".btn-verify").toggle();
+            $("#time-left").html(60);
+        } else {
+            setTimeout("countDown60s()",1000);
+        }
+    }
+    function register(username,pwd,phoneNumber,smsCode){
+        var url = '$!{returnurl}';
+        jQuery.ajax({
+            type:'post',
+            dataType:'json',
+            url:'/account/ajaxLogin',
+            data:{'userName':username,'password':encrypt(pwd),'returnurl':url},
+            beforeSend:function(){
+            },
+            success:function(data){
+                var result=data['code'];
+                if(result==1){
+                    var url=data['url'];
+                    if(url!=null){
+                        window.location.href=url;
+                    }else{
+                        window.location.href='/';
+                    }
+                }else{
+                    var msg=data['message'];
+                    if(msg==null){
+                        msg='验证失败';
+                    }
+                    errorInput = $('input[name="userName"]');
+                    isShowDialog=octopusAlert(msg, dialogCallback);
+                }
+            },
+            complete:function(){
+            }
+        });
+    }
+
+    function refreshVerifyCode() {
+        d = new Date();
+        var imgSrc = $("#captcha-img").attr("imgUrl") + "?" + d.getTime();
+        $("#captcha-img").attr("src", imgSrc);
+    }
+</script>

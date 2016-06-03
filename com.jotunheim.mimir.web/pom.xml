@@ -151,6 +151,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- memcache client -->
+        <dependency>
+            <groupId>com.googlecode.xmemcached</groupId>
+            <artifactId>xmemcached</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+
         <dependency>
             <groupId>com.jotunheim.mimir</groupId>
             <artifactId>com.jotunheim.mimir.common</artifactId>

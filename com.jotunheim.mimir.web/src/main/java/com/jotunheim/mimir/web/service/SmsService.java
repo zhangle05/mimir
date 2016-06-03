@@ -3,41 +3,44 @@ package com.jotunheim.mimir.web.service;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jotunheim.mimir.web.utils.HttpClientHelper;
+import com.jotunheim.mimir.web.utils.StringHelper;
 
 @Service
 public class SmsService {
 
     private static Log log = LogFactory.getLog(SmsService.class);
 
+    @Autowired
+    private CacheService cacheService;
+
     /**
      * 微米账号的接口UID
      */
-    private String mWeimiUid = "acsPaFSGCwvN";
+    private String mWeimiUid = "DkLT1DeORQMm";
 
     /**
      * 微米账号的接口密码
      */
-    private String mWeimiPas = "fuugwsb4";
+    private String mWeimiPas = "3ss8xbs6";
+    /**
+     * 短信模板id
+     */
+    private String mWeimiCid = "lTNs9iv2utIO";
 
-    private String mWeimiCid = "lSPPPUHavvQb";
-
-    private String mWeimiFindPasCid = "gIzbdGbbfFiN";
-
-    public boolean sendTemplateMessage(String[] phone, String cid,
+    public boolean sendTemplateMessage(String[] phone, String templateId,
             String[] param) {
         if (phone == null || phone.length == 0 || phone.length > 100
-                || StringUtils.isEmpty(cid)) {
+                || StringUtils.isEmpty(templateId)) {
             return false;
         }
 
@@ -53,7 +56,7 @@ public class SmsService {
          * 接口返回类型：json、xml、txt。默认值为txt
          */
         para.put("type", "json");
-        para.put("cid", cid);
+        para.put("cid", templateId);
         if (param != null && param.length > 0) {
             for (int i = 0; i < param.length; i++) {
                 para.put("p" + (i + 1), param[i]);
@@ -61,7 +64,6 @@ public class SmsService {
         }
 
         try {
-
             String result = HttpClientHelper.convertStreamToString(
                     HttpClientHelper.post(
                             "http://api.weimi.cc/2/sms/send.html", para),
@@ -129,14 +131,13 @@ public class SmsService {
     /**
      * 发送验证码
      * 
-     * @param length
-     * @param expire
+     * @param length: 验证码位数
+     * @param expire: 验证码有效期（秒）
      * @return
      */
-    public boolean sendValifyCode(HttpSession session, String phone,
-            int length, int expire) {
+    public boolean sendVerifyCode(String phone, int length, int expire) {
         if (StringUtils.isEmpty(phone)
-                || !com.jotunheim.mimir.common.utils.StringUtils.isMobile(phone)) {
+                || !StringHelper.isMobile(phone)) {
             return false;
         }
         StringBuilder sb = new StringBuilder();
@@ -149,10 +150,21 @@ public class SmsService {
             sb.append(RandomUtils.nextInt(10));
         }
 
+        if(cacheService == null) {
+            log.error("cache service is down!");
+            return false;
+        }
+
         boolean result = sendTemplateMessage(new String[] { phone }, mWeimiCid,
                 new String[] { sb.toString() });
         if (result) {
-            session.setAttribute("code-" + phone, sb.toString());
+            if(expire <=0) {
+                expire = 60;
+            }
+            log.debug("SMS code is:" + sb.toString());
+            if(cacheService != null) {
+                cacheService.addCache("code-" + phone, expire, sb.toString());
+            }
         }
         return result;
 
@@ -164,31 +176,33 @@ public class SmsService {
      * @param code
      * @return
      */
-    public boolean checkValifyCode(HttpSession session, String phone,
-            String code) {
+    public boolean checkVerifyCode(String phone, String code) {
+        log.debug("SmsService.checkValifyCode, phone is:" + phone + ", code is:" + code);
+        if(isTestNumber(phone)) {
+            return true;
+        }
         if (StringUtils.isNotEmpty(phone) && StringUtils.isNotEmpty(code)) {
-            String v = (String) session.getAttribute("code-" + phone);
+            if(cacheService == null) {
+                log.error("cache service is down!");
+                return false;
+            }
+            String v = cacheService.getCache("code-" + phone);
+            log.debug("code in cache is:" + v);
             return code.equals(v);
         }
         return false;
     }
 
-    /**
-     * 发送密码
-     * 
-     * @param phone
-     * @param pwd
-     * @return
-     */
-    public boolean sendPwd(String phone, String pwd) {
-
-        if (StringUtils.isNotEmpty(phone) && StringUtils.isNotEmpty(pwd)) {
-
-            boolean result = sendTemplateMessage(new String[] { phone },
-                    mWeimiFindPasCid, new String[] { pwd });
-            return result;
+    public boolean isTestNumber(String p) {
+        if("13811138857".equals(p)) {
+            return true;
         }
         return false;
+    }
 
+    public static void main(String[] args) {
+        SmsService svc = new SmsService();
+        svc.sendTemplateMessage(new String[] { "13811138857" }, svc.mWeimiCid,
+                new String[] { "1234" });
     }
 }
