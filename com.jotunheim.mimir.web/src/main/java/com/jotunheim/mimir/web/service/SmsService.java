@@ -35,7 +35,7 @@ public class SmsService {
     /**
      * 短信模板id
      */
-    private String mWeimiCid = "lTNs9iv2utIO";
+    private String mWeimiCid = "yq1oIZ2kwdGW";
 
     public boolean sendTemplateMessage(String[] phone, String templateId,
             String[] param) {
