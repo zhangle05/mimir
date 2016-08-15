@@ -219,8 +219,13 @@
         jQuery.ajax({
             type:'post',
             dataType:'json',
-            url:'/account/ajaxLogin',
-            data:{'userName':username,'password':encrypt(pwd),'returnurl':url},
+            url:'/account/ajaxCreate',
+            data:{
+                'userName':username,
+                'password':encrypt(pwd),
+                'phone':phoneNumber,
+                'smsCode':smsCode,
+                'returnurl':url},
             beforeSend:function(){
             },
             success:function(data){

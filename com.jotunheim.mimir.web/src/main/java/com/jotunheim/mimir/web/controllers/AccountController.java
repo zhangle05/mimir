@@ -3,8 +3,6 @@
  */
 package com.jotunheim.mimir.web.controllers;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -15,7 +13,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.LocaleResolver;
 
 import com.jotunheim.mimir.dao.UserDao;
 import com.jotunheim.mimir.dao.UserRoleDao;
@@ -45,7 +41,8 @@ import com.jotunheim.mimir.web.utils.SharedConstants;
 @RequestMapping("/account")
 @SessionAttributes({ "loginUser", "userRole" })
 @Controller
-public class AccountController {
+public class AccountController extends AbstractBaseController {
+
     private static Log LOG = LogFactory.getLog(AccountController.class);
 
     @Autowired
@@ -53,12 +50,6 @@ public class AccountController {
 
     @Autowired
     private UserRoleDao roleDao;
-
-    @Autowired
-    private MessageSource messageSource;
-
-    @Autowired
-    private LocaleResolver localeResolver;
 
     @Autowired
     private CookieUtils cookieUtils;
@@ -100,22 +91,21 @@ public class AccountController {
             return "account/login";
         }
         uiModel.asMap().clear();
-        Locale locale = localeResolver.resolveLocale(httpServletRequest);
         LoginResult data = accountService.login(user.getUserName(),
                 user.getUserPassword());
         if (data != null) {
             if (data.statusCode == AccountService.ACCOUNT_NOT_EXIST) {
                 // user name not exist
                 LOG.debug("User " + user.getUserName() + " does not exist.");
-                populateEditForm(uiModel, user, messageSource.getMessage(
-                        "login_user_not_exist",
-                        new String[] { user.getUserName() }, locale));
+                populateEditForm(uiModel, user, super.getLocalizedMessage(
+                        httpServletRequest, "login_user_not_exist",
+                        user.getUserName()));
                 return "account/login";
             } else if (data.statusCode == AccountService.ACCOUNT_WRONG_PASSWORD) {
                 LOG.debug("User " + user.getUserName() + ", password wrong.");
-                populateEditForm(uiModel, user, messageSource.getMessage(
-                        "login_wrong_password",
-                        new String[] { user.getUserName() }, locale));
+                populateEditForm(uiModel, user, super.getLocalizedMessage(
+                        httpServletRequest, "login_wrong_password",
+                        user.getUserName()));
                 return "account/login";
             } else if (data.statusCode == AccountService.ACCOUNT_LOGIN_SUCCEED) {
                 String returnurl = httpServletRequest.getParameter("returnurl");
@@ -141,7 +131,7 @@ public class AccountController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/ajaxLogin", method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxLogin", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody String ajaxLogin(Model uiModel,
             HttpServletRequest httpServletRequest,
             HttpServletResponse response,
@@ -154,14 +144,16 @@ public class AccountController {
         try {
             if (data.statusCode == AccountService.ACCOUNT_NOT_EXIST) {
                 // user name not exist
-                String msg = "User " + userName + " does not exist.";
+                String msg = super.getLocalizedMessage(httpServletRequest,
+                        "login_user_not_exist", userName);
                 LOG.debug(msg);
                 json.accumulate(SharedConstants.AJAX_CODE_KEY,
                         SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
                 json.accumulate(SharedConstants.AJAX_MSG_KEY, msg);
                 return json.toString();
             } else if (data.statusCode == AccountService.ACCOUNT_WRONG_PASSWORD) {
-                String msg = "User " + userName + ", password wrong.";
+                String msg = super.getLocalizedMessage(httpServletRequest,
+                        "login_wrong_password", userName);
                 LOG.debug(msg);
                 json.accumulate(SharedConstants.AJAX_CODE_KEY,
                         SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
@@ -214,7 +206,7 @@ public class AccountController {
         return "account/register";
     }
 
-    @RequestMapping(value = "/ajaxCreate", method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxCreate", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody String ajaxCreate(
             Model uiModel,
             HttpServletRequest httpServletRequest,
@@ -222,6 +214,7 @@ public class AccountController {
             @RequestParam(value = "userName", required = true) String userName,
             @RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "phone", required = false) String phoneNumber,
+            @RequestParam(value = "smsCode", required = false) String smsCode,
             @RequestParam(value = "nickName", required = false) String nickName,
             @RequestParam(value = "role", required = false) Long roleID) {
         LOG.debug("ajax create, userName:" + userName + ", password:"
@@ -231,10 +224,15 @@ public class AccountController {
         if (StringUtils.isEmpty(userName)) {
             json.put(SharedConstants.AJAX_CODE_KEY,
                     SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
-            json.put(SharedConstants.AJAX_MSG_KEY, "user name is empty!");
+            String msg = super.getLocalizedMessage(httpServletRequest,
+                    "register_invalid_username_empty");
+            json.put(SharedConstants.AJAX_MSG_KEY, msg);
             return json.toString();
         }
         try {
+            if (roleID == null) {
+                roleID = RoleAccessLevel.ROLE_ID_USER;
+            }
             User user = new User();
             user.setUserName(userName);
             user.setUserPassword(password);
