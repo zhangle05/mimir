@@ -31,10 +31,10 @@ import com.jotunheim.mimir.web.utils.SharedConstants;
 public class CaptchaController {
 
     private static Log LOG = LogFactory.getLog(CaptchaController.class);
-    private static final int CAPTCHA_LENGTH = 4;
+    private static final int CAPTCHA_LENGTH = 6;
     public static final String CAPTCHA_KEY = "captcha";
-    private static final int CAPTCHA_IMG_WIDTH = 150;
-    private static final int CAPTCHA_IMG_HEIGHT = 60;
+    private static final int CAPTCHA_IMG_WIDTH = 200;
+    private static final int CAPTCHA_IMG_HEIGHT = 70;
 
     /**
      * 显示图形验证码

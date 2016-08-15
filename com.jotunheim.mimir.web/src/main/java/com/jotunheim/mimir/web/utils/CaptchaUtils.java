@@ -18,8 +18,8 @@ import javax.imageio.ImageIO;
 
 public class CaptchaUtils {
 
-    // 使用到Algerian字体，系统里没有的话需要安装字体，字体只显示大写，去掉了1,0,i,o几个容易混淆的字符
-    public static final String VERIFY_CODE_ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+    // 字体只显示大写，去掉了1,0,i,o,l等几个容易混淆的字符
+    public static final String VERIFY_CODE_ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz";
     private static Random random = new Random();
 
     /**
@@ -149,13 +149,15 @@ public class CaptchaUtils {
         g2.setColor(Color.GRAY);// 设置边框色
         g2.fillRect(0, 0, w, h);
 
-        Color c = getRandColor(200, 250);
+        Color c = getRandColor(50, 250);
         g2.setColor(c);// 设置背景色
         g2.fillRect(0, 2, w, h - 4);
 
         // 绘制干扰线
         Random random = new Random();
-        g2.setColor(getRandColor(160, 200));// 设置线条的颜色
+        Color foreColor = getContrastColor(c);
+//        g2.setColor(getRandColor(160, 200));// 设置线条的颜色
+        g2.setColor(foreColor);
         for (int i = 0; i < 20; i++) {
             int x = random.nextInt(w - 1);
             int y = random.nextInt(h - 1);
@@ -165,7 +167,7 @@ public class CaptchaUtils {
         }
 
         // 添加噪点
-        float yawpRate = 0.05f;// 噪声率
+        float yawpRate = 0.2f;// 噪声率
         int area = (int) (yawpRate * w * h);
         for (int i = 0; i < area; i++) {
             int x = random.nextInt(w);
@@ -176,9 +178,10 @@ public class CaptchaUtils {
 
         shear(g2, w, h, c);// 使图片扭曲
 
-        g2.setColor(getRandColor(100, 160));
+//        g2.setColor(getRandColor(100, 160));
+        g2.setColor(foreColor);
         int fontSize = h - 4;
-        Font font = new Font("Algerian", Font.ITALIC, fontSize);
+        Font font = new Font("Tahoma", Font.ITALIC, fontSize);
         g2.setFont(font);
         char[] chars = code.toCharArray();
         for (int i = 0; i < verifySize; i++) {
@@ -194,6 +197,12 @@ public class CaptchaUtils {
 
         g2.dispose();
         ImageIO.write(image, "jpg", os);
+    }
+
+    public static Color getContrastColor(Color color) {
+        double y = (299 * color.getRed() + 587 * color.getGreen() + 114 * color
+                .getBlue()) / 1000;
+        return y >= 128 ? getRandColor(50, 128) : getRandColor(128, 250);
     }
 
     private static Color getRandColor(int fc, int bc) {
@@ -277,10 +286,10 @@ public class CaptchaUtils {
     }
 
     public static void main(String[] args) throws IOException {
-        File dir = new File("E:/verifies");
-        int w = 200, h = 80;
-        for (int i = 0; i < 50; i++) {
-            String verifyCode = generateVerifyCode(4);
+        File dir = new File("/Users/zhangle/Documents/tmp/");
+        int w = 200, h = 60;
+        for (int i = 0; i < 3; i++) {
+            String verifyCode = generateVerifyCode(6);
             File file = new File(dir, verifyCode + ".jpg");
             outputImage(w, h, file, verifyCode);
         }
