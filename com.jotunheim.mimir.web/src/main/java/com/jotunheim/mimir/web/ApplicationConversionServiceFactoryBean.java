@@ -17,6 +17,7 @@ public class ApplicationConversionServiceFactoryBean extends
     private static org.apache.log4j.Logger LOG = Logger
             .getLogger(ApplicationConversionServiceFactoryBean.class);
 
+    @SuppressWarnings("deprecation")
     @Override
     protected void installFormatters(FormatterRegistry registry) {
         super.installFormatters(registry);

@@ -1,4 +1,4 @@
-#set($layout="/layout/bootstrap_layout.vm")
+#set($layout="/layout/web_layout.vm")
 #include("/common/encryptUtils.vm")
 <style>
 .login{

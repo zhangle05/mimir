@@ -6,6 +6,7 @@
         <!-- Bootstrap -->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <link rel="Shortcut Icon" href="/img/icon/favicon.ico?" type="image/x-icon">
         <link href="/static/bootstrap-template/assets/styles.css" rel="stylesheet" media="screen">
         <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
         <link rel="stylesheet" id="rs-plugin-settings-css" href="/css/settings.css" type="text/css" media="all">

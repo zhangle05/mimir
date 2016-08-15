@@ -595,17 +595,14 @@
                             /* CALL PLACEHOLDER */
                             setREVStartSize();
         
-        
-                            var tpj=jQuery;
-                            tpj.noConflict();
                             var revapi6;
         
-                            tpj(document).ready(function() {
+                            $(document).ready(function() {
         
-                                if(tpj('#rev_slider_6_1').revolution == undefined){
+                                if($('#rev_slider_6_1').revolution == undefined){
                                     revslider_showDoubleJqueryError('#rev_slider_6_1');
                                 }else{
-                                 revapi6 = tpj('#rev_slider_6_1').show().revolution(
+                                 revapi6 = $('#rev_slider_6_1').show().revolution(
                                  {   
                                     dottedOverlay:"none",
                                     delay:9000,

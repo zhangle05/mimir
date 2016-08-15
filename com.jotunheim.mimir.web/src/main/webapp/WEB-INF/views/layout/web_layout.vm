@@ -16,15 +16,17 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
     <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
-    <link rel="Shortcut Icon" href="/img/icon/favicon.ico" type="image/x-icon">
-    <script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
-    <script type="text/javascript" src="/js/slide.js"></script>
-    <script type="text/javascript" src="/js/jquery.js"></script>
+    <link rel="stylesheet" href="/js/fbmodal/fbmodal.css"/>
+    <link rel="Shortcut Icon" href="/img/icon/favicon.ico?" type="image/x-icon">
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="/js/jquery.cycle.all.min.js"></script>
     <script type="text/javascript" src="/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="/js/jquery.themepunch.revolution.min.js"></script> 
     <script src="/js/jquery.easing.1.3.js" type="text/javascript" charset="UTF-8"></script>
+    <script type="text/javascript" src="/js/fbmodal/jquery.fbmodel.js"></script>
+    <script type="text/javascript" src="/js/slide.js"></script>
+    <script type="text/javascript" src="/js/octopusdio.js"></script>
 
     <!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.4 - https://yoast.com/wordpress/plugins/seo/ -->
     <!-- / Yoast WordPress SEO plugin. -->
@@ -231,7 +233,7 @@
     <script type="text/javascript" src="/js/scripts.js"></script>
 </div><!-- /container -->
 
-
+<div class="alert" style="display:none;"></div>
 <span id="_vgridspan" style="display: none;"> </span>
 </body>
 </html>
