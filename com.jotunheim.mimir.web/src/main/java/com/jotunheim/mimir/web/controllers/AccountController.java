@@ -23,13 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.jotunheim.mimir.dao.UserDao;
 import com.jotunheim.mimir.dao.UserRoleDao;
 import com.jotunheim.mimir.domain.User;
 import com.jotunheim.mimir.domain.UserRole;
 import com.jotunheim.mimir.domain.data.RoleAccessLevel;
 import com.jotunheim.mimir.web.service.AccountService;
 import com.jotunheim.mimir.web.service.AccountService.LoginResult;
+import com.jotunheim.mimir.web.service.UserService;
 import com.jotunheim.mimir.web.utils.CookieUtils;
 import com.jotunheim.mimir.web.utils.SharedConstants;
 
@@ -46,9 +46,6 @@ public class AccountController extends AbstractBaseController {
     private static Log LOG = LogFactory.getLog(AccountController.class);
 
     @Autowired
-    private UserDao userDao;
-
-    @Autowired
     private UserRoleDao roleDao;
 
     @Autowired
@@ -56,6 +53,9 @@ public class AccountController extends AbstractBaseController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private UserService userService;
 
     /**
      * Constructor
@@ -232,6 +232,29 @@ public class AccountController extends AbstractBaseController {
         try {
             if (roleID == null) {
                 roleID = RoleAccessLevel.ROLE_ID_USER;
+            }
+            if (!StringUtils.isEmpty(phoneNumber) && StringUtils.isEmpty(smsCode)) {
+                json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+                String msg = super.getLocalizedMessage(httpServletRequest,
+                        "register_sms_code_empty");
+                json.put(SharedConstants.AJAX_MSG_KEY, msg);
+                return json.toString();
+            }
+            if (userService.findUserByName(userName) != null) {
+                json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+                String msg = super.getLocalizedMessage(httpServletRequest,
+                        "register_user_name_exist", userName);
+                json.put(SharedConstants.AJAX_MSG_KEY, msg);
+                return json.toString();
+            }
+            if (!StringUtils.isEmpty(phoneNumber)) {
+                if (userService.findUserByMobile(phoneNumber) != null) {
+                    json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_CLIENT_DATA_ERROR);
+                    String msg = super.getLocalizedMessage(httpServletRequest,
+                            "register_user_mobile_exist", phoneNumber);
+                    json.put(SharedConstants.AJAX_MSG_KEY, msg);
+                    return json.toString();
+                }
             }
             User user = new User();
             user.setUserName(userName);

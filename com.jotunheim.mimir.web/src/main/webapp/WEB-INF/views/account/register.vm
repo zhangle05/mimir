@@ -144,6 +144,16 @@
                 errorInput = loginBox.find('input[name="password"]');
                 return;
             }
+            if(confirmPwd != pwd) {
+                isShowDialog=octopusAlert("两次输入的密码不一致",dialogCallback);
+                errorInput = loginBox.find('input[name="confirm-pwd"]');
+                return;
+            }
+            if(phoneNumber != '' && smsCode == '') {
+                isShowDialog=octopusAlert("请输入短信验证码",dialogCallback);
+                errorInput = loginBox.find('input[name="smsCode"]');
+                return;
+            }
             register(user,pwd,phoneNumber,smsCode);
         });
 
