@@ -23,5 +23,11 @@
         <property name="createTime" type="java.util.Date">
             <column name="CREATETIME" />
         </property>
+        <property name="tags" type="java.lang.String">
+            <column name="TAGS" />
+        </property>
+        <property name="ownerId" type="long">
+            <column name="OWNERID" />
+        </property>
     </class>
 </hibernate-mapping>

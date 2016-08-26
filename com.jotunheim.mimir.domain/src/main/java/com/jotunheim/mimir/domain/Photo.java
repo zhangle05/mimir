@@ -43,6 +43,10 @@ public class Photo implements Serializable {
 
     private Date createTime;
 
+    private String tags;
+
+    private long ownerId;
+
     /**
      * @return the id
      */
@@ -125,5 +129,33 @@ public class Photo implements Serializable {
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    /**
+     * @return the tags
+     */
+    public String getTags() {
+        return tags;
+    }
+
+    /**
+     * @param tags the tags to set
+     */
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * @return the ownerId
+     */
+    public long getOwnerId() {
+        return ownerId;
+    }
+
+    /**
+     * @param ownerId the ownerId to set
+     */
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
     }
 }

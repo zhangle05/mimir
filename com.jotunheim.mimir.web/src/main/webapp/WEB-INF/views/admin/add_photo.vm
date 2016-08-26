@@ -1,0 +1,272 @@
+#set($layout="/layout/bootstrap_admin_layout.vm")
+#set($nav = 2)
+#include("/common/encryptUtils.vm")
+<link href="/js/file-upload/uploadfile.css" rel="stylesheet">
+<script src="/js/file-upload/jquery.uploadfile.js"></script>
+<link href="/js/jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet">
+<script src="/js/jquery-ui-1.11.4/jquery-ui.js"></script>
+
+<div class="block">
+<div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">添加照片</div>
+                            </div>
+<div class="block-content collapse in">
+    <div class="span12">
+
+<div class="bootstrap-form">
+    <div  class="form-horizontal" >
+        <div class="control-group">
+            <label class="control-label">照片标题:</label>
+            <div class="controls">
+                <input id="username" name="userName" type="text" value="" class="form-control"/>
+            </div>
+            
+        </div>
+        <div class="control-group">
+            <label class="control-label">密码:</label>
+            <div class="controls">
+                <input id="pwd" name="userPassword" type="password" value=""  class="form-control"/>
+            </div>
+        </div>
+         <div class="control-group">
+            <label class="control-label">昵称:</label>
+            <div class="controls">
+                <input id="nickname" name="userNickName" type="text" value=""  class="form-control"/>
+            </div>
+        </div>
+         <div class="control-group">
+            <label class="control-label">手机号:</label>
+            <div class="controls">
+                <input id="phone" name="phoneNumber" type="text" value=""  class="form-control"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">用户类型:</label>
+            <div class="controls">
+                <select class="form-control" id="role" name="roleID">
+                    #foreach($r in ${roles})
+                        <option value="$!{r.id}">$!{r.roleName}</option>
+                    #end
+                </select>
+            </div>
+        </div>
+        <div class="form-actions">
+          <button onclick="addUser();" class="btn btn-primary">提交</button>
+          <button onclick="history.go(-1);" type="reset" class="btn">取消</button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // for alert dialog
+    var isShowDialog = false;
+    var redirectUrl = '';
+    var errorInput = null;
+    function dialogCallback(code) {
+        isShowDialog = false;
+        if (redirectUrl != '') {
+            window.location.href = redirectUrl;
+        } else if (errorInput != null && errorInput != 'undefined') {
+            errorInput.focus();
+        }
+    }
+
+    $().ready(function() {
+        $( "#datepicker" ).datepicker({
+            // changeMonth: true,
+            // changeYear: true,
+            dateFormat: "yy-mm-dd"
+        });
+        var fileUploader = $("#fileuploader").uploadFile({
+            url:"/material/upload",
+            uploadStr:"浏览",
+            cancelStr:"取消",
+            abortStr:"取消",
+            fileName:"file",
+            multiple:false,
+            allowDuplicates:false,
+            nestedForms:false,
+            returnType:"json",
+            autoSubmit:false,
+            //acceptFiles:"video/*",
+            showFileCounter:false,
+            dragdropWidth:'100%',
+            dynamicFormData: function()
+            {
+                var name = $(".file-upload-params input[name='name']").val();
+                var tags = getTags();
+                var hours = $(".file-upload-params input[name='hours']").val();
+                var minutes = $(".file-upload-params input[name='minutes']").val();
+                var seconds = $(".file-upload-params input[name='seconds']").val();
+                var frames = $(".file-upload-params input[name='frames']").val();
+                var cTime = $(".file-upload-params input[name='cTime']").val();
+                var copyright = $(".file-upload-params input[name='copyright']").val();
+                var period = $(".file-upload-params input[name='period']").val();
+                var type = $(".file-upload-params input[name='type']").val();
+                var desc = $(".file-upload-params textarea[name='desc']").val();
+                var data = {
+                    name:name,
+                    tags:tags,
+                    hours:hours,
+                    minutes:minutes,
+                    seconds:seconds,
+                    frames:frames,
+                    cTime:cTime,
+                    copyright:copyright,
+                    period:period,
+                    type:type,
+                    desc:desc
+                };
+                return data;
+            },
+            customProgressBar: function(obj,s)
+            {
+                this.statusbar = $("<div class='ajax-file-upload-statusbar'></div>");
+                this.preview = $("<img class='ajax-file-upload-preview' />").width(s.previewWidth).height(s.previewHeight).appendTo(this.statusbar).hide();
+                this.filename = $("<div class='ajax-file-upload-filename'></div>").appendTo(this.statusbar);
+                this.progressDiv = $("<div class='ajax-file-upload-progress'>").appendTo(this.statusbar).hide();
+                this.progressbar = $("<div class='ajax-file-upload-bar'></div>").appendTo(this.progressDiv);
+                this.abort = $("<div><span class='uploading-caption'>文件上传中...</span><span class='abort-caption'>" + s.abortStr + "<span></div>").appendTo(this.statusbar).hide();
+                this.cancel = $("<div class='ajax-file-upload-cancel'>" + s.cancelStr + "</div>").appendTo(this.statusbar).hide();
+                this.done = $("<div>" + s.doneStr + "</div>").appendTo(this.statusbar).hide();
+                this.download = $("<div>" + s.downloadStr + "</div>").appendTo(this.statusbar).hide();
+                this.del = $("<div>" + s.deletelStr + "</div>").appendTo(this.statusbar).hide();
+                this.done.addClass("custom-green");
+                this.download.addClass("custom-green");
+                this.cancel.addClass("custom-red");
+                this.del.addClass("custom-red");
+                $(this).hide();
+                return this;
+            },
+            onLoad:function(obj)
+            {
+                console.info("fileuploader onload:" + obj);
+                $(".ajax-upload-dragdrop span").html("");
+            },
+            onSelect:function(files)
+            {
+                files[0].name;
+                files[0].size;
+                var size = 0;
+                if (files[0].size < 1024) {
+                    size = files[0].size + ' B';
+                } else if (files[0].size < 1024*1024) {
+                    size = Math.round(files[0].size/1024) + ' KB';
+                } else {
+                    size = Math.round(files[0].size/1024/1024) + ' MB'
+                }
+                var fileName = files[0].name + ' (' + size + ')';
+                $(".ajax-upload-dragdrop span").html(fileName);
+                $(".ajax-file-upload-container").html();
+                return true; //to allow file submission.
+            },
+            onSubmit:function(files)
+            {
+                console.log("submit: " + files);
+            },
+            onSuccess:function(files,data,xhr,pd)
+            {
+                console.log("success:" + JSON.stringify(data));
+                if (data.code == 200) {
+                    redirectUrl = "/material";
+                    isShowDialog=tpsAlert("上传成功!",dialogCallback);
+                } else if (data.code==-2 && data.message=='login') {
+                    window.location.href="/login?returnurl=/material/upload";
+                }
+            },
+            afterUploadAll:function(obj)
+            {
+                console.log("after upload all:" + obj);
+            },
+            onError: function(files,status,errMsg,pd)
+            {
+                //debugger;
+                console.log("error: " + files);
+            },
+            onCancel:function(files,pd)
+            {
+                console.log("cancel:" + JSON.stringify(files));
+            }
+        });
+        $("#upload-btn").click(function(){
+            if ($(".ajax-upload-dragdrop span").html() == '') {
+                isShowDialog = tpsAlert("请先选择要上传的文件",dialogCallback);
+                errorInput = $(".ajax-upload-dragdrop span");
+                return;
+            }
+            var inputParent = $(".file-upload-params");
+            if (!checkEmpty(inputParent, "name", "文件名称", false)) {
+                return;
+            }
+            var tags = getTags();
+            if (tags == '') {
+                isShowDialog = tpsAlert("请输入至少一个标签",dialogCallback);
+                errorInput = inputParent.find('input[name="tags"]').first();
+                return;
+            }
+            if (!checkEmpty(inputParent, "hours", "时长", false)) {
+                return;
+            }
+            if (!checkEmpty(inputParent, "minutes", "时长", false)) {
+                return;
+            }
+            if (!checkEmpty(inputParent, "seconds", "时长", false)) {
+                return;
+            }
+            if (!checkEmpty(inputParent, "frames", "时长", false)) {
+                return;
+            }
+            if (!checkEmpty(inputParent, "cTime", "制作时间", true)) {
+                return;
+            }
+            if (!checkEmpty(inputParent, "copyright", "版权类型", true)) {
+                return;
+            }
+            if (!checkEmpty(inputParent, "period", "使用时间", true)) {
+                return;
+            }
+            if (!checkEmpty(inputParent, "type", "素材类别", true)) {
+                return;
+            }
+            var acceptRule=document.getElementById('cCheckbox').checked;
+            if(acceptRule == '' || acceptRule == false) {
+                isShowDialog = tpsAlert("请先阅读并同意地鼠博士网版权协议",dialogCallback);
+                return;
+            }
+            $("#fileuploader").hide();
+            $(".ajax-file-upload-statusbar").show();
+    
+            fileUploader.startUpload();
+        });
+        $(".add-tags-btn").click(function(){
+            var tagsCount = $(".input-tags").size();
+            $('<input class="input-tags" type="text" name="tags" placeholder="标签' + (tagsCount+1) + '" maxlength="8"/>').insertBefore($(this));
+            if (tagsCount > 7) {
+                $(this).remove();
+            }
+        });
+        function getTags() {
+            var tags = $(".file-upload-params input[name='tags']").map(function(){
+                return $(this).val();
+            }).get();
+            var tagsStr = jQuery.grep(tags, Boolean).join(',');
+            return tagsStr;
+        }
+        function checkEmpty(inputParent, inputName, inputDescription, selectable) {
+            var val=inputParent.find('input[name="' + inputName + '"]').val();
+            if(val == '') {
+                if (selectable) {
+                    isShowDialog=tpsAlert("请选择" + inputDescription,dialogCallback);
+                } else {
+                    isShowDialog=tpsAlert("请输入" + inputDescription,dialogCallback);
+                }
+                errorInput = inputParent.find('input[name="' + inputName + '"]');
+                return false;
+            }
+            return true;
+        }
+    });
+</script>
