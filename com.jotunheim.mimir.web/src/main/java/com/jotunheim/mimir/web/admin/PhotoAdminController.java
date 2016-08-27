@@ -4,7 +4,6 @@
 package com.jotunheim.mimir.web.admin;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -12,7 +11,6 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import net.sf.json.JSONObject;
@@ -253,7 +251,6 @@ public class PhotoAdminController {
             Model uiModel,
             HttpServletRequest request,
             HttpServletResponse response,
-            HttpSession session,
             @RequestParam(value = "file", required = true) MultipartFile file,
             @RequestParam(value = "name", required = true) String name,
             @RequestParam(value = "tags", required = true) String tags,
@@ -299,6 +296,7 @@ public class PhotoAdminController {
                 p.setTitle(name);
                 p.setOwnerId(user.getId());
                 p.setTags(tags);
+                p.setUri("/" + folder + "/" + newName);
                 photoDao.persist(p);
                 json.put(SharedConstants.AJAX_CODE_KEY, SharedConstants.AJAXCODE_OK);
                 json.put(SharedConstants.AJAX_MSG_KEY, "ok.");

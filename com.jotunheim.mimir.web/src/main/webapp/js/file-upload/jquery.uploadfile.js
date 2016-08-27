@@ -7,7 +7,7 @@
  */
 (function ($) {
     if($.fn.ajaxForm == undefined) {
-        $.getScript("/assert/file-upload/jquery.form.js");
+        $.getScript("/js/file-upload/jquery.form.js");
     }
     var feature = {};
     feature.fileapi = $("<input type='file'/>").get(0).files !== undefined;

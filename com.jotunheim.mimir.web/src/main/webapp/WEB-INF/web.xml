@@ -103,12 +103,12 @@
         <servlet-name>default</servlet-name>
         <url-pattern>*.gif</url-pattern>
     </servlet-mapping>
-
+<!-- 
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
         <location>/uncaught_exception</location>
     </error-page>
-
+ -->
     <!-- <error-page> <error-code>404</error-code> <location>/resourceNotFound</location> 
         </error-page> -->
 

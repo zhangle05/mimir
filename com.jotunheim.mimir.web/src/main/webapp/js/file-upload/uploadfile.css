@@ -103,7 +103,7 @@ margin: 5px 10px 5px 0px;
   position:absolute;
   right:0px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: bold;
   padding: 15px 20px;
   cursor:pointer;
@@ -113,13 +113,13 @@ margin: 5px 10px 5px 0px;
   text-decoration: none;
   padding: 6px 10px 4px 10px;
   color: #fff;
-  background: #ffb600;
+  background: #08c;
   border: none;
   vertical-align: middle;
   }
 
 .ajax-file-upload:hover {
-      background: #eea500;
+      background: #06a;
 }
 
 .ajax-upload-dragdrop
@@ -236,7 +236,7 @@ margin: 5px 10px 5px 0px;
   vertical-align: top;
   width:75%;
 }
-input {
+input.upload-input {
   border:1px solid #a5a5c7;
   height:30px;
   width: 100%;
@@ -246,7 +246,7 @@ input {
 input[type="checkbox"] {
   width:auto;
 }
-.input-tags, .time-length{
+input.input-tags, .time-length{
   width: 100px;
 }
 textarea {
@@ -318,18 +318,18 @@ textarea {
   text-decoration: none;
   padding: 6px 30px 4px 30px;
   color: #fff;
-  background: #ffb600;
+  background: #08c;
   border: none;
   vertical-align: middle;
 }
 #upload-btn:hover {
-  background: #eea500;
+  background: #06a;
 }
 .publish-btn:hover {
-  background: #eea500;
+  background: #06a;
 }
 .preview-btn:hover {
-  background: #eea500;
+  background: #06a;
 }
 .preview-btn {
   margin-right: 100px;
