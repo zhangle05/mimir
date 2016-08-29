@@ -1,33 +1,21 @@
 #set($layout="/layout/bootstrap_admin_layout.vm")
-#set($nav = 3)
+#set($nav = 5)
 <div class="block">
     <div class="navbar navbar-inner block-header">
         <div class="muted pull-left">文章列表($!{count})</div>
     </div>
     <div class="block-content collapse in">
         <div class="span12">
-                    <div class="span12">
-                        <div class="dataTables_filter">
-                            
-                            <form action="/admin/userlist" method="GET" class="form-horizontal">
-                                <label>筛选:&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="keyword" value="$!{keyword}" class="form-control" placeholder="输入关键字"/>  
-                                    <input type="submit" name="submit" value="提交" class="btn btn-success"/>
-                                </label>
-                            </form>
-                        </div>
-                    </div>
                     <table class="table table-bordered">
-    <tr><th>标题</th><th>作者</th><th>创建时间</th><th>最近更新</th><th>操作</th></tr>
+    <tr><th>标题</th><th>作者</th><th>创建时间</th><th>描述</th><th>标签</th><th>操作</th></tr>
 #foreach($p in ${photoes})
     <tr>
         <td><a href="/admin/photo/edit?pid=$!{p.id}">$!{p.title}</a></td>
-        <td>$!{p.uri}</td>
+        <td>$!{p.ownerId}</td>
         <td>$!{p.createTime}</td>
         <td>$!{p.description}</td>
         <td>$!{p.tags}</td>
-        <td>$!{p.ownerId}</td>
-        <td><a href="/admin/photo/del?id=$!{b.id}">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/blog/edit?bid=$!{b.id}">修改</a></td>
+        <td><a href="/admin/photo/del?id=$!{p.id}">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/photo/edit?id=$!{p.id}">修改</a></td>
     </tr>
 #end
 </table>
