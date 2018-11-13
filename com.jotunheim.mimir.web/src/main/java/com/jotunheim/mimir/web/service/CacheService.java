@@ -40,20 +40,20 @@ public class CacheService {
      * Default constructor
      */
     public CacheService() {
-
-        try {
-            MemcachedClientBuilder builder = new XMemcachedClientBuilder(
-                    AddrUtil.getAddresses(mServerHost));
-            // 宕机报警
-            builder.setFailureMode(true);
-            // 使用二进制文件
-            builder.setCommandFactory(new BinaryCommandFactory());
-            builder.setConnectionPoolSize(2);
-            mClient = builder.build();
-            mClient.setEnableHeartBeat(false);
-        } catch (IOException e) {
-            log.error("初始化Memecache连接失败(" + mServerHost + ")", e);
-        }
+//
+//        try {
+//            MemcachedClientBuilder builder = new XMemcachedClientBuilder(
+//                    AddrUtil.getAddresses(mServerHost));
+//            // 宕机报警
+//            builder.setFailureMode(true);
+//            // 使用二进制文件
+//            builder.setCommandFactory(new BinaryCommandFactory());
+//            builder.setConnectionPoolSize(2);
+//            mClient = builder.build();
+//            mClient.setEnableHeartBeat(false);
+//        } catch (IOException e) {
+//            log.error("初始化Memecache连接失败(" + mServerHost + ")", e);
+//        }
     }
 
     public void addCache(String key, Object value) {
